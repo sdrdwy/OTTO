@@ -18,7 +18,7 @@ from utils.calendar import Calendar
 
 
 class SimulationManager:
-    def __init__(self, config_file: str = "config/world_config.json"):
+    def __init__(self, config_file: str = "config_files/system_configs/world_config.json"):
         self.config_file = config_file
         self.load_config()
         
@@ -68,22 +68,28 @@ class SimulationManager:
     
     def initialize_agents(self):
         """Initialize student and expert agents from config file"""
-        # Load students configuration
-        students_config_path = "config/students_config.json"
-        students_config = {}
-        if os.path.exists(students_config_path):
-            with open(students_config_path, 'r', encoding='utf-8') as f:
-                students_config = json.load(f)
+        # Load agents configuration
+        agents_config_path = "config_files/agent_configs/agents_config.json"
+        agents_config = {}
+        if os.path.exists(agents_config_path):
+            with open(agents_config_path, 'r', encoding='utf-8') as f:
+                agents_config = json.load(f)
         
-        # Create expert agent
-        expert = ExpertAgent("ProfessorSmith", self.memory, self.world, persona_id="math_expert")
-        expert.move_to_location("classroom")  # Experts typically start in classroom
-        self.expert_agents.append(expert)
-        self.agents.append(expert)
+        # Create expert agents from config
+        experts_list = agents_config.get("experts", [])
+        for expert_data in experts_list:
+            expert_id = expert_data["id"]
+            expert_name = expert_data["name"]
+            start_location = expert_data.get("location", "classroom")
+            
+            # Create expert with persona
+            expert = ExpertAgent(expert_name, self.memory, self.world, persona_id=expert_id)
+            expert.move_to_location(start_location)  # Experts typically start in classroom
+            self.expert_agents.append(expert)
+            self.agents.append(expert)
         
         # Create student agents from config
-        students_list = students_config.get("students", [])
-        locations = students_config.get("locations", ["library", "classroom", "park", "cafe", "lab"])
+        students_list = agents_config.get("students", [])
         
         for student_data in students_list:
             student_id = student_data["id"]
@@ -101,7 +107,7 @@ class SimulationManager:
             self.daily_schedules[student.name] = schedule
     
     def create_daily_schedules(self, date: str):
-        """Create daily schedules for all students with their preferences"""
+        """Create daily schedules for all students with their preferences and memory context"""
         for student in self.student_agents:
             schedule = self.daily_schedules[student.name]
             # Get student preferences to pass to schedule creation
@@ -111,8 +117,15 @@ class SimulationManager:
                 "social_preferences": getattr(student, 'social_preferences', ["collaborate", "network"]),
                 "activity_preferences": getattr(student, 'activity_preferences', ["study", "practice", "discuss"])
             }
-            # Create schedule with student's preferences
-            schedule.create_daily_schedule(date, agent_preferences=agent_preferences)
+            # Get recent memories to use as context for scheduling
+            memory_context = []
+            if hasattr(student, 'memory') and student.memory:
+                memory_context = student.memory.get_recent_memories(student.name, limit=10)
+                # Convert to the expected format (list of dict with content field)
+                memory_context = [{"content": mem} for mem in memory_context]
+            
+            # Create schedule with student's preferences and memory context
+            schedule.create_daily_schedule(date, agent_preferences=agent_preferences, memory_context=memory_context)
     
     def run_simulation(self):
         """Run the entire simulation"""

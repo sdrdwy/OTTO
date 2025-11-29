@@ -1,36 +1,54 @@
 ```
-# Configuration files that might contain sensitive data
-ai-town/config/*.json
+# Configuration files
+*.json
 
-# Python compiled files
-*.pyc
+# Dependencies
+node_modules/
+venv/
+.venv/
 __pycache__/
+*.pyc
 *.pyo
 *.pyd
 
 # Logs
 *.log
 
-# Environment files
+# Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Editor/IDE files
+# Editors
 .vscode/
 .idea/
 *.swp
 *.swo
-*.tmp
 
-# Dependency directories
-venv/
-.venv/
-pipenv/
-poetry.lock
-
-# Build/dist directories
-build/
+# Build artifacts
 dist/
-*.egg-info/
+build/
+*.o
+*.obj
+*.so
+*.dll
+*.exe
+*.a
+*.out
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Cache
+.mypy_cache/
+.pytest_cache/
+.gradle/
+target/
+
+# System
+.DS_Store
+Thumbs.db
+*.tmp
 ```

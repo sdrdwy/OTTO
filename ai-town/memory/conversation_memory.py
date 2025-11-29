@@ -9,7 +9,7 @@ import os
 
 
 class ConversationMemory:
-    def __init__(self, max_memories_per_agent: int = 50, long_term_memory_file: str = "config/long_term_memory.json"):
+    def __init__(self, max_memories_per_agent: int = 50, long_term_memory_file: str = "config_files/memory_configs/long_term_memory.json"):
         self.memories: Dict[str, List[Dict]] = {}
         self.max_memories_per_agent = max_memories_per_agent
         self.long_term_memory_file = long_term_memory_file
@@ -42,20 +42,30 @@ class ConversationMemory:
         self.long_term_memories[agent_name].insert(0, memory_entry)
         self.save_long_term_memory()
     
-    def add_memory(self, agent_name: str, content: str, memory_type: str = "conversation"):
+    def add_memory(self, agent_name: str, content: str, memory_type: str = "conversation", **kwargs):
         """
-        Add a memory for a specific agent
+        Add a memory for a specific agent with detailed information
         """
         timestamp = datetime.now().isoformat()
         
         if agent_name not in self.memories:
             self.memories[agent_name] = []
         
-        # Create memory entry
+        # Create detailed memory entry
         memory_entry = {
             "timestamp": timestamp,
             "content": content,
-            "type": memory_type
+            "type": memory_type,
+            "details": {
+                "location": kwargs.get("location", "unknown"),
+                "participants": kwargs.get("participants", []),
+                "topic": kwargs.get("topic", "general"),
+                "context": kwargs.get("context", ""),
+                "outcome": kwargs.get("outcome", ""),
+                "importance": kwargs.get("importance", "medium"),
+                "duration": kwargs.get("duration", ""),
+                "related_memories": kwargs.get("related_memories", [])
+            }
         }
         
         # Add to the beginning of the list (most recent first)
