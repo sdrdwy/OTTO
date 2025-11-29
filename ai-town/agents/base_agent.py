@@ -229,6 +229,14 @@ As {self.name}, respond to the above conversation.
         """
         Move the agent to a specific location in the world
         """
+        # Check if location exists in the world map
+        if location not in self.world.locations:
+            print(f"Warning: {location} does not exist in the world map. Moving to default location instead.")
+            location = "classroom"  # Use a default location that exists
+            if location not in self.world.locations:
+                # If classroom doesn't exist, pick any existing location
+                location = list(self.world.locations.keys())[0]
+        
         # Remove agent from current location if already in the world
         if hasattr(self, 'name'):
             current_location_agents = self.world.get_agents_at_location(self.location)
@@ -238,7 +246,7 @@ As {self.name}, respond to the above conversation.
         # Add agent to new location
         self.world.add_agent_to_location(self, location)
         self.location = location
-        self.remember(f"Moved to {location}", "movement")
+        self.remember(f"Moved to {location}", "movement", location=location)
         return f"{self.name} moved to {location}"
     
     def get_agents_at_current_location(self):

@@ -63,15 +63,14 @@ class StudentAgent(BaseAgent):
         if hasattr(self, 'knowledge_manager'):
             knowledge = self.knowledge_manager.get_relevant_knowledge("General", topic)
         
-        prompt = f"Ask questions or discuss {topic} with {main_interactant.name}. Your learning goal is {self.current_goal}. Your knowledge level is {self.knowledge_level}/10."
+        prompt = f"用中文与{main_interactant.name}讨论{topic}。你的学习目标是{self.current_goal}。你的知识水平是{self.knowledge_level}/10。"
         
         # Get response from LLM
-        response = self.get_response(prompt, f"You are a student with the learning goal of {self.current_goal}.")
+        response = self.get_response(prompt, f"你是一个学生，学习目标是{self.current_goal}。")
         
-        # Remember the interaction for both agents
-        interaction_memory = f"Discussed {topic} with {main_interactant.name}, focusing on {self.current_goal}"
-        self.remember(interaction_memory, "conversation")
-        main_interactant.remember(f"Discussed {topic} with {self.name}, helping with their learning goal of {self.current_goal}", "teaching")
+        interaction_memory = f"用中文与{main_interactant.name}讨论了{topic}，重点是{self.current_goal}"
+        self.remember(interaction_memory, "conversation", location=self.location)
+        main_interactant.remember(f"与{self.name}讨论了{topic}，帮助其学习目标{self.current_goal}", "teaching", location=main_interactant.location)
         
         print(f"{self.name} (Student): {response}")
         return response
@@ -86,13 +85,13 @@ class StudentAgent(BaseAgent):
         other_student_names = [s.name for s in other_students]
         expert_name = expert_agent.name
         
-        prompt = f"Participate in a group discussion about {topic} with {expert_name} and fellow students {other_student_names}. Share your thoughts, ask questions, and engage with others' ideas. Your learning goal is {self.current_goal}."
+        prompt = f"参与关于{topic}的小组讨论，与{expert_name}和其他同学{other_student_names}一起。分享你的想法，提出问题，并参与其他人的想法。你的学习目标是{self.current_goal}。"
         
         # Get response from LLM
-        response = self.get_response(prompt, f"You are a student participating in a group discussion about {topic}, with the learning goal of {self.current_goal}.")
+        response = self.get_response(prompt, f"你是一个学生，正在参与关于{topic}的小组讨论，学习目标是{self.current_goal}。")
         
         # Remember the interaction
-        self.remember(f"Participated in group discussion about {topic} with {expert_name} and {other_student_names}", "group_discussion")
+        self.remember(f"参与了关于{topic}的小组讨论，与{expert_name}和{other_student_names}", "group_discussion", location=self.location)
         
         print(f"{self.name} (Student): {response}")
         return response
@@ -102,10 +101,10 @@ class StudentAgent(BaseAgent):
         Share an opinion with the group
         """
         agent_names = [agent.name for agent in other_agents]
-        prompt = f"Share your opinion about {topic} with {agent_names}. Express your perspective and reasoning."
+        prompt = f"与{agent_names}分享你对{topic}的看法。表达你的观点和推理。"
         
-        response = self.get_response(prompt, f"You are sharing your opinion about {topic}.")
-        self.remember(f"Shared opinion about {topic} with {agent_names}", "opinion")
+        response = self.get_response(prompt, f"你正在分享对{topic}的看法。")
+        self.remember(f"与{agent_names}分享了对{topic}的看法", "opinion", location=self.location)
         
         print(f"{self.name} (Student): {response}")
         return response
@@ -115,10 +114,10 @@ class StudentAgent(BaseAgent):
         Ask a question to the group
         """
         agent_names = [agent.name for agent in other_agents]
-        prompt = f"Ask a thought-provoking question about {topic} to {agent_names}."
+        prompt = f"向{agent_names}提出一个关于{topic}的发人深省的问题。"
         
-        response = self.get_response(prompt, f"You are asking a question about {topic} to the group.")
-        self.remember(f"Asked question about {topic} to {agent_names}", "question")
+        response = self.get_response(prompt, f"你正在向小组提出关于{topic}的问题。")
+        self.remember(f"向{agent_names}提出了关于{topic}的问题", "question", location=self.location)
         
         print(f"{self.name} (Student): {response}")
         return response
@@ -127,12 +126,12 @@ class StudentAgent(BaseAgent):
         """
         Ask a specific question to the expert
         """
-        prompt = f"Ask {expert_agent.name} a thoughtful question about {topic}."
-        response = self.get_response(prompt, f"You are a student asking questions to learn about {topic}.")
+        prompt = f"向{expert_agent.name}提出一个关于{topic}的深思熟虑的问题。"
+        response = self.get_response(prompt, f"你是一个学生，正在提问以了解{topic}。")
         
         # Remember the interaction
-        self.remember(f"Asked a question about {topic} to {expert_agent.name}", "question")
-        expert_agent.remember(f"Answered a question from {self.name} about {topic}", "teaching")
+        self.remember(f"向{expert_agent.name}提出了关于{topic}的问题", "question", location=self.location)
+        expert_agent.remember(f"回答了{self.name}关于{topic}的问题", "teaching", location=expert_agent.location)
         
         print(f"{self.name} (Student) to {expert_agent.name}: {response}")
         return response
