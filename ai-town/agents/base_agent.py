@@ -113,11 +113,14 @@ As {self.name}, respond to the above conversation.
         response = self.llm.invoke(messages)
         return response.content
     
-    def remember(self, event: str, memory_type: str = "conversation"):
+    def remember(self, event: str, memory_type: str = "conversation", location: str = None):
         """
         Add an event to memory
         """
-        self.memory.add_memory(self.name, event, memory_type)
+        # Use the agent's current location if no location is specified
+        if location is None:
+            location = getattr(self, 'location', 'unknown')
+        self.memory.add_memory(self.name, event, memory_type, location=location)
     
     def remember_long_term(self, event: str, memory_type: str = "long_term"):
         """

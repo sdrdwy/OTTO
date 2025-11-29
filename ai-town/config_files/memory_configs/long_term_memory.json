@@ -1,23 +1,4695 @@
 {
-  "CuriousStudent": [],
-  "AnalyticalStudent": [],
-  "CreativeStudent": [],
-  "TestStudent": [
+  "CuriousStudent": [
     {
-      "timestamp": "2023-01-01T00:00:00",
-      "content": "Discussed machine learning concepts with other students",
+      "timestamp": "2025-11-29T07:44:33.599873",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
       "type": "conversation",
       "details": {
-        "location": "library",
-        "participants": [
-          "Student1",
-          "Student2"
-        ],
-        "topic": "machine learning",
-        "context": "We were studying neural networks and their applications in AI, specifically focusing on backpropagation algorithm and its implementation in deep learning models",
-        "outcome": "Better understanding of backpropagation algorithm"
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
       },
-      "detailed_content": "Content: Discussed machine learning concepts with other students | Topic: machine learning | Participants: Student1, Student2 | Location: library | Outcome: Better understanding of backpropagation algorithm | Context: We were studying neural networks and their applications in AI, specifically focusing on backpropagation algorithm and its implementation in deep learning models..."
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:33.469127",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:33.100021",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.768340",
+      "content": "Moved to classroom for morning_class period on 2025-12-02",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.704522",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.291295",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1和['AnalyticalStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.146201",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.989796",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1和['AnalyticalStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.873919",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.684106",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1和['AnalyticalStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.587912",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.365279",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.015725",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.765589",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.661677",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.572106",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.320676",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.990195",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-12-01. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Talked to CreativeStudent about group discussion at classroom', 'Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CreativeStudent about group discussion at classroom']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.940810",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.844924",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.799965",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.481978",
+      "content": "Participated in scheduled activity 'discuss related to understanding complex concepts' at classroom during afternoon_free on 2025-12-01. Activity details: {'activity': 'discuss related to understanding complex concepts', 'location': 'classroom', 'preferences': ['study', 'practice', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'CuriousStudent', 'planning_timestamp': '2025-11-29T07:44:25.850387', 'memory_context_used': ['Talked to CreativeStudent about group discussion at classroom', 'Talked to AnalyticalStudent about group discussion at classroom'], 'self_reflection': 'Agent CuriousStudent decided to discuss at classroom based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'low'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.413038",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.262333",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.932502",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.687124",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.593411",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.517028",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.275542",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.001888",
+      "content": "Moved to classroom for afternoon_class period on 2025-12-01",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.959748",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.580014",
+      "content": "Participated in scheduled activity 'discussion related to developing critical thinking' at library during morning_free on 2025-12-01. Activity details: {'activity': 'discussion related to developing critical thinking', 'location': 'library', 'preferences': ['study', 'practice', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'CuriousStudent', 'planning_timestamp': '2025-11-29T07:44:25.850357', 'memory_context_used': ['Talked to CreativeStudent about group discussion at classroom', 'Talked to AnalyticalStudent about group discussion at classroom'], 'self_reflection': 'Agent CuriousStudent decided to discussion at library based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.539517",
+      "content": "Moved to library",
+      "type": "movement",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.399203",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.114823",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.888064",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.793268",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.686438",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.432384",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.117519",
+      "content": "Moved to classroom for morning_class period on 2025-12-01",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.062307",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.555591",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.017168",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.648974",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.521089",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.423205",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.225603",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.925320",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-11-30. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': [\"参与了关于the value of continuous learning的小组讨论，与Expert1和['AnalyticalStudent']\", '参与了关于the value of continuous learning的小组讨论，与Expert1', \"参与了关于how to approach complex problems的小组讨论，与Expert1和['AnalyticalStudent']\"]}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.866794",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.485855",
+      "content": "Participated in scheduled activity 'study related to asking thought-provoking questions' at library during afternoon_free on 2025-11-30. Activity details: {'activity': 'study related to asking thought-provoking questions', 'location': 'library', 'preferences': ['study', 'practice', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'CuriousStudent', 'planning_timestamp': '2025-11-29T07:44:21.322310', 'memory_context_used': [\"参与了关于the value of continuous learning的小组讨论，与Expert1和['AnalyticalStudent']\", '参与了关于the value of continuous learning的小组讨论，与Expert1'], 'self_reflection': 'Agent CuriousStudent decided to study at library based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'social_element': 'discuss', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.433446",
+      "content": "Moved to library",
+      "type": "movement",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.262930",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.991768",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.773952",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.671339",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.622678",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.445911",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.191455",
+      "content": "Moved to classroom for afternoon_class period on 2025-11-30",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.126278",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.067897",
+      "content": "Talked to CreativeStudent about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.956943",
+      "content": "Talked to CreativeStudent about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.878670",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.824911",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.643138",
+      "content": "Participated in scheduled activity 'explore related to developing critical thinking' at classroom during morning_free on 2025-11-30. Activity details: {'activity': 'explore related to developing critical thinking', 'location': 'classroom', 'preferences': ['study', 'practice', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'CuriousStudent', 'planning_timestamp': '2025-11-29T07:44:21.322263', 'memory_context_used': [\"参与了关于the value of continuous learning的小组讨论，与Expert1和['AnalyticalStudent']\", '参与了关于the value of continuous learning的小组讨论，与Expert1'], 'self_reflection': 'Agent CuriousStudent decided to explore at classroom based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'low'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.596922",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492930",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492668",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492473",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492401",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492320",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492061",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.491751",
+      "content": "Moved to classroom for morning_class period on 2025-11-30",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.491727",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.189974",
+      "content": "参与了关于the value of continuous learning的小组讨论，与Expert1和['AnalyticalStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.189908",
+      "content": "参与了关于the value of continuous learning的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186638",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1和['AnalyticalStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186577",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186458",
+      "content": "参与了关于the importance of critical thinking的小组讨论，与Expert1和['AnalyticalStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186399",
+      "content": "参与了关于the importance of critical thinking的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186257",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186068",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185845",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185799",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185742",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185529",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185365",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-11-29. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Moved to classroom']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185355",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185331",
+      "content": "Talked to AnalyticalStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185226",
+      "content": "Talked to AnalyticalStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184883",
+      "content": "Participated in scheduled activity 'practice related to asking thought-provoking questions' at lab during afternoon_free on 2025-11-29. Activity details: {'activity': 'practice related to asking thought-provoking questions', 'location': 'lab', 'preferences': ['study', 'practice', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'CuriousStudent', 'planning_timestamp': '2025-11-29T07:44:21.001328', 'memory_context_used': ['Moved to classroom'], 'self_reflection': 'Agent CuriousStudent decided to practice at lab based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'social_element': 'network', 'importance': 'medium'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184854",
+      "content": "Moved to lab",
+      "type": "movement",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184784",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184552",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184353",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184296",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184241",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184014",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183812",
+      "content": "Moved to classroom for afternoon_class period on 2025-11-29",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183806",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183717",
+      "content": "Talked to CreativeStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183509",
+      "content": "Talked to AnalyticalStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183361",
+      "content": "Talked to CreativeStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183306",
+      "content": "Talked to AnalyticalStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183134",
+      "content": "Participated in scheduled activity 'practice related to developing critical thinking' at lab during morning_free on 2025-11-29. Activity details: {'activity': 'practice related to developing critical thinking', 'location': 'lab', 'preferences': ['study', 'practice', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'CuriousStudent', 'planning_timestamp': '2025-11-29T07:44:21.001298', 'memory_context_used': ['Moved to classroom'], 'self_reflection': 'Agent CuriousStudent decided to practice at lab based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183115",
+      "content": "Moved to lab",
+      "type": "movement",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183022",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182768",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182551",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182492",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182437",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182185",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181934",
+      "content": "参与了关于Debate Competition的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181598",
+      "content": "用中文与Expert1讨论了Debate Competition，重点是understanding complex concepts",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: 用中文与Expert1讨论了Debate Competition，重点是understanding complex concepts | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181312",
+      "content": "Moved to classroom for morning_class period on 2025-11-29",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181301",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:20.872851",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
     }
-  ]
-}
+  ],
+  "AnalyticalStudent": [
+    {
+      "timestamp": "2025-11-29T07:44:33.841487",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:33.658750",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:33.312050",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.890203",
+      "content": "Moved to classroom for morning_class period on 2025-12-02",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.828119",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.343482",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1和['CuriousStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.209955",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:32.040778",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1和['CuriousStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.925049",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.747430",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1和['CuriousStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.634713",
+      "content": "参与了关于the role of technology in education的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.470835",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.072347",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.958129",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.867688",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.719369",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.408129",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.083273",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-12-01. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Talked to CreativeStudent about group discussion at classroom', 'Talked to CreativeStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.036327",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.582791",
+      "content": "Participated in scheduled activity 'discussion related to developing critical thinking' at lab during afternoon_free on 2025-12-01. Activity details: {'activity': 'discussion related to developing critical thinking', 'location': 'lab', 'preferences': ['study', 'analyze', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'AnalyticalStudent', 'planning_timestamp': '2025-11-29T07:44:25.934338', 'memory_context_used': ['Talked to CreativeStudent about group discussion at classroom', 'Talked to CreativeStudent about group discussion at classroom'], 'self_reflection': 'Agent AnalyticalStudent decided to discussion at lab based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'social_element': 'evaluate', 'importance': 'medium'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.526900",
+      "content": "Moved to lab",
+      "type": "movement",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.360520",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.979918",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.881931",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.772903",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.631238",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.357987",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.093295",
+      "content": "Moved to classroom for afternoon_class period on 2025-12-01",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.045811",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.876346",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.838093",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.670997",
+      "content": "Participated in scheduled activity 'discussion related to understanding complex concepts' at classroom during morning_free on 2025-12-01. Activity details: {'activity': 'discussion related to understanding complex concepts', 'location': 'classroom', 'preferences': ['study', 'analyze', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'AnalyticalStudent', 'planning_timestamp': '2025-11-29T07:44:25.934293', 'memory_context_used': ['Talked to CreativeStudent about group discussion at classroom', 'Talked to CreativeStudent about group discussion at classroom'], 'self_reflection': 'Agent AnalyticalStudent decided to discussion at classroom based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'social_element': 'analyze', 'importance': 'low'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.621266",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.489929",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.163665",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.069642",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.970801",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.849771",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.535300",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.210733",
+      "content": "Moved to classroom for morning_class period on 2025-12-01",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.169079",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.667369",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.130471",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.935216",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.804267",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.596013",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.300358",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.038217",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-11-30. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': [\"参与了关于the value of continuous learning的小组讨论，与Expert1和['CuriousStudent']\", '参与了关于the value of continuous learning的小组讨论，与Expert1', \"参与了关于how to approach complex problems的小组讨论，与Expert1和['CuriousStudent']\"]}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.984955",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.600370",
+      "content": "Participated in scheduled activity 'study related to understanding complex concepts' at lab during afternoon_free on 2025-11-30. Activity details: {'activity': 'study related to understanding complex concepts', 'location': 'lab', 'preferences': ['study', 'analyze', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'AnalyticalStudent', 'planning_timestamp': '2025-11-29T07:44:21.399504', 'memory_context_used': [\"参与了关于the value of continuous learning的小组讨论，与Expert1和['CuriousStudent']\", '参与了关于the value of continuous learning的小组讨论，与Expert1'], 'self_reflection': 'Agent AnalyticalStudent decided to study at lab based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'social_element': 'evaluate', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.540077",
+      "content": "Moved to lab",
+      "type": "movement",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.371983",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.044636",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.947738",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.880994",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.726565",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.490735",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.300793",
+      "content": "Moved to classroom for afternoon_class period on 2025-11-30",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.238727",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.770073",
+      "content": "Participated in scheduled activity 'analyze related to understanding complex concepts' at library during morning_free on 2025-11-30. Activity details: {'activity': 'analyze related to understanding complex concepts', 'location': 'library', 'preferences': ['study', 'analyze', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'AnalyticalStudent', 'planning_timestamp': '2025-11-29T07:44:21.399457', 'memory_context_used': [\"参与了关于the value of continuous learning的小组讨论，与Expert1和['CuriousStudent']\", '参与了关于the value of continuous learning的小组讨论，与Expert1'], 'self_reflection': 'Agent AnalyticalStudent decided to analyze at library based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.711250",
+      "content": "Moved to library",
+      "type": "movement",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.550491",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492728",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492664",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492603",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492409",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492119",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.491763",
+      "content": "Moved to classroom for morning_class period on 2025-11-30",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.491759",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.190033",
+      "content": "参与了关于the value of continuous learning的小组讨论，与Expert1和['CuriousStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.189912",
+      "content": "参与了关于the value of continuous learning的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186690",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1和['CuriousStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186580",
+      "content": "参与了关于how to approach complex problems的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186510",
+      "content": "参与了关于the importance of critical thinking的小组讨论，与Expert1和['CuriousStudent']",
+      "type": "group_discussion",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186402",
+      "content": "参与了关于the importance of critical thinking的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186300",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186109",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186063",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186012",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185803",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185586",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185383",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-11-29. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Moved to library']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185376",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185326",
+      "content": "Talked to CuriousStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185230",
+      "content": "Talked to CuriousStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184905",
+      "content": "Participated in scheduled activity 'review related to developing critical thinking' at lab during afternoon_free on 2025-11-29. Activity details: {'activity': 'review related to developing critical thinking', 'location': 'lab', 'preferences': ['study', 'analyze', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'AnalyticalStudent', 'planning_timestamp': '2025-11-29T07:44:21.079048', 'memory_context_used': ['Moved to library'], 'self_reflection': 'Agent AnalyticalStudent decided to review at lab based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'low'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184891",
+      "content": "Moved to lab",
+      "type": "movement",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184834",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184594",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184548",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184485",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184300",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184068",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183824",
+      "content": "Moved to classroom for afternoon_class period on 2025-11-29",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183820",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183776",
+      "content": "Talked to CreativeStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183559",
+      "content": "Talked to CreativeStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183504",
+      "content": "Talked to CuriousStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183311",
+      "content": "Talked to CuriousStudent about conversation at lab",
+      "type": "conversation",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about conversation at lab | Topic: general | Location: lab"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183152",
+      "content": "Participated in scheduled activity 'practice related to developing critical thinking' at lab during morning_free on 2025-11-29. Activity details: {'activity': 'practice related to developing critical thinking', 'location': 'lab', 'preferences': ['study', 'analyze', 'understanding complex concepts', 'developing critical thinking'], 'planned_by': 'AnalyticalStudent', 'planning_timestamp': '2025-11-29T07:44:21.079020', 'memory_context_used': ['Moved to library'], 'self_reflection': 'Agent AnalyticalStudent decided to practice at lab based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: understanding complex concepts, developing critical thinking', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183141",
+      "content": "Moved to lab",
+      "type": "movement",
+      "details": {
+        "location": "lab",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.183081",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182820",
+      "content": "Talked to CreativeStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CreativeStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182763",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182690",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182497",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.182246",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181938",
+      "content": "参与了关于Debate Competition的小组讨论，与Expert1",
+      "type": "learning",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181750",
+      "content": "用中文与Expert1讨论了Debate Competition，重点是developing critical thinking",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: 用中文与Expert1讨论了Debate Competition，重点是developing critical thinking | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181334",
+      "content": "Moved to classroom for morning_class period on 2025-11-29",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.181327",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:20.872909",
+      "content": "Moved to library",
+      "type": "movement",
+      "details": {
+        "location": "library",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    }
+  ],
+  "CreativeStudent": [
+    {
+      "timestamp": "2025-11-29T07:44:31.423954",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.316667",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.194249",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:31.125259",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.817254",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.521768",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.189794",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-12-01. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom', 'Talked to Expert1 about group discussion at classroom']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:30.140471",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.696331",
+      "content": "Participated in scheduled activity 'create related to exploring new ideas' at park during afternoon_free on 2025-12-01. Activity details: {'activity': 'create related to exploring new ideas', 'location': 'park', 'preferences': ['create', 'explore', 'expanding knowledge base', 'enhancing creative expression'], 'planned_by': 'CreativeStudent', 'planning_timestamp': '2025-11-29T07:44:25.985132', 'memory_context_used': ['Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom'], 'self_reflection': 'Agent CreativeStudent decided to create at park based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: expanding knowledge base, enhancing creative expression', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "park",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.627198",
+      "content": "Moved to park",
+      "type": "movement",
+      "details": {
+        "location": "park",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.315492",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.196182",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.085731",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:29.027769",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.727538",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.436893",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.174623",
+      "content": "Moved to classroom for afternoon_class period on 2025-12-01",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:28.133603",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.754340",
+      "content": "Participated in scheduled activity 'discussion related to enhancing creative expression' at park during morning_free on 2025-12-01. Activity details: {'activity': 'discussion related to enhancing creative expression', 'location': 'park', 'preferences': ['create', 'explore', 'expanding knowledge base', 'enhancing creative expression'], 'planned_by': 'CreativeStudent', 'planning_timestamp': '2025-11-29T07:44:25.985100', 'memory_context_used': ['Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom'], 'self_reflection': 'Agent CreativeStudent decided to discussion at park based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: expanding knowledge base, enhancing creative expression', 'importance': 'low'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "park",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.710022",
+      "content": "Moved to park",
+      "type": "movement",
+      "details": {
+        "location": "park",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.452561",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.341888",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.263777",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:27.213446",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.932079",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.628228",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.335455",
+      "content": "Moved to classroom for morning_class period on 2025-12-01",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:26.259463",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.622824",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.492739",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.308115",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:25.233573",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.739017",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.369816",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.161680",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-11-30. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom', 'Talked to Expert1 about group discussion at classroom']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:24.092436",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.808661",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.761455",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.713770",
+      "content": "Participated in scheduled activity 'discussion related to enhancing creative expression' at classroom during afternoon_free on 2025-11-30. Activity details: {'activity': 'discussion related to enhancing creative expression', 'location': 'classroom', 'preferences': ['create', 'explore', 'expanding knowledge base', 'enhancing creative expression'], 'planned_by': 'CreativeStudent', 'planning_timestamp': '2025-11-29T07:44:21.443235', 'memory_context_used': ['Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom'], 'self_reflection': 'Agent CreativeStudent decided to discussion at classroom based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: expanding knowledge base, enhancing creative expression', 'importance': 'high'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.659354",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.322519",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.210254",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.142223",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:23.093094",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.819946",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.557222",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.402994",
+      "content": "Moved to classroom for afternoon_class period on 2025-11-30",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.353816",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.017182",
+      "content": "Talked to CuriousStudent about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.017098",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:22.016789",
+      "content": "Talked to CuriousStudent about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.878485",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.824564",
+      "content": "Participated in scheduled activity 'explore related to exploring new ideas' at classroom during morning_free on 2025-11-30. Activity details: {'activity': 'explore related to exploring new ideas', 'location': 'classroom', 'preferences': ['create', 'explore', 'expanding knowledge base', 'enhancing creative expression'], 'planned_by': 'CreativeStudent', 'planning_timestamp': '2025-11-29T07:44:21.443194', 'memory_context_used': ['Talked to AnalyticalStudent about group discussion at classroom', 'Talked to CuriousStudent about group discussion at classroom'], 'self_reflection': 'Agent CreativeStudent decided to explore at classroom based on learning goals and past experiences', 'rationale': 'Chosen because of alignment with learning goals: expanding knowledge base, enhancing creative expression', 'importance': 'medium'}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.824516",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.550467",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492924",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492835",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492732",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492478",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.492180",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.491772",
+      "content": "Moved to classroom for morning_class period on 2025-11-30",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.491769",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186296",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186253",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186204",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.186113",
+      "content": "Talked to AnalyticalStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to AnalyticalStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185849",
+      "content": "Talked to CuriousStudent about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to CuriousStudent about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185641",
+      "content": "Talked to Expert1 about group discussion at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about group discussion at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185400",
+      "content": "Participated in scheduled activity 'rest and reflection' at home during evening on 2025-11-29. Activity details: {'activity': 'rest and reflection', 'location': 'home', 'preferences': ['rest', 'sleep', 'reflect on day'], 'memory_context': ['Moved to cafe']}",
+      "type": "scheduled_activity",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185393",
+      "content": "Moved to classroom",
+      "type": "movement",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      }
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185127",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.185033",
+      "content": "Talked to Expert1 about conversation at classroom",
+      "type": "conversation",
+      "details": {
+        "location": "classroom",
+        "participants": [],
+        "topic": "general",
+        "context": "",
+        "outcome": "",
+        "importance": "medium",
+        "duration": "",
+        "related_memories": []
+      },
+      "detailed_content": "Content: Talked to Expert1 about conversation at classroom | Topic: general | Location: classroom"
+    },
+    {
+      "timestamp": "2025-11-29T07:44:21.184923",
+      

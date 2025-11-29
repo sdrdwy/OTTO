@@ -17,6 +17,60 @@
       "source": "initialization",
       "timestamp": "2025-11-29T07:06:46.020433",
       "metadata": {}
+    },
+    {
+      "content": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.380252",
+      "metadata": {}
+    },
+    {
+      "content": "Calculus is the mathematical study of continuous change.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.435152",
+      "metadata": {}
+    },
+    {
+      "content": "Geometry is concerned with the properties of space that are related with distance, shape, size, and relative position of figures.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.476065",
+      "metadata": {}
+    },
+    {
+      "content": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.515053",
+      "metadata": {}
+    },
+    {
+      "content": "Calculus is the mathematical study of continuous change.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.556211",
+      "metadata": {}
+    },
+    {
+      "content": "Geometry is concerned with the properties of space that are related with distance, shape, size, and relative position of figures.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.602952",
+      "metadata": {}
+    },
+    {
+      "content": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.375949",
+      "metadata": {}
+    },
+    {
+      "content": "Calculus is the mathematical study of continuous change.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.427892",
+      "metadata": {}
+    },
+    {
+      "content": "Geometry is concerned with the properties of space that are related with distance, shape, size, and relative position of figures.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.473103",
+      "metadata": {}
     }
   ],
   "Science": [
@@ -37,6 +91,60 @@
       "source": "initialization",
       "timestamp": "2025-11-29T07:06:46.246662",
       "metadata": {}
+    },
+    {
+      "content": "The scientific method is an empirical method of acquiring knowledge that has characterized the development of science since at least the 17th century.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.517341",
+      "metadata": {}
+    },
+    {
+      "content": "Physics is the natural science that studies matter, its motion and behavior through space and time, and the related entities of energy and force.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.564919",
+      "metadata": {}
+    },
+    {
+      "content": "Chemistry is the scientific study of the properties and behavior of matter.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.605418",
+      "metadata": {}
+    },
+    {
+      "content": "The scientific method is an empirical method of acquiring knowledge that has characterized the development of science since at least the 17th century.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.642280",
+      "metadata": {}
+    },
+    {
+      "content": "Physics is the natural science that studies matter, its motion and behavior through space and time, and the related entities of energy and force.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.688978",
+      "metadata": {}
+    },
+    {
+      "content": "Chemistry is the scientific study of the properties and behavior of matter.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.741890",
+      "metadata": {}
+    },
+    {
+      "content": "The scientific method is an empirical method of acquiring knowledge that has characterized the development of science since at least the 17th century.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.538102",
+      "metadata": {}
+    },
+    {
+      "content": "Physics is the natural science that studies matter, its motion and behavior through space and time, and the related entities of energy and force.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.582182",
+      "metadata": {}
+    },
+    {
+      "content": "Chemistry is the scientific study of the properties and behavior of matter.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.632296",
+      "metadata": {}
     }
   ],
   "Literature": [
@@ -51,6 +159,42 @@
       "source": "initialization",
       "timestamp": "2025-11-29T07:06:46.386575",
       "metadata": {}
+    },
+    {
+      "content": "Literature is a form of art that uses language to express ideas, emotions, and stories.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.647418",
+      "metadata": {}
+    },
+    {
+      "content": "Classic literature includes works that are considered to have lasting artistic merit.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.690503",
+      "metadata": {}
+    },
+    {
+      "content": "Literature is a form of art that uses language to express ideas, emotions, and stories.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.781993",
+      "metadata": {}
+    },
+    {
+      "content": "Classic literature includes works that are considered to have lasting artistic merit.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.828947",
+      "metadata": {}
+    },
+    {
+      "content": "Literature is a form of art that uses language to express ideas, emotions, and stories.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.684402",
+      "metadata": {}
+    },
+    {
+      "content": "Classic literature includes works that are considered to have lasting artistic merit.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.734799",
+      "metadata": {}
     }
   ],
   "History": [
@@ -64,6 +208,42 @@
       "content": "Ancient civilizations include Mesopotamia, Egypt, Greece, and Rome.",
       "source": "initialization",
       "timestamp": "2025-11-29T07:06:46.511733",
+      "metadata": {}
+    },
+    {
+      "content": "History is the study of the past, particularly how it relates to humans.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.743545",
+      "metadata": {}
+    },
+    {
+      "content": "Ancient civilizations include Mesopotamia, Egypt, Greece, and Rome.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:39:58.788369",
+      "metadata": {}
+    },
+    {
+      "content": "History is the study of the past, particularly how it relates to humans.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.873286",
+      "metadata": {}
+    },
+    {
+      "content": "Ancient civilizations include Mesopotamia, Egypt, Greece, and Rome.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:09.936065",
+      "metadata": {}
+    },
+    {
+      "content": "History is the study of the past, particularly how it relates to humans.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.779121",
+      "metadata": {}
+    },
+    {
+      "content": "Ancient civilizations include Mesopotamia, Egypt, Greece, and Rome.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:44:20.821353",
       "metadata": {}
     }
   ]

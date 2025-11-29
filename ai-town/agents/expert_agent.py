@@ -37,7 +37,7 @@ class ExpertAgent(BaseAgent):
         Interact with multiple agents in a group discussion
         """
         if topic is None:
-            topic = f"General knowledge about {self.current_expertise}"
+            topic = f"关于{self.current_expertise}的一般知识"
         
         agent_names = [agent.name for agent in other_agents]
         
@@ -47,17 +47,17 @@ class ExpertAgent(BaseAgent):
         if hasattr(self, 'knowledge_manager'):
             knowledge = self.knowledge_manager.get_relevant_knowledge(self.current_expertise, topic)
         
-        prompt = f"Facilitate a group discussion about {topic} with the following agents: {agent_names}. Encourage diverse perspectives and meaningful exchanges."
+        prompt = f"用中文主持关于{topic}的小组讨论，参与的代理有：{agent_names}。鼓励多样化的观点和有意义的交流。"
         
         # Get response from LLM
-        response = self.get_response(prompt, f"Your role is an expert in {self.current_expertise}, facilitating a group discussion.")
+        response = self.get_response(prompt, f"你的角色是{self.current_expertise}的专家，正在主持小组讨论。")
         
         # Remember the interaction for all agents involved
-        interaction_memory = f"Facilitated group discussion about {topic} with {agent_names}"
-        self.remember(interaction_memory, "discussion")
+        interaction_memory = f"主持了关于{topic}的小组讨论，参与的代理有：{agent_names}"
+        self.remember(interaction_memory, "discussion", location=self.location)
         
         for agent in other_agents:
-            agent.remember(f"Participated in group discussion about {topic} with {self.name}", "learning")
+            agent.remember(f"参与了关于{topic}的小组讨论，与{self.name}", "learning", location=agent.location)
         
         print(f"{self.name} (Expert): {response}")
         return response
@@ -66,12 +66,12 @@ class ExpertAgent(BaseAgent):
         """
         Teach a specific student on a topic
         """
-        prompt = f"Explain {topic} to {student_agent.name} in an educational way."
-        response = self.get_response(prompt, f"You are an expert teaching {topic}.")
+        prompt = f"用中文向{student_agent.name}解释{topic}。"
+        response = self.get_response(prompt, f"你是一个专家，正在教授{topic}。")
         
         # Remember the teaching interaction
-        self.remember(f"Taught {topic} to {student_agent.name}", "teaching")
-        student_agent.remember(f"Learned {topic} from {self.name}", "learning")
+        self.remember(f"向{student_agent.name}教授了{topic}", "teaching", location=self.location)
+        student_agent.remember(f"从{self.name}那里学习了{topic}", "learning", location=student_agent.location)
         
         print(f"{self.name} (Expert) to {student_agent.name}: {response}")
         return response
@@ -111,10 +111,10 @@ class ExpertAgent(BaseAgent):
         Facilitate a debate between students on a controversial topic
         """
         student_names = [student.name for student in students]
-        prompt = f"Facilitate a structured debate about {topic} between {student_names}. Present different viewpoints and encourage critical thinking."
+        prompt = f"用中文主持关于{topic}的辩论，参与的学生有{student_names}。提出不同的观点并鼓励批判性思维。"
         
-        response = self.get_response(prompt, f"You are an expert facilitating a debate on {topic}.")
-        self.remember(f"Facilitated debate about {topic} among {student_names}", "debate")
+        response = self.get_response(prompt, f"你正在主持关于{topic}的辩论。")
+        self.remember(f"主持了关于{topic}在{self.location}的辩论，参与的学生有{student_names}", "debate", location=self.location)
         
         print(f"{self.name} (Expert): {response}")
         return response
@@ -124,10 +124,10 @@ class ExpertAgent(BaseAgent):
         Organize a group activity for students
         """
         student_names = [student.name for student in students]
-        prompt = f"Organize a {activity} for {student_names}. Provide instructions and facilitate the activity."
+        prompt = f"为{student_names}组织一个{activity}。提供说明并主持活动。"
         
-        response = self.get_response(prompt, f"You are organizing a {activity} for students.")
-        self.remember(f"Organized {activity} for {student_names}", "activity")
+        response = self.get_response(prompt, f"你正在为学生组织{activity}。")
+        self.remember(f"在{self.location}为{student_names}组织了{activity}", "activity", location=self.location)
         
         print(f"{self.name} (Expert): {response}")
         return response
