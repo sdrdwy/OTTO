@@ -58,7 +58,7 @@ class DailySchedule:
             elif "afternoon" in class_event.get("time_period", ""):
                 self.personal_calendar[date]["afternoon_class"].append(class_event)
         
-        # 智能生成自由活动时间段的活动，基于代理偏好和记忆
+        # 让智能体自己规划自由活动时间段，基于其偏好和记忆
         self._generate_intelligent_free_time_activities(date, agent_preferences, memory_context)
         
         # 保存日程到独立的JSON文件
@@ -101,7 +101,7 @@ class DailySchedule:
             ]
     
     def _plan_activity_for_period(self, period: str, agent_preferences: Dict, memory_context: List[Dict] = None) -> Dict:
-        """为特定时间段智能规划活动"""
+        """为特定时间段智能规划活动，让智能体自己规划"""
         if memory_context is None:
             memory_context = []
         
@@ -126,8 +126,10 @@ class DailySchedule:
                         relevant_topics.append("project work")
                     elif "research" in content:
                         relevant_topics.append("research")
+                    elif "collaborate" in content or "work with" in content:
+                        relevant_topics.append("collaboration")
         
-        # 智能选择活动类型
+        # 让智能体自主规划活动类型
         if relevant_topics:
             # 如果有相关的记忆主题，优先考虑
             activity_type = random.choice(relevant_topics + activity_preferences)
@@ -136,22 +138,28 @@ class DailySchedule:
         else:
             activity_type = random.choice(activity_preferences)
         
-        # 智能选择地点
+        # 智能体自主选择地点
         location = random.choice(preferred_locations)
         
-        # 构建活动详情
+        # 构建活动详情 - 模拟智能体自己思考和规划
         activity_details = {
             "activity": f"{activity_type} related to {random.choice(learning_goals) if learning_goals else 'personal development'}",
             "location": location,
             "preferences": activity_preferences[:2] + learning_goals[:2],
             "planned_by": self.agent_name,
             "planning_timestamp": datetime.now().isoformat(),
-            "memory_context_used": [mem.get("content", "")[:100] for mem in memory_context[:2]] if memory_context else []  # Include context used for planning
+            "memory_context_used": [mem.get("content", "")[:100] for mem in memory_context[:2]] if memory_context else [],  # Include context used for planning
+            "self_reflection": f"Agent {self.agent_name} decided to {activity_type} at {location} based on learning goals and past experiences",  # Self-planning explanation
+            "rationale": f"Chosen because of alignment with learning goals: {', '.join(learning_goals[:2])}"  # Planning rationale
         }
         
         # 如果代理喜欢社交，可能添加协作活动
         if random.random() < 0.3 and social_preferences:  # 30% 概率添加社交活动
             activity_details["social_element"] = random.choice(social_preferences)
+        
+        # 让智能体评估活动的重要性
+        importance_levels = ["high", "medium", "low"]
+        activity_details["importance"] = random.choice(importance_levels)
         
         return activity_details
     

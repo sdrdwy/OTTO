@@ -34,12 +34,34 @@ class ConversationMemory:
             print(f"Error saving long-term memory: {e}")
     
     def archive_to_long_term(self, agent_name: str, memory_entry: Dict):
-        """Move a memory to long-term storage"""
+        """Move a memory to long-term storage with more detailed content"""
         if agent_name not in self.long_term_memories:
             self.long_term_memories[agent_name] = []
         
+        # Enhance the memory entry with more detailed content if it's conversation-related
+        enhanced_memory = memory_entry.copy()
+        if memory_entry.get("type") == "conversation":
+            # Extract and include more detailed content from the conversation
+            content = memory_entry.get("content", "")
+            details = memory_entry.get("details", {})
+            
+            # Create more detailed content for long-term storage
+            detailed_content = f"Content: {content}"
+            if details.get("topic"):
+                detailed_content += f" | Topic: {details['topic']}"
+            if details.get("participants"):
+                detailed_content += f" | Participants: {', '.join(details['participants'])}"
+            if details.get("location"):
+                detailed_content += f" | Location: {details['location']}"
+            if details.get("outcome"):
+                detailed_content += f" | Outcome: {details['outcome']}"
+            if details.get("context"):
+                detailed_content += f" | Context: {details['context'][:200]}..."  # Limit context length
+            
+            enhanced_memory["detailed_content"] = detailed_content
+        
         # Add to the beginning of the list (most recent first)
-        self.long_term_memories[agent_name].insert(0, memory_entry)
+        self.long_term_memories[agent_name].insert(0, enhanced_memory)
         self.save_long_term_memory()
     
     def add_memory(self, agent_name: str, content: str, memory_type: str = "conversation", **kwargs):
@@ -95,7 +117,8 @@ class ConversationMemory:
             return []
         
         recent_long_term = self.long_term_memories[agent_name][:limit]
-        return [memory["content"] for memory in recent_long_term]
+        # Return detailed content if available, otherwise fall back to original content
+        return [memory.get("detailed_content", memory["content"]) for memory in recent_long_term]
     
     def get_all_memories(self, agent_name: str) -> List[Dict]:
         """
