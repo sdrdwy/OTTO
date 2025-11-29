@@ -168,6 +168,9 @@ class SimulationManager:
                 # Move agents according to their schedule for this period
                 self.execute_period_schedule(period, date_str)
                 
+                # Simulate other activities happening during this time period
+                self.simulate_period_activities(period)
+                
                 # Check for location-based interactions
                 interactions = self.world.check_location_interactions()
                 
@@ -246,6 +249,83 @@ class SimulationManager:
                 participants = self.student_agents + self.expert_agents
                 self.world.trigger_event_at_location(festival["location"], "festival", participants, festival["type"])
                 festival["active"] = False  # Mark as processed
+    
+    def simulate_period_activities(self, period: str):
+        """
+        Simulate other activities happening during each time period beyond agent interactions
+        """
+        import random
+        
+        # Define different activities based on the time period
+        period_activities = {
+            "morning_class": [
+                "早读",
+                "晨练",
+                "校园清洁",
+                "升旗仪式",
+                "早操",
+                "晨会"
+            ],
+            "morning_free": [
+                "自由阅读",
+                "个人学习",
+                "校园漫步",
+                "社团活动准备",
+                "与朋友聊天",
+                "咖啡厅休闲"
+            ],
+            "afternoon_class": [
+                "实验课",
+                "小组讨论",
+                "学术讲座",
+                "作业辅导",
+                "技能训练",
+                "项目展示"
+            ],
+            "afternoon_free": [
+                "体育运动",
+                "艺术创作",
+                "社团活动",
+                "兴趣小组",
+                "校园参观",
+                "放松休息"
+            ],
+            "evening": [
+                "晚间自习",
+                "反思总结",
+                "日志写作",
+                "睡前放松",
+                "文化交流",
+                "个人时间"
+            ]
+        }
+        
+        # Select activities for this period
+        activities = period_activities.get(period, ["一般活动"])
+        
+        # Randomly decide whether to simulate an activity during this period
+        if random.random() > 0.3:  # 70% chance of having an activity
+            activity = random.choice(activities)
+            
+            # Select a random location for the activity
+            location = random.choice(list(self.world.locations.keys()))
+            
+            # Create a description of the activity
+            activity_description = f"在{location}进行{activity}活动"
+            
+            print(f"  [其他活动] {activity_description}")
+            
+            # Record this activity in the simulation
+            self.logger.log_event("period_activity", activity_description, 
+                                [agent.name for agent in self.agents], location)
+            
+            # Trigger a world event related to this activity
+            event_description = self.world.trigger_event_at_location(
+                location, 
+                activity, 
+                [],  # No specific participants for general activities
+                activity
+            )
 
 
 if __name__ == "__main__":

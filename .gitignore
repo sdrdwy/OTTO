@@ -1,1 +1,40 @@
-Nothing should be ignored since the changes only include source code files (.py files) and no build artifacts, dependencies, or temporary files.
+```gitignore
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Dependencies
+venv/
+.venv/
+pip-log.txt
+pipenv.lock
+
+# Coverage
+.coverage
+htmlcov/
+.coverage.*
+.cov-report/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+*.egg-info/
+```
