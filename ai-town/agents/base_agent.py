@@ -18,7 +18,8 @@ class BaseAgent(ABC):
     def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None, agent_type: str = "student"):
         self.memory = memory
         self.world = world
-        self.location = "default"  # Default location
+        # Initialize location to a valid location from the world map
+        self.location = list(world.locations.keys())[0]  # Use the first available location
         
         # Initialize knowledge manager based on agent type
         from memory.knowledge_base import AgentKnowledgeManager
@@ -95,15 +96,15 @@ As {self.name}, respond to the above conversation.
 """
         
         # Create system message with persona information
-        system_content = f"You are {self.name}, an AI agent in a simulated world with access to your memories."
+        system_content = f"你是{self.name}，一个在模拟世界中的AI代理，可以访问你的记忆。"
         if self.persona:
-            system_content += f" Your role is {self.role}."
+            system_content += f" 你的角色是{self.role}。"
             if self.personality_traits:
-                system_content += f" Your personality traits include: {', '.join(self.personality_traits)}."
+                system_content += f" 你的性格特征包括：{', '.join(self.personality_traits)}。"
             if self.behavioral_patterns:
-                system_content += f" You tend to: {', '.join(self.behavioral_patterns)}."
+                system_content += f" 你倾向于：{', '.join(self.behavioral_patterns)}。"
             if self.communication_style:
-                system_content += f" Your communication style is {self.communication_style}."
+                system_content += f" 你的沟通风格是{self.communication_style}。"
         
         messages = [
             SystemMessage(content=system_content),
