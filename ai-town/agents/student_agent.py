@@ -9,18 +9,37 @@ import random
 
 
 class StudentAgent(BaseAgent):
-    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator):
-        super().__init__(name, memory, world)
-        self.role = "Student"
-        self.learning_goals = [
-            "understanding complex concepts",
-            "developing critical thinking",
-            "improving problem-solving skills",
-            "expanding knowledge base",
-            "enhancing communication skills"
-        ]
-        self.current_goal = random.choice(self.learning_goals)
-        self.knowledge_level = random.randint(1, 10)  # Random knowledge level 1-10
+    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
+        super().__init__(name, memory, world, persona_id)
+        
+        # If no persona is loaded, use default student behavior
+        if not self.persona:
+            self.role = "Student"
+            self.learning_goals = [
+                "understanding complex concepts",
+                "developing critical thinking",
+                "improving problem-solving skills",
+                "expanding knowledge base",
+                "enhancing communication skills"
+            ]
+            self.current_goal = random.choice(self.learning_goals)
+            self.knowledge_level = random.randint(1, 10)  # Random knowledge level 1-10
+        else:
+            # If persona has learning goals, use them
+            if hasattr(self, 'persona') and self.persona and 'learning_goals' in self.persona:
+                self.learning_goals = self.persona['learning_goals']
+                self.current_goal = random.choice(self.learning_goals)
+            else:
+                self.learning_goals = [
+                    "understanding complex concepts",
+                    "developing critical thinking",
+                    "improving problem-solving skills",
+                    "expanding knowledge base",
+                    "enhancing communication skills"
+                ]
+                self.current_goal = random.choice(self.learning_goals)
+            # Set knowledge level based on persona or random
+            self.knowledge_level = random.randint(1, 10)
         
     def interact(self, other_agents: List[BaseAgent], topic: str = None):
         """

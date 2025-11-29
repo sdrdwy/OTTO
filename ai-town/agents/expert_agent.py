@@ -9,14 +9,28 @@ import random
 
 
 class ExpertAgent(BaseAgent):
-    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator):
-        super().__init__(name, memory, world)
-        self.role = "Expert"
-        self.expertise = [
-            "Mathematics", "Science", "History", "Literature", 
-            "Philosophy", "Technology", "Economics", "Psychology"
-        ]
-        self.current_expertise = random.choice(self.expertise)
+    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
+        super().__init__(name, memory, world, persona_id)
+        
+        # If no persona is loaded, use default expert behavior
+        if not self.persona:
+            self.role = "Expert"
+            self.expertise = [
+                "Mathematics", "Science", "History", "Literature", 
+                "Philosophy", "Technology", "Economics", "Psychology"
+            ]
+            self.current_expertise = random.choice(self.expertise)
+        else:
+            # If persona has expertise, use it
+            if hasattr(self, 'persona') and self.persona and 'expertise' in self.persona:
+                self.expertise = self.persona['expertise']
+                self.current_expertise = random.choice(self.expertise)
+            else:
+                self.expertise = [
+                    "Mathematics", "Science", "History", "Literature", 
+                    "Philosophy", "Technology", "Economics", "Psychology"
+                ]
+                self.current_expertise = random.choice(self.expertise)
         
     def interact(self, other_agents: List[BaseAgent], topic: str = None):
         """
