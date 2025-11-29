@@ -1,7 +1,7 @@
 {
   "simulation_days": 30,
   "event_frequency": 14,
-  "current_day": 18,
+  "current_day": 33,
   "time_periods": [
     "morning_class",
     "morning_free",

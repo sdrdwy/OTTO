@@ -1,40 +1,7 @@
-```gitignore
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Logs
+```
+# Logs and temp files
 *.log
 
-# Environment
-.env
-.env.local
-*.env.*
-
-# Dependencies
-venv/
-.venv/
-pip-log.txt
-pipenv.lock
-
-# Coverage
-.coverage
-htmlcov/
-.coverage.*
-.cov-report/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-Thumbs.db
-
-# Build
-build/
-dist/
-*.egg-info/
+# Simulation artifacts
+ai-town/simulation_log.json
 ```

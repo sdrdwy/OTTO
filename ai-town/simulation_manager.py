@@ -260,7 +260,7 @@ class SimulationManager:
         period_activities = {
             "morning_class": [
                 "早读",
-                "晨练",
+                "晨练", 
                 "校园清洁",
                 "升旗仪式",
                 "早操",
@@ -270,14 +270,14 @@ class SimulationManager:
                 "自由阅读",
                 "个人学习",
                 "校园漫步",
-                "社团活动准备",
+                "社团活动准备", 
                 "与朋友聊天",
                 "咖啡厅休闲"
             ],
             "afternoon_class": [
                 "实验课",
                 "小组讨论",
-                "学术讲座",
+                "学术讲座", 
                 "作业辅导",
                 "技能训练",
                 "项目展示"
@@ -287,12 +287,12 @@ class SimulationManager:
                 "艺术创作",
                 "社团活动",
                 "兴趣小组",
-                "校园参观",
+                "校园参观", 
                 "放松休息"
             ],
             "evening": [
                 "晚间自习",
-                "反思总结",
+                "反思总结", 
                 "日志写作",
                 "睡前放松",
                 "文化交流",
@@ -326,6 +326,50 @@ class SimulationManager:
                 [],  # No specific participants for general activities
                 activity
             )
+
+        # Now simulate student-to-student conversations and activities
+        # Find students at the same location and have them interact
+        location_groups = {}
+        for student in self.student_agents:
+            if student.location not in location_groups:
+                location_groups[student.location] = []
+            location_groups[student.location].append(student)
+        
+        # For each location with multiple students, trigger conversations
+        for location, students_at_location in location_groups.items():
+            if len(students_at_location) > 1:
+                # Students at the same location can have conversations
+                print(f"  [学生对话] 在{location}有{len(students_at_location)}名学生进行交流")
+                
+                # Select 2 random students to have a conversation
+                if len(students_at_location) >= 2:
+                    selected_students = random.sample(students_at_location, min(2, len(students_at_location)))
+                    topic_options = [
+                        "学习心得分享",
+                        "课程内容讨论", 
+                        "兴趣爱好交流",
+                        "未来规划",
+                        "校园生活",
+                        "学术问题探讨"
+                    ]
+                    conversation_topic = random.choice(topic_options)
+                    
+                    # Have students engage in conversation
+                    student1, student2 = selected_students[0], selected_students[1]
+                    
+                    # Student 1 initiates conversation
+                    prompt = f"用中文与{student2.name}就{conversation_topic}进行交流。"
+                    response = student1.get_response(prompt, f"你正在与{student2.name}交流{conversation_topic}。")
+                    print(f"  {student1.name}: {response}")
+                    
+                    # Student 2 responds
+                    prompt = f"回应{student1.name}关于{conversation_topic}的分享。"
+                    response = student2.get_response(prompt, f"你正在回应{student1.name}关于{conversation_topic}的分享。")
+                    print(f"  {student2.name}: {response}")
+                    
+                    # Record the conversation in both students' memories
+                    student1.remember(f"与{student2.name}就{conversation_topic}进行了交流", "conversation", location=student1.location)
+                    student2.remember(f"与{student1.name}就{conversation_topic}进行了交流", "conversation", location=student2.location)
 
 
 if __name__ == "__main__":
