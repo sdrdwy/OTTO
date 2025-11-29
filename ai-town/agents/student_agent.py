@@ -10,7 +10,7 @@ import random
 
 class StudentAgent(BaseAgent):
     def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
-        super().__init__(name, memory, world, persona_id)
+        super().__init__(name, memory, world, persona_id, agent_type="student")
         
         # If no persona is loaded, use default student behavior
         if not self.persona:
@@ -57,13 +57,21 @@ class StudentAgent(BaseAgent):
         if main_interactant is None:
             main_interactant = random.choice(other_agents)
         
+        # Get relevant memories and knowledge to inform the interaction
+        memories = self.get_all_memories()
+        knowledge = []
+        if hasattr(self, 'knowledge_manager'):
+            knowledge = self.knowledge_manager.get_relevant_knowledge("General", topic)
+        
         prompt = f"Ask questions or discuss {topic} with {main_interactant.name}. Your learning goal is {self.current_goal}. Your knowledge level is {self.knowledge_level}/10."
         
         # Get response from LLM
         response = self.get_response(prompt, f"You are a student with the learning goal of {self.current_goal}.")
         
-        # Remember the interaction
-        self.remember(f"Discussed {topic} with {main_interactant.name}, focusing on {self.current_goal}", "conversation")
+        # Remember the interaction for both agents
+        interaction_memory = f"Discussed {topic} with {main_interactant.name}, focusing on {self.current_goal}"
+        self.remember(interaction_memory, "conversation")
+        main_interactant.remember(f"Discussed {topic} with {self.name}, helping with their learning goal of {self.current_goal}", "teaching")
         
         print(f"{self.name} (Student): {response}")
         return response
