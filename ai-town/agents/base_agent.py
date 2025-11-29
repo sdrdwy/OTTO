@@ -4,18 +4,39 @@ Base Agent Class
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any
 import os
+import json
+from datetime import datetime
 from langchain_core.messages import HumanMessage, SystemMessage
 from memory.conversation_memory import ConversationMemory
 from world.world_simulator import WorldSimulator
 from utils.mock_llm import MockChatOpenAI
 from utils.qwen_llm import QwenChatModel
+from .persona_manager import persona_manager
 
 
 class BaseAgent(ABC):
-    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator):
-        self.name = name
+    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
         self.memory = memory
         self.world = world
+        
+        # Load persona if provided, otherwise use default values
+        if persona_id and persona_manager.get_persona(persona_id):
+            self.persona = persona_manager.get_persona(persona_id)
+            self.name = self.persona.get("name", name)
+            self.role = self.persona.get("role", "Agent")
+            self.personality_traits = self.persona.get("personality_traits", [])
+            self.communication_style = self.persona.get("communication_style", "neutral")
+            self.behavioral_patterns = self.persona.get("behavioral_patterns", [])
+            self.default_responses = self.persona.get("default_responses", {})
+        else:
+            # Default values if no persona is provided
+            self.persona = None
+            self.name = name
+            self.role = "Agent"
+            self.personality_traits = []
+            self.communication_style = "neutral"
+            self.behavioral_patterns = []
+            self.default_responses = {}
         
         # Check if we have DASHSCOPE API key for Qwen, otherwise check for OpenAI, then use mock
         dashscope_api_key = os.getenv("DASHSCOPE_API_KEY")
@@ -33,11 +54,22 @@ class BaseAgent(ABC):
         
     def get_response(self, prompt: str, agent_context: str = "") -> str:
         """
-        Get response from the LLM with memory context
+        Get response from the LLM with memory context and persona information
         """
         # Retrieve relevant memories
         recent_memories = self.memory.get_recent_memories(self.name, limit=5)
         long_term_memories = self.memory.get_long_term_memories(self.name, limit=10)
+        
+        # Construct persona context if available
+        persona_context = ""
+        if self.persona:
+            traits = ", ".join(self.personality_traits)
+            behavioral_patterns = ", ".join(self.behavioral_patterns)
+            persona_context = f"""
+Personality traits: {traits or 'None specified'}
+Communication style: {self.communication_style or 'Not specified'}
+Behavioral patterns: {behavioral_patterns or 'None specified'}
+"""
         
         # Construct the full prompt with context
         context = f"Agent Context: {agent_context}\n" if agent_context else ""
@@ -45,18 +77,31 @@ class BaseAgent(ABC):
         long_term_memory_context = "\n".join([f"- (Long-term) {memory}" for memory in long_term_memories])
         
         full_prompt = f"""
-        {context}
-        Recent memories: {recent_memory_context or 'No recent memories'}
+{context}
+{persona_context}
+
+Recent memories: {recent_memory_context or 'No recent memories'}
+
+Long-term memories: {long_term_memory_context or 'No long-term memories'}
+
+Current conversation: {prompt}
+
+As {self.name}, respond to the above conversation.
+"""
         
-        Long-term memories: {long_term_memory_context or 'No long-term memories'}
-        
-        Current conversation: {prompt}
-        
-        As {self.name}, respond to the above conversation.
-        """
+        # Create system message with persona information
+        system_content = f"You are {self.name}, an AI agent in a simulated world with access to your memories."
+        if self.persona:
+            system_content += f" Your role is {self.role}."
+            if self.personality_traits:
+                system_content += f" Your personality traits include: {', '.join(self.personality_traits)}."
+            if self.behavioral_patterns:
+                system_content += f" You tend to: {', '.join(self.behavioral_patterns)}."
+            if self.communication_style:
+                system_content += f" Your communication style is {self.communication_style}."
         
         messages = [
-            SystemMessage(content=f"You are {self.name}, an AI agent in a simulated world with access to your memories."),
+            SystemMessage(content=system_content),
             HumanMessage(content=full_prompt)
         ]
         
@@ -68,6 +113,87 @@ class BaseAgent(ABC):
         Add an event to memory
         """
         self.memory.add_memory(self.name, event, memory_type)
+    
+    def remember_long_term(self, event: str, memory_type: str = "long_term"):
+        """
+        Explicitly add an event to long-term memory
+        """
+        # Add to regular memory first, which will automatically move to long-term if limit is reached
+        self.memory.add_memory(self.name, event, memory_type)
+    
+    def search_memories(self, query: str) -> List[Dict]:
+        """
+        Search for specific memories containing the query
+        """
+        return self.memory.search_memories(self.name, query)
+    
+    def get_all_memories(self) -> List[Dict]:
+        """
+        Get all memories (both short and long term) for this agent
+        """
+        return self.memory.get_all_memories(self.name)
+    
+    def get_memory_summary(self) -> str:
+        """
+        Get a summary of this agent's memories
+        """
+        all_memories = self.memory.get_all_memories(self.name)
+        short_term_memories = self.memory.get_recent_memories(self.name, limit=100)  # Get all recent memories
+        long_term_count = len(all_memories) - len(short_term_memories)
+        
+        return f"{self.name} has {len(short_term_memories)} recent memories and {long_term_count} long-term memories."
+    
+    def clear_memories(self):
+        """
+        Clear all memories for this agent (move to long-term first)
+        """
+        self.memory.clear_agent_memories(self.name)
+    
+    def save_memories_to_file(self, filename: str = None):
+        """
+        Save long-term memories to a JSON file
+        """
+        if filename is None:
+            filename = f"memories_{self.name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+        
+        try:
+            all_memories = self.memory.get_all_memories(self.name)
+            with open(filename, 'w', encoding='utf-8') as f:
+                json.dump({
+                    "agent_name": self.name,
+                    "timestamp": datetime.now().isoformat(),
+                    "memories": all_memories
+                }, f, ensure_ascii=False, indent=2)
+            print(f"Saved {len(all_memories)} memories for {self.name} to {filename}")
+            return True
+        except Exception as e:
+            print(f"Error saving memories to {filename}: {e}")
+            return False
+    
+    def load_memories_from_file(self, filename: str):
+        """
+        Load memories from a JSON file
+        """
+        try:
+            with open(filename, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            
+            if "memories" in data:
+                # Add each memory back to the agent's memory system
+                for memory in data["memories"]:
+                    self.memory.add_memory(
+                        self.name, 
+                        memory["content"], 
+                        memory.get("type", "conversation")
+                    )
+                print(f"Loaded {len(data['memories'])} memories for {self.name} from {filename}")
+                return True
+            else:
+                print(f"No memories found in {filename}")
+                return False
+        except Exception as e:
+            print(f"Error loading memories from {filename}: {e}")
+            return False
     
     def schedule_event(self, title: str, start_time, end_time, description: str = "", location: str = ""):
         """
