@@ -18,7 +18,7 @@ from utils.calendar import Calendar
 
 
 class SimulationManager:
-    def __init__(self, config_file: str = "world_config.json"):
+    def __init__(self, config_file: str = "config/world_config.json"):
         self.config_file = config_file
         self.load_config()
         
@@ -67,39 +67,52 @@ class SimulationManager:
             json.dump(self.config, f, ensure_ascii=False, indent=2, default=str)
     
     def initialize_agents(self):
-        """Initialize student and expert agents"""
+        """Initialize student and expert agents from config file"""
+        # Load students configuration
+        students_config_path = "config/students_config.json"
+        students_config = {}
+        if os.path.exists(students_config_path):
+            with open(students_config_path, 'r', encoding='utf-8') as f:
+                students_config = json.load(f)
+        
         # Create expert agent
         expert = ExpertAgent("ProfessorSmith", self.memory, self.world, persona_id="math_expert")
         expert.move_to_location("classroom")  # Experts typically start in classroom
         self.expert_agents.append(expert)
         self.agents.append(expert)
         
-        # Create student agents with different personas
-        student_personas = ["curious_student", "analytical_student", "creative_student"]
-        locations = ["library", "classroom", "park", "cafe", "lab"]
+        # Create student agents from config
+        students_list = students_config.get("students", [])
+        locations = students_config.get("locations", ["library", "classroom", "park", "cafe", "lab"])
         
-        for i, persona in enumerate(student_personas):
-            # Create student with persona - the name will come from the persona
-            student = StudentAgent(f"Student_{i+1}", self.memory, self.world, persona_id=persona)
-            # Students start at random locations
-            import random
-            start_location = random.choice(locations)
+        for student_data in students_list:
+            student_id = student_data["id"]
+            student_name = student_data["name"]
+            start_location = student_data.get("location", "classroom")
+            
+            # Create student with persona
+            student = StudentAgent(student_name, self.memory, self.world, persona_id=student_id)
             student.move_to_location(start_location)
             self.student_agents.append(student)
             self.agents.append(student)
             
-            # Create daily schedule for student using the actual name from persona
+            # Create daily schedule for student using their preferences
             schedule = DailySchedule(student.name)
             self.daily_schedules[student.name] = schedule
     
     def create_daily_schedules(self, date: str):
-        """Create daily schedules for all students"""
-        # For now, create empty schedules - in a real implementation, 
-        # this would be based on fixed class schedules and student preferences
+        """Create daily schedules for all students with their preferences"""
         for student in self.student_agents:
             schedule = self.daily_schedules[student.name]
-            # Create schedule with some fixed classes if any exist for this date
-            schedule.create_daily_schedule(date)
+            # Get student preferences to pass to schedule creation
+            agent_preferences = {
+                "learning_goals": getattr(student, 'learning_goals', ["study", "improve skills"]),
+                "preferred_locations": getattr(student, 'preferred_locations', ["library", "classroom"]),
+                "social_preferences": getattr(student, 'social_preferences', ["collaborate", "network"]),
+                "activity_preferences": getattr(student, 'activity_preferences', ["study", "practice", "discuss"])
+            }
+            # Create schedule with student's preferences
+            schedule.create_daily_schedule(date, agent_preferences=agent_preferences)
     
     def run_simulation(self):
         """Run the entire simulation"""
@@ -172,7 +185,12 @@ class SimulationManager:
             if period_schedule:
                 # Move student to scheduled location
                 target_location = period_schedule[0].get("location", "classroom")
+                activity = period_schedule[0].get("activity", "unspecified activity")
                 student.move_to_location(target_location)
+                
+                # Record more detailed memory about the scheduled activity
+                detailed_memory = f"Participated in scheduled activity '{activity}' at {target_location} during {period} on {date}. Activity details: {period_schedule[0]}"
+                student.remember(detailed_memory, "scheduled_activity")
                 
                 # If it's a class period and there are experts around, trigger learning
                 if "class" in period and self.expert_agents:
@@ -187,15 +205,18 @@ class SimulationManager:
                 if "class" in period:
                     # Move to classroom for class
                     student.move_to_location("classroom")
+                    student.remember(f"Moved to classroom for {period} period on {date}", "movement")
                 elif "free" in period:
                     # Move to a random location for free time
                     import random
                     free_locations = ["library", "park", "cafe"]
                     target_location = random.choice(free_locations)
                     student.move_to_location(target_location)
+                    student.remember(f"Moved to {target_location} for free time during {period} on {date}", "movement")
                 elif period == "evening":
                     # Go to rest location
                     student.move_to_location("park")  # or home if available
+                    student.remember(f"Moved to park for evening rest on {date}", "movement")
         
         # Check for and process any festivals happening today
         active_festivals = self.festival_manager.get_active_festivals()

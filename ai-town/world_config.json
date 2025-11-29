@@ -1,1 +1,0 @@
-{"simulation_days": 3, "event_frequency": 14, "current_day": 0, "time_periods": ["morning_class", "morning_free", "afternoon_class", "afternoon_free", "evening"], "simulation_speed": "real_time", "world_events_enabled": true, "festival_enabled": true}

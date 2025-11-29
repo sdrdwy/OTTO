@@ -9,7 +9,7 @@ import os
 
 
 class Calendar:
-    def __init__(self, calendar_file: str = "calendar.json"):
+    def __init__(self, calendar_file: str = "config/calendar.json"):
         self.calendar_file = calendar_file
         self.events: Dict[str, List[Dict]] = self.load_calendar()
         
