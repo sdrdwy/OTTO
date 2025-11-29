@@ -1,9 +1,10 @@
 """
 World Simulator
-Creates a simple text-based world with locations and events
+Creates a simple text-based world with locations, events and a calendar system
 """
 import random
 from typing import List, Dict
+from utils.calendar import Calendar
 
 
 class WorldSimulator:
@@ -41,6 +42,9 @@ class WorldSimulator:
         ]
         
         self.current_world_event = random.choice(self.world_events)
+        
+        # Initialize calendar system
+        self.calendar = Calendar()
     
     def get_map(self) -> str:
         """
@@ -123,3 +127,27 @@ class WorldSimulator:
         Update the current world event
         """
         self.current_world_event = random.choice(self.world_events)
+    
+    def schedule_event(self, agent_name: str, title: str, start_time, end_time, description: str = "", location: str = ""):
+        """
+        Schedule an event in the calendar
+        """
+        return self.calendar.schedule_event(agent_name, title, start_time, end_time, description, location)
+    
+    def get_upcoming_events(self, agent_name: str, hours: int = 24):
+        """
+        Get upcoming events for an agent
+        """
+        return self.calendar.get_upcoming_events(agent_name, hours)
+    
+    def get_calendar_summary(self, agent_name: str):
+        """
+        Get calendar summary for an agent
+        """
+        return self.calendar.get_calendar_summary(agent_name)
+    
+    def schedule_meeting(self, participants: List[str], title: str, start_time, end_time, description: str = "", location: str = ""):
+        """
+        Schedule a meeting between multiple agents
+        """
+        return self.calendar.schedule_meeting(participants, title, start_time, end_time, description, location)
