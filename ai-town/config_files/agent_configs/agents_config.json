@@ -1,0 +1,41 @@
+{
+  "students": [
+    {
+      "id": "curious_student",
+      "name": "CuriousStudent",
+      "location": "classroom",
+      "learning_goals": ["understanding complex concepts", "developing critical thinking", "asking thought-provoking questions"],
+      "preferred_locations": ["library", "classroom", "lab"],
+      "social_preferences": ["collaborate", "network", "discuss"],
+      "activity_preferences": ["study", "practice", "discuss", "explore"]
+    },
+    {
+      "id": "analytical_student",
+      "name": "AnalyticalStudent",
+      "location": "library",
+      "learning_goals": ["understanding complex concepts", "developing critical thinking", "improving problem-solving skills"],
+      "preferred_locations": ["library", "classroom", "lab"],
+      "social_preferences": ["collaborate", "analyze", "evaluate"],
+      "activity_preferences": ["study", "analyze", "review", "research"]
+    },
+    {
+      "id": "creative_student",
+      "name": "CreativeStudent",
+      "location": "cafe",
+      "learning_goals": ["expanding knowledge base", "enhancing creative expression", "exploring new ideas"],
+      "preferred_locations": ["cafe", "park", "classroom", "lab"],
+      "social_preferences": ["collaborate", "express", "share"],
+      "activity_preferences": ["create", "explore", "discuss", "innovate"]
+    }
+  ],
+  "experts": [
+    {
+      "id": "expert_1",
+      "name": "Expert1",
+      "location": "classroom",
+      "expertise": ["teaching", "mentoring", "subject knowledge"],
+      "preferred_locations": ["classroom", "lab"],
+      "teaching_style": ["interactive", "practical", "theoretical"]
+    }
+  ]
+}

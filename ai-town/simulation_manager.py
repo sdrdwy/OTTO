@@ -98,6 +98,13 @@ class SimulationManager:
             
             # Create student with persona
             student = StudentAgent(student_name, self.memory, self.world, persona_id=student_id)
+            
+            # Set student-specific attributes from config
+            student.learning_goals = student_data.get("learning_goals", ["study", "improve skills"])
+            student.preferred_locations = student_data.get("preferred_locations", ["library", "classroom"])
+            student.social_preferences = student_data.get("social_preferences", ["collaborate", "network"])
+            student.activity_preferences = student_data.get("activity_preferences", ["study", "practice", "discuss"])
+            
             student.move_to_location(start_location)
             self.student_agents.append(student)
             self.agents.append(student)

@@ -1,0 +1,62 @@
+{
+  "2023-01-01": {
+    "date": "2023-01-01",
+    "agent_name": "TestStudent",
+    "morning_class": [],
+    "morning_free": [
+      {
+        "activity": "research related to improve coding skills",
+        "location": "lab",
+        "preferences": [
+          "practice",
+          "study",
+          "improve coding skills",
+          "understand algorithms"
+        ],
+        "planned_by": "TestStudent",
+        "planning_timestamp": "2025-11-29T07:06:40.069239",
+        "memory_context_used": [
+          "Need to practice coding problems and work on algorithms"
+        ],
+        "self_reflection": "Agent TestStudent decided to research at lab based on learning goals and past experiences",
+        "rationale": "Chosen because of alignment with learning goals: improve coding skills, understand algorithms",
+        "importance": "medium"
+      }
+    ],
+    "afternoon_class": [],
+    "afternoon_free": [
+      {
+        "activity": "review related to understand algorithms",
+        "location": "lab",
+        "preferences": [
+          "practice",
+          "study",
+          "improve coding skills",
+          "understand algorithms"
+        ],
+        "planned_by": "TestStudent",
+        "planning_timestamp": "2025-11-29T07:06:40.069269",
+        "memory_context_used": [
+          "Need to practice coding problems and work on algorithms"
+        ],
+        "self_reflection": "Agent TestStudent decided to review at lab based on learning goals and past experiences",
+        "rationale": "Chosen because of alignment with learning goals: improve coding skills, understand algorithms",
+        "importance": "high"
+      }
+    ],
+    "evening": [
+      {
+        "activity": "rest and reflection",
+        "location": "home",
+        "preferences": [
+          "rest",
+          "sleep",
+          "reflect on day"
+        ],
+        "memory_context": [
+          "Need to practice coding problems and work on algorithms"
+        ]
+      }
+    ]
+  }
+}

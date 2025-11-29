@@ -1,0 +1,70 @@
+{
+  "Mathematics": [
+    {
+      "content": "Algebra is a branch of mathematics dealing with symbols and the rules for manipulating those symbols.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:45.939185",
+      "metadata": {}
+    },
+    {
+      "content": "Calculus is the mathematical study of continuous change.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:45.959196",
+      "metadata": {}
+    },
+    {
+      "content": "Geometry is concerned with the properties of space that are related with distance, shape, size, and relative position of figures.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.020433",
+      "metadata": {}
+    }
+  ],
+  "Science": [
+    {
+      "content": "The scientific method is an empirical method of acquiring knowledge that has characterized the development of science since at least the 17th century.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.088049",
+      "metadata": {}
+    },
+    {
+      "content": "Physics is the natural science that studies matter, its motion and behavior through space and time, and the related entities of energy and force.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.188606",
+      "metadata": {}
+    },
+    {
+      "content": "Chemistry is the scientific study of the properties and behavior of matter.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.246662",
+      "metadata": {}
+    }
+  ],
+  "Literature": [
+    {
+      "content": "Literature is a form of art that uses language to express ideas, emotions, and stories.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.311043",
+      "metadata": {}
+    },
+    {
+      "content": "Classic literature includes works that are considered to have lasting artistic merit.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.386575",
+      "metadata": {}
+    }
+  ],
+  "History": [
+    {
+      "content": "History is the study of the past, particularly how it relates to humans.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.447973",
+      "metadata": {}
+    },
+    {
+      "content": "Ancient civilizations include Mesopotamia, Egypt, Greece, and Rome.",
+      "source": "initialization",
+      "timestamp": "2025-11-29T07:06:46.511733",
+      "metadata": {}
+    }
+  ]
+}
