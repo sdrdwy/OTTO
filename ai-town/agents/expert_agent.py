@@ -10,7 +10,7 @@ import random
 
 class ExpertAgent(BaseAgent):
     def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
-        super().__init__(name, memory, world, persona_id)
+        super().__init__(name, memory, world, persona_id, agent_type="expert")
         
         # If no persona is loaded, use default expert behavior
         if not self.persona:
@@ -40,13 +40,24 @@ class ExpertAgent(BaseAgent):
             topic = f"General knowledge about {self.current_expertise}"
         
         agent_names = [agent.name for agent in other_agents]
+        
+        # Get relevant memories and knowledge to inform the interaction
+        memories = self.get_all_memories()
+        knowledge = []
+        if hasattr(self, 'knowledge_manager'):
+            knowledge = self.knowledge_manager.get_relevant_knowledge(self.current_expertise, topic)
+        
         prompt = f"Facilitate a group discussion about {topic} with the following agents: {agent_names}. Encourage diverse perspectives and meaningful exchanges."
         
         # Get response from LLM
         response = self.get_response(prompt, f"Your role is an expert in {self.current_expertise}, facilitating a group discussion.")
         
-        # Remember the interaction
-        self.remember(f"Facilitated group discussion about {topic} with {agent_names}", "discussion")
+        # Remember the interaction for all agents involved
+        interaction_memory = f"Facilitated group discussion about {topic} with {agent_names}"
+        self.remember(interaction_memory, "discussion")
+        
+        for agent in other_agents:
+            agent.remember(f"Participated in group discussion about {topic} with {self.name}", "learning")
         
         print(f"{self.name} (Expert): {response}")
         return response

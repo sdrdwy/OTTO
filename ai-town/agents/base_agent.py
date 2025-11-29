@@ -15,9 +15,14 @@ from .persona_manager import persona_manager
 
 
 class BaseAgent(ABC):
-    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
+    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None, agent_type: str = "student"):
         self.memory = memory
         self.world = world
+        self.location = "default"  # Default location
+        
+        # Initialize knowledge manager based on agent type
+        from memory.knowledge_base import AgentKnowledgeManager
+        self.knowledge_manager = AgentKnowledgeManager(agent_type)
         
         # Load persona if provided, otherwise use default values
         if persona_id and persona_manager.get_persona(persona_id):
@@ -219,6 +224,68 @@ As {self.name}, respond to the above conversation.
         """
         participants = [self.name] + [agent.name for agent in other_agents]
         return self.world.schedule_meeting(participants, title, start_time, end_time, description, location)
+    
+    def move_to_location(self, location: str):
+        """
+        Move the agent to a specific location in the world
+        """
+        # Remove agent from current location if already in the world
+        if hasattr(self, 'name'):
+            current_location_agents = self.world.get_agents_at_location(self.location)
+            if self in current_location_agents:
+                self.world.remove_agent_from_location(self, self.location)
+        
+        # Add agent to new location
+        self.world.add_agent_to_location(self, location)
+        self.location = location
+        self.remember(f"Moved to {location}", "movement")
+        return f"{self.name} moved to {location}"
+    
+    def get_agents_at_current_location(self):
+        """
+        Get all other agents at the current location
+        """
+        agents_at_location = self.world.get_agents_at_location(self.location)
+        # Exclude self from the list
+        return [agent for agent in agents_at_location if agent != self]
+    
+    def talk_to_agents_at_location(self, topic: str = None):
+        """
+        Initiate conversation with all other agents at the same location
+        """
+        other_agents = self.get_agents_at_current_location()
+        
+        if not other_agents:
+            print(f"{self.name} is alone at {self.location}. No one to talk to.")
+            return []
+        
+        if topic is None:
+            topic = "general conversation"
+        
+        conversation_results = []
+        
+        # Start a conversation with all agents at the location
+        agent_names = [agent.name for agent in other_agents]
+        print(f"\n{self.name} starts a conversation with {', '.join(agent_names)} at {self.location} about '{topic}':")
+        
+        # Self speaks first
+        prompt = f"Start a conversation about {topic} with {agent_names} at {self.location}."
+        response = self.get_response(prompt, f"You are {self.name} initiating a conversation.")
+        print(f"{self.name}: {response}")
+        conversation_results.append((self.name, response))
+        
+        # Other agents respond
+        for agent in other_agents:
+            prompt = f"Respond to {self.name}'s conversation about {topic} at {self.location}."
+            response = agent.get_response(prompt, f"You are {agent.name} responding in the conversation.")
+            print(f"{agent.name}: {response}")
+            conversation_results.append((agent.name, response))
+            
+            # Remember the interaction for both agents
+            self.remember(f"Talked to {agent.name} about {topic} at {self.location}", "conversation")
+            agent.remember(f"Talked to {self.name} about {topic} at {self.location}", "conversation")
+        
+        return conversation_results
     
     @abstractmethod
     def interact(self, other_agents: List['BaseAgent'], topic: str = None):
