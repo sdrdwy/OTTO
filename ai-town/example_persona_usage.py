@@ -82,13 +82,13 @@ def demonstrate_persona_system():
     print("\n6. Demonstrating memory persistence:")
     
     # Save memories to file
-    success = math_expert.save_memories_to_file("math_expert_session.json")
+    success = math_expert.save_memories_to_file("config/math_expert_session.json")
     if success:
         print("   Math expert memories saved successfully")
     
     # Create a new agent and load memories
     new_math_expert = ExpertAgent("Prof. Newton", memory, world, persona_id="math_expert")
-    load_success = new_math_expert.load_memories_from_file("math_expert_session.json")
+    load_success = new_math_expert.load_memories_from_file("config/math_expert_session.json")
     if load_success:
         print(f"   New math expert loaded memories: {new_math_expert.get_memory_summary()}")
     

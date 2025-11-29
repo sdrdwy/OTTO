@@ -9,7 +9,7 @@ import os
 
 
 class ConversationMemory:
-    def __init__(self, max_memories_per_agent: int = 50, long_term_memory_file: str = "long_term_memory.json"):
+    def __init__(self, max_memories_per_agent: int = 50, long_term_memory_file: str = "config/long_term_memory.json"):
         self.memories: Dict[str, List[Dict]] = {}
         self.max_memories_per_agent = max_memories_per_agent
         self.long_term_memory_file = long_term_memory_file

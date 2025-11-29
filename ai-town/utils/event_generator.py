@@ -10,7 +10,7 @@ import os
 
 
 class EventGenerator:
-    def __init__(self, world_config_file: str = "world_config.json"):
+    def __init__(self, world_config_file: str = "config/world_config.json"):
         self.world_config_file = world_config_file
         self.world_config = self.load_world_config()
         

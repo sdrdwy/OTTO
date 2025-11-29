@@ -123,12 +123,12 @@ def test_persona_system():
     
     # Save memories to file
     print("\nSaving memories to file...")
-    math_expert.save_memories_to_file("test_memories.json")
+    math_expert.save_memories_to_file("config/test_memories.json")
     
     # Create a new agent and load memories
     print("\nTesting memory loading...")
     new_expert = ExpertAgent("NewMathExpert", memory, world, persona_id="math_expert")
-    success = new_expert.load_memories_from_file("test_memories.json")
+    success = new_expert.load_memories_from_file("config/test_memories.json")
     if success:
         print(f"New expert memory summary after loading: {new_expert.get_memory_summary()}")
     

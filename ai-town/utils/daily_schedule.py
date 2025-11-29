@@ -6,10 +6,11 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Optional
 import json
 import os
+import random
 
 
 class DailySchedule:
-    def __init__(self, agent_name: str, calendar_file: str = "calendar.json"):
+    def __init__(self, agent_name: str, calendar_file: str = "config/calendar.json"):
         self.agent_name = agent_name
         self.calendar_file = calendar_file
         self.personal_calendar = {}
@@ -21,17 +22,26 @@ class DailySchedule:
             "evening"             # 晚上
         ]
         
-    def create_daily_schedule(self, date: str, fixed_classes: List[Dict] = None):
+    def create_daily_schedule(self, date: str, fixed_classes: List[Dict] = None, agent_preferences: Dict = None):
         """
-        根据公共calendar创建当天的个人日程
+        智能创建当天的个人日程
         时间段划分：上午上课、上午自由活动、下午上课、下午自由活动、晚上
+        现在会根据代理的偏好和目标智能规划
         """
         if fixed_classes is None:
             fixed_classes = []
+        if agent_preferences is None:
+            agent_preferences = {
+                "learning_goals": ["study", "improve skills"],
+                "preferred_locations": ["library", "classroom"],
+                "social_preferences": ["collaborate", "network"],
+                "activity_preferences": ["study", "practice", "discuss"]
+            }
             
         # 初始化当天日程
         self.personal_calendar[date] = {
             "date": date,
+            "agent_name": self.agent_name,
             "morning_class": [],      # 上午固定上课
             "morning_free": [],       # 上午自由活动
             "afternoon_class": [],    # 下午固定上课
@@ -46,42 +56,70 @@ class DailySchedule:
             elif "afternoon" in class_event.get("time_period", ""):
                 self.personal_calendar[date]["afternoon_class"].append(class_event)
         
-        # 为自由活动时间段生成活动
-        self._generate_free_time_activities(date)
+        # 智能生成自由活动时间段的活动，基于代理偏好
+        self._generate_intelligent_free_time_activities(date, agent_preferences)
         
         return self.personal_calendar[date]
     
-    def _generate_free_time_activities(self, date: str):
-        """为自由活动时间段生成活动"""
-        # 生成上午自由活动
+    def _generate_intelligent_free_time_activities(self, date: str, agent_preferences: Dict):
+        """基于代理偏好智能生成自由活动"""
+        # 根据学习目标和偏好生成上午自由活动
         if not self.personal_calendar[date]["morning_free"]:
-            self.personal_calendar[date]["morning_free"] = [
-                {
-                    "activity": "personal study",
-                    "location": "library",
-                    "preferences": ["study", "focus"]
-                }
-            ]
+            morning_activity = self._plan_activity_for_period(
+                "morning", 
+                agent_preferences
+            )
+            self.personal_calendar[date]["morning_free"] = [morning_activity]
         
-        # 生成下午自由活动
+        # 根据学习目标和偏好生成下午自由活动
         if not self.personal_calendar[date]["afternoon_free"]:
-            self.personal_calendar[date]["afternoon_free"] = [
-                {
-                    "activity": "social activity",
-                    "location": "park",
-                    "preferences": ["relax", "socialize"]
-                }
-            ]
+            afternoon_activity = self._plan_activity_for_period(
+                "afternoon", 
+                agent_preferences
+            )
+            self.personal_calendar[date]["afternoon_free"] = [afternoon_activity]
         
-        # 生成晚上活动
+        # 生成晚上活动（通常为休息）
         if not self.personal_calendar[date]["evening"]:
             self.personal_calendar[date]["evening"] = [
                 {
-                    "activity": "rest",
+                    "activity": "rest and reflection",
                     "location": "home",
-                    "preferences": ["rest", "sleep"]
+                    "preferences": ["rest", "sleep", "reflect on day"]
                 }
             ]
+    
+    def _plan_activity_for_period(self, period: str, agent_preferences: Dict) -> Dict:
+        """为特定时间段智能规划活动"""
+        # 根据代理的学习目标和偏好选择活动
+        learning_goals = agent_preferences.get("learning_goals", [])
+        preferred_locations = agent_preferences.get("preferred_locations", ["library", "classroom"])
+        activity_preferences = agent_preferences.get("activity_preferences", ["study", "practice"])
+        social_preferences = agent_preferences.get("social_preferences", ["collaborate"])
+        
+        # 智能选择活动类型
+        if "study" in activity_preferences or "improve skills" in learning_goals:
+            activity_type = random.choice(["study", "practice", "review", "research"])
+        else:
+            activity_type = random.choice(activity_preferences)
+        
+        # 智能选择地点
+        location = random.choice(preferred_locations)
+        
+        # 构建活动详情
+        activity_details = {
+            "activity": f"{activity_type} related to {random.choice(learning_goals) if learning_goals else 'personal development'}",
+            "location": location,
+            "preferences": activity_preferences[:2] + learning_goals[:2],
+            "planned_by": self.agent_name,
+            "planning_timestamp": datetime.now().isoformat()
+        }
+        
+        # 如果代理喜欢社交，可能添加协作活动
+        if random.random() < 0.3 and social_preferences:  # 30% 概率添加社交活动
+            activity_details["social_element"] = random.choice(social_preferences)
+        
+        return activity_details
     
     def get_schedule_for_period(self, date: str, period: str) -> List[Dict]:
         """获取特定日期特定时间段的安排"""
@@ -98,6 +136,7 @@ class DailySchedule:
         if date not in self.personal_calendar:
             self.personal_calendar[date] = {
                 "date": date,
+                "agent_name": self.agent_name,
                 "morning_class": [],
                 "morning_free": [],
                 "afternoon_class": [],
@@ -156,7 +195,7 @@ class DailySchedule:
     def save_schedule(self, filename: str = None):
         """保存个人日程到文件"""
         if filename is None:
-            filename = f"schedule_{self.agent_name}.json"
+            filename = f"config/schedule_{self.agent_name}.json"
         
         try:
             with open(filename, 'w', encoding='utf-8') as f:
@@ -167,7 +206,7 @@ class DailySchedule:
     def load_schedule(self, filename: str = None):
         """从文件加载个人日程"""
         if filename is None:
-            filename = f"schedule_{self.agent_name}.json"
+            filename = f"config/schedule_{self.agent_name}.json"
         
         if os.path.exists(filename):
             try:
