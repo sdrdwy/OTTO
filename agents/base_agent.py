@@ -2,7 +2,14 @@ import json
 import os
 from typing import Dict, List, Any, Optional
 from datetime import datetime
-from langchain_community.chat_models import ChatTongyi
+try:
+    from langchain_community.chat_models import ChatTongyi
+except ImportError:
+    try:
+        from dashscope import Generation
+        ChatTongyi = None
+    except ImportError:
+        raise ImportError("Either langchain-community or dashscope must be installed")
 from langchain_core.messages import SystemMessage
 from memory.conversation_mem import ConversationMemory
 from memory.long_term_mem import LongTermMemory
@@ -22,10 +29,17 @@ class BaseAgent:
         self.max_dialogue_rounds = self.config["max_dialogue_rounds"]
         
         # Initialize LLM
-        self.llm = ChatTongyi(
-            model_name="qwen-max",
-            dashscope_api_key=os.getenv("DASHSCOPE_API_KEY", "sk-c763fc92bf8c46c7ae31639b05d89c96")
-        )
+        if ChatTongyi is not None:
+            # Use langchain-community
+            self.llm = ChatTongyi(
+                model_name="qwen-max",
+                dashscope_api_key=os.getenv("DASHSCOPE_API_KEY", "sk-c763fc92bf8c46c7ae31639b05d89c96")
+            )
+        else:
+            # Use dashscope directly
+            from dashscope import Generation
+            self.dashscope_generation = Generation
+            self.llm = self  # Use self as a way to call our own method
         
         # Initialize memories
         self.conversation_memory = ConversationMemory()
@@ -67,7 +81,7 @@ class BaseAgent:
         """
         
         try:
-            response = self.llm.invoke([SystemMessage(content=system_prompt)])
+            response = self.invoke_llm([SystemMessage(content=system_prompt)])
             schedule_text = response.content
             
             # Extract JSON from response
@@ -105,35 +119,218 @@ class BaseAgent:
         """Initiate a multi-round dialogue with other agents"""
         dialogue_history = []
         
+        # Include self in the participants list for a complete dialogue
+        all_participants = [self.name] + participants
+        
         for round_num in range(max_rounds):
             # Get agents at current location
             current_agents = world_simulator.get_agents_at_location(self.current_location)
             
-            # Filter participants who are at the same location and willing to join
+            # Determine which participants are available and willing to join this round
             available_participants = []
-            for participant in participants:
-                if participant in current_agents:
-                    # Check if agent is willing to join (based on persona and schedule)
-                    participant_agent = world_simulator.get_agent_by_name(participant)
-                    if self._should_join_dialogue(participant_agent):
-                        available_participants.append(participant)
+            for participant_name in all_participants:
+                if participant_name in current_agents:
+                    # Check if agent is willing to join (using the enhanced context-based method)
+                    participant_agent = world_simulator.get_agent_by_name(participant_name)
+                    if participant_agent:
+                        decision = participant_agent.should_join_dialogue_based_on_context(
+                            topic=topic,
+                            participants=all_participants,
+                            world_simulator=world_simulator,
+                            location=self.current_location
+                        )
+                        
+                        if decision["should_join"]:
+                            available_participants.append(participant_name)
             
-            if not available_participants:
+            # Only continue if we have at least 2 participants
+            if len(available_participants) < 2:
+                print(f"    对话在第 {round_num+1} 轮结束 - 只有 {len(available_participants)} 人参与")
                 break
+            
+            # Generate dialogue turns for each available participant
+            for participant_name in available_participants:
+                participant_agent = world_simulator.get_agent_by_name(participant_name)
                 
-            # Generate dialogue turn
-            dialogue_turn = self._generate_dialogue_turn(topic, dialogue_history, available_participants)
-            dialogue_history.append(dialogue_turn)
+                # Skip if this is the initiating agent's turn (we'll handle it separately)
+                if participant_name == self.name:
+                    continue
+                
+                # Generate the participant's turn
+                participant_turn = participant_agent._generate_dialogue_turn(
+                    topic=topic, 
+                    history=dialogue_history, 
+                    participants=available_participants
+                )
+                
+                if participant_turn:
+                    dialogue_history.append(participant_turn)
+                    
+                    # Add to conversation memory
+                    participant_agent.conversation_memory.add_dialogue_turn(
+                        participant_agent.name, 
+                        topic, 
+                        participant_turn
+                    )
             
-            # Add to conversation memory
-            self.conversation_memory.add_dialogue_turn(self.name, topic, dialogue_turn)
+            # Generate turn for the initiating agent
+            initiating_turn = self._generate_dialogue_turn(
+                topic=topic, 
+                history=dialogue_history, 
+                participants=available_participants
+            )
             
+            if initiating_turn:
+                dialogue_history.append(initiating_turn)
+                
+                # Add to conversation memory
+                self.conversation_memory.add_dialogue_turn(
+                    self.name, 
+                    topic, 
+                    initiating_turn
+                )
+        
         return dialogue_history
     
     def _should_join_dialogue(self, other_agent):
-        """Determine if agent should join a dialogue based on persona and schedule"""
-        # Simple implementation - can be enhanced based on persona
-        return True
+        """Determine if agent should join a dialogue based on persona, long-term memory and current situation"""
+        # Get recent memories to understand context
+        recent_memories = self.long_term_memory.search_memories(limit=5)
+        
+        # Get current topic if available
+        current_topic = "general"  # This would be passed from the calling function
+        if hasattr(self, '_current_dialogue_topic'):
+            current_topic = self._current_dialogue_topic
+        
+        # Create a prompt to decide whether to join the dialogue
+        system_prompt = f"""
+        你是{self.name}，人设：{self.persona}。
+        你的对话风格：{self.dialogue_style}。
+        你的日常习惯：{self.daily_habits}。
+        
+        当前话题是：{current_topic}
+        当前在场的参与者：{[agent.name for agent in [other_agent]] if other_agent else []}
+        
+        你的近期记忆：{recent_memories}
+        
+        请根据你的人设、记忆和当前情况，判断你是否应该参与这个对话。
+        返回一个JSON格式的决策：
+        {{
+            "should_join": true/false,
+            "reason": "简短的解释原因",
+            "confidence": 0.0-1.0之间的置信度
+        }}
+        """
+        
+        try:
+            response = self.llm.invoke([SystemMessage(content=system_prompt)])
+            response_text = response.content
+            
+            # Extract JSON from response
+            start_idx = response_text.find('{')
+            end_idx = response_text.rfind('}') + 1
+            if start_idx != -1 and end_idx != 0:
+                json_str = response_text[start_idx:end_idx]
+                decision = json.loads(json_str)
+                return decision.get('should_join', False)
+            else:
+                # If parsing fails, use a simple heuristic
+                return len(recent_memories) > 0  # Join if agent has recent memories
+        except Exception as e:
+            print(f"Error determining if {self.name} should join dialogue: {e}")
+            return False  # Default to not joining if there's an error
+    
+    def should_join_dialogue_based_on_context(self, topic: str, participants: List[str], world_simulator, location: str):
+        """Enhanced method to determine if agent should join dialogue based on full context"""
+        self._current_dialogue_topic = topic
+        
+        # Get recent memories relevant to the topic
+        topic_memories = self.long_term_memory.search_memories(query=topic, limit=3)
+        all_memories = self.long_term_memory.search_memories(limit=5)
+        
+        # Get information about other participants
+        other_agents_info = []
+        for participant_name in participants:
+            if participant_name != self.name:
+                other_agent = world_simulator.get_agent_by_name(participant_name)
+                if other_agent:
+                    other_agents_info.append({
+                        "name": other_agent.name,
+                        "persona": other_agent.persona,
+                        "relationship": self._assess_relationship(other_agent)
+                    })
+        
+        system_prompt = f"""
+        你是{self.name}，人设：{self.persona}。
+        你的对话风格：{self.dialogue_style}。
+        你的日常习惯：{self.daily_habits}。
+        
+        当前情况：
+        - 地点：{location}
+        - 话题：{topic}
+        - 参与者：{participants}
+        - 其他参与者信息：{other_agents_info}
+        
+        相关记忆：
+        - 话题相关记忆：{topic_memories}
+        - 近期记忆：{all_memories}
+        
+        请根据你的人设、记忆、话题相关性、其他参与者和当前环境，判断你是否应该参与这个对话。
+        返回一个JSON格式的决策：
+        {{
+            "should_join": true/false,
+            "reason": "简短的解释原因",
+            "confidence": 0.0-1.0之间的置信度
+        }}
+        """
+        
+        try:
+            response = self.llm.invoke([SystemMessage(content=system_prompt)])
+            response_text = response.content
+            
+            # Extract JSON from response
+            start_idx = response_text.find('{')
+            end_idx = response_text.rfind('}') + 1
+            if start_idx != -1 and end_idx != 0:
+                json_str = response_text[start_idx:end_idx]
+                decision = json.loads(json_str)
+                return decision
+            else:
+                # If parsing fails, use a simple heuristic
+                return {
+                    "should_join": len(topic_memories) > 0,  # Join if there are topic-related memories
+                    "reason": "基于话题相关记忆的默认决策",
+                    "confidence": 0.5
+                }
+        except Exception as e:
+            print(f"Error determining if {self.name} should join dialogue with context: {e}")
+            return {
+                "should_join": False,
+                "reason": f"处理决策时出错: {e}",
+                "confidence": 0.0
+            }
+    
+    def _assess_relationship(self, other_agent):
+        """Assess the relationship with another agent based on memories"""
+        # Search for memories involving the other agent
+        relationship_memories = self.long_term_memory.search_memories(
+            query=other_agent.name, 
+            limit=3
+        )
+        
+        if not relationship_memories:
+            return "unknown"  # No prior interaction
+        
+        # Determine relationship based on memory types and content
+        positive_interactions = [m for m in relationship_memories if any(pos in str(m.get('content', '')) for pos in ['合作', '帮助', '友好', 'positive', 'good'])]
+        negative_interactions = [m for m in relationship_memories if any(neg in str(m.get('content', '')) for neg in ['冲突', '矛盾', 'negative', 'bad', 'disagreement'])]
+        
+        if len(positive_interactions) > len(negative_interactions):
+            return "positive"
+        elif len(negative_interactions) > len(positive_interactions):
+            return "negative"
+        else:
+            return "neutral"
     
     def _generate_dialogue_turn(self, topic: str, history: List[Dict], participants: List[str]):
         """Generate a dialogue turn"""
@@ -217,3 +414,41 @@ class BaseAgent:
             "location": self.current_location or "未知地点", 
             "reason": "未安排"
         })
+    
+    def invoke_llm(self, messages):
+        """Unified method to invoke LLM using either langchain-community or dashscope"""
+        if ChatTongyi is not None:
+            # Using langchain-community
+            return self.llm.invoke(messages)
+        else:
+            # Using dashscope directly
+            from dashscope import Generation
+            import os
+            api_key = os.getenv("DASHSCOPE_API_KEY", "sk-c763fc92bf8c46c7ae31639b05d89c96")
+            
+            # Extract the system message content
+            system_prompt = messages[0].content if messages else ""
+            
+            try:
+                response = Generation.call(
+                    model="qwen-max",
+                    api_key=api_key,
+                    prompt=system_prompt,
+                    result_format='message'
+                )
+                
+                # Create a mock response object with content attribute
+                class MockResponse:
+                    def __init__(self, content):
+                        self.content = content
+                
+                if response.status_code == 200:
+                    content = response.output.get('choices', [{}])[0].get('message', {}).get('content', str(response))
+                    return MockResponse(content)
+                else:
+                    return MockResponse(f"Error calling LLM: {response.code} - {response.message}")
+            except Exception as e:
+                class MockResponse:
+                    def __init__(self, content):
+                        self.content = content
+                return MockResponse(f"Error calling LLM: {str(e)}")
