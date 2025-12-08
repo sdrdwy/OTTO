@@ -1,37 +1,67 @@
 {
   "daily_schedule": {
-    "morning_1": {
-      "default": "attend_class",
-      "required": ["teacher", "student1", "student2", "student3", "student4"]
+    "morning": {
+      "mandatory": {
+        "teacher": "Prepare lessons in office",
+        "student1": "Arrive at classroom",
+        "student2": "Arrive at classroom", 
+        "student3": "Arrive at classroom",
+        "student4": "Arrive at classroom"
+      },
+      "probability": 0.9
     },
-    "morning_2": {
-      "default": "study",
-      "required": ["teacher", "student1", "student2", "student3", "student4"]
+    "mid_morning": {
+      "mandatory": {
+        "teacher": "Teach math class in classroom",
+        "student1": "Attend math class in classroom",
+        "student2": "Attend math class in classroom",
+        "student3": "Attend math class in classroom", 
+        "student4": "Attend math class in classroom"
+      },
+      "probability": 0.95
     },
-    "afternoon_1": {
-      "default": "free_time",
-      "required": []
+    "afternoon": {
+      "mandatory": {
+        "teacher": "Grade assignments in office",
+        "student1": "Study in library",
+        "student2": "Study in library",
+        "student3": "Study in library",
+        "student4": "Study in library"
+      },
+      "probability": 0.7
     },
-    "afternoon_2": {
-      "default": "group_activity",
-      "required": ["teacher", "student1", "student2", "student3", "student4"]
+    "late_afternoon": {
+      "mandatory": {},
+      "probability": 0.3
     },
     "evening": {
-      "default": "rest",
-      "required": []
+      "mandatory": {
+        "teacher": "Prepare for next day in office"
+      },
+      "probability": 0.6
     }
   },
   "special_dates": {
-    "day_1": {
-      "morning_1": {
-        "default": "introduction",
-        "required": ["teacher", "student1", "student2", "student3", "student4"]
-      }
-    },
-    "day_3": {
-      "afternoon_1": {
-        "default": "exam",
-        "required": ["teacher", "student1", "student2", "student3", "student4"]
+    "weekends": {
+      "morning": {
+        "mandatory": {},
+        "probability": 0.2
+      },
+      "mid_morning": {
+        "mandatory": {},
+        "probability": 0.1
+      },
+      "afternoon": {
+        "mandatory": {},
+        "probability": 0.3
+      },
+      "late_afternoon": {
+        "mandatory": {},
+        "probability": 0.5
+      },
+      "evening": {
+        "mandatory": {},
+        "probability": 0.4
       }
     }
   }

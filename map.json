@@ -1,0 +1,22 @@
+{
+  "classroom": {
+    "description": "Main teaching area with desks and whiteboard",
+    "function": "conducting lessons and classes"
+  },
+  "library": {
+    "description": "Quiet area with books and study materials", 
+    "function": "independent study and research"
+  },
+  "cafeteria": {
+    "description": "Dining area for meals and socializing",
+    "function": "eating and casual conversations"
+  },
+  "playground": {
+    "description": "Outdoor area for physical activities",
+    "function": "recreation and exercise"
+  },
+  "office": {
+    "description": "Administrative area with faculty desks",
+    "function": "meetings and office hours"
+  }
+}

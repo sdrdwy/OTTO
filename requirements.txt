@@ -1,2 +1,2 @@
-# No specific external dependencies required for this simulation
-# Uses only built-in Python libraries
+# No specific dependencies required beyond Python standard library
+# The simulation uses only built-in Python modules

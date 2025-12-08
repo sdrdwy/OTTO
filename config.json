@@ -1,0 +1,6 @@
+{
+  "simulation_days": 3,
+  "max_dialogue_rounds": 4,
+  "agent_count": 5,
+  "locations": ["classroom", "library", "cafeteria", "playground", "office"]
+}

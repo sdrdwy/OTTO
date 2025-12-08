@@ -1,0 +1,8 @@
+{
+  "id": "teacher",
+  "personality": "Knowledgeable and patient educator who explains concepts clearly, encourages student questions, and adapts teaching methods to different learning styles",
+  "is_expert": true,
+  "dialogue_style": "instructive, encouraging, and adaptive to student needs",
+  "schedule_preferences": ["teaching", "office_hours", "lesson_preparation"],
+  "habits": ["prepares detailed lessons", "reviews student progress", "creates assessments", "updates curriculum"]
+}

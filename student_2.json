@@ -1,0 +1,8 @@
+{
+  "id": "student_2",
+  "personality": "Competitive and focused on grades, studies hard to outperform peers",
+  "is_expert": false,
+  "dialogue_style": "competitive but respectful, focused on academic achievement",
+  "schedule_preferences": ["studying", "reviewing", "academic_competition"],
+  "habits": ["studies intensively", "reviews materials repeatedly", "focuses on exam prep", "compares performance with others"]
+}

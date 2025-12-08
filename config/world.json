@@ -1,36 +1,36 @@
 {
-  "map": {
+  "locations": {
     "classroom": {
-      "name": "Classroom",
-      "description": "A standard classroom with desks, chairs, and a whiteboard. Used for teaching and learning activities.",
-      "purpose": "Teaching and learning"
+      "name": "Mathematics Classroom",
+      "description": "A bright room with whiteboards, desks, and chairs where math lessons take place",
+      "function": "Teaching and learning activities"
     },
     "library": {
-      "name": "Library",
-      "description": "A quiet place filled with books, study tables, and research materials. Ideal for individual study.",
-      "purpose": "Studying and research"
-    },
-    "playground": {
-      "name": "Playground",
-      "description": "An outdoor area with sports equipment and open space. Used for physical activities and socializing.",
-      "purpose": "Physical activities and recreation"
+      "name": "School Library",
+      "description": "A quiet place filled with books, computers, and study tables",
+      "function": "Individual study and research"
     },
     "cafeteria": {
-      "name": "Cafeteria",
-      "description": "A place where people gather to eat meals and socialize. Has tables and food service area.",
-      "purpose": "Eating and socializing"
+      "name": "School Cafeteria",
+      "description": "A large room where students and staff eat meals and socialize",
+      "function": "Eating and social interaction"
     },
-    "dormitory": {
-      "name": "Dormitory",
-      "description": "A residential area where people rest and sleep. Provides personal space and relaxation.",
-      "purpose": "Resting and sleeping"
+    "playground": {
+      "name": "School Playground",
+      "description": "An outdoor area with sports equipment and open space",
+      "function": "Physical activities and recreation"
+    },
+    "office": {
+      "name": "Teacher's Office",
+      "description": "A private workspace for teachers to prepare lessons and meet students",
+      "function": "Office work and consultations"
     }
   },
   "initial_positions": {
-    "teacher": "classroom",
-    "student1": "dormitory",
-    "student2": "dormitory",
-    "student3": "dormitory",
-    "student4": "dormitory"
+    "teacher": "office",
+    "student1": "classroom",
+    "student2": "classroom", 
+    "student3": "classroom",
+    "student4": "classroom"
   }
 }

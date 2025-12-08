@@ -1,0 +1,17 @@
+{
+  "teaching_hours": {
+    "morning_1": "Mathematics fundamentals",
+    "morning_2": "Algebra concepts", 
+    "afternoon_1": "Geometry basics",
+    "afternoon_2": "Problem solving",
+    "evening": "Review and office hours"
+  },
+  "student_activities": {
+    "morning_1": "Mathematics class",
+    "morning_2": "Algebra class",
+    "afternoon_1": "Geometry class", 
+    "afternoon_2": "Study group",
+    "evening": "Homework and review"
+  },
+  "special_dates": {}
+}

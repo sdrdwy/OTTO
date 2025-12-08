@@ -1,164 +1,145 @@
 import json
 import random
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from memory.memory_manager import MemoryManager
+from world.battle_system import BattleSystem
 
 
 class BaseAgent:
-    def __init__(self, config_path: str, memory_manager: MemoryManager, world_manager):
-        self.config_path = config_path
-        self.memory_manager = memory_manager
-        self.world_manager = world_manager
-        self.config = {}
-        self.name = ""
-        self.persona = ""
-        self.is_expert = False
-        self.dialogue_style = ""
-        self.schedule_habits = {}
-        self.作息习惯 = ""
-        self.current_location = ""
-        self.long_term_memories = []
-        self.dialogue_memory = []
-        
-        self.load_config()
-    
-    def load_config(self):
-        """Load agent configuration from JSON file"""
-        with open(self.config_path, 'r', encoding='utf-8') as f:
-            self.config = json.load(f)
-        
-        self.name = self.config.get("name", "")
-        self.persona = self.config.get("persona", "")
-        self.is_expert = self.config.get("is_expert", False)
+    def __init__(self, config_path: str, memory_manager: MemoryManager):
+        self.config = self.load_config(config_path)
+        self.name = self.config["name"]
+        self.role = self.config["role"]
+        self.is_expert = self.config["is_expert"]
+        self.personality = self.config["personality"]
         self.dialogue_style = self.config.get("dialogue_style", "")
-        self.schedule_habits = self.config.get("schedule_habits", {})
-        self.作息习惯 = self.config.get("作息习惯", "")
+        self.schedule_preferences = self.config["schedule_preferences"]
+        self.作息习惯 = self.config["作息习惯"]
+        self.memory_manager = memory_manager
+        self.current_location = ""
+        self.current_day = 0
+        self.current_time_period = ""
+
+    def load_config(self, config_path: str) -> Dict[str, Any]:
+        """Load agent configuration from JSON file."""
+        with open(config_path, 'r', encoding='utf-8') as file:
+            return json.load(file)
+
+    def set_location(self, location: str):
+        """Set the agent's current location."""
+        self.current_location = location
+
+    def set_day_and_time(self, day: int, time_period: str):
+        """Set the current day and time period."""
+        self.current_day = day
+        self.current_time_period = time_period
+
+    def create_daily_schedule(self, world_info: Dict[str, Any], 
+                            mandatory_schedule: Dict[str, str]) -> str:
+        """Create a daily schedule based on personal preferences, world info, and mandatory schedule."""
+        # Get personal preference for this time period
+        personal_preference = self.schedule_preferences.get(self.current_time_period, 
+                                                          "No specific preference")
         
-        # Initialize position based on world manager
-        self.current_location = self.world_manager.agents_positions.get(self.name, "unknown")
-    
-    def update_location(self, new_location: str):
-        """Update agent's location in the world"""
-        if self.world_manager.move_agent(self.name, new_location):
-            self.current_location = new_location
-            return True
-        return False
-    
-    def get_daily_schedule(self, day: int, period: str) -> str:
-        """Generate a daily schedule based on persona, habits, and world schedule"""
-        world_schedule = self.world_manager.get_current_schedule(day, period)
+        # Check if there's a mandatory activity for this agent
+        mandatory_activity = mandatory_schedule.get(self.name, "")
         
-        # Check if this agent is required to do something specific
-        if self.name in world_schedule.get("required", []):
-            return world_schedule["default"]
+        # Decide between mandatory and personal preference based on probability
+        schedule_probability = world_info.get("probability", 0.8)
         
-        # Otherwise, follow personal habits if they exist
-        personal_habit = self.schedule_habits.get(period)
-        if personal_habit:
-            return personal_habit
-        
-        # Default to world schedule if no personal habit
-        return world_schedule["default"]
-    
-    def generate_memory_from_event(self, event_description: str, event_type: str = "event") -> int:
-        """Generate a memory from an event"""
-        return self.memory_manager.add_memory(
-            agent_name=self.name,
-            content=event_description,
-            memory_type=event_type,
-            related_agents=[self.name]  # By default, only this agent is involved
-        )
-    
-    def recall_memories(self, query: str = "", memory_type: str = "", limit: int = 5) -> List[Dict[str, Any]]:
-        """Recall relevant memories"""
-        return self.memory_manager.search_memories(
-            agent_name=self.name,
-            query=query,
-            memory_type=memory_type,
-            limit=limit
-        )
-    
-    def participate_in_conversation(self, participants: List[str], topic: str, max_rounds: int) -> List[Dict[str, str]]:
-        """Participate in a multi-round conversation"""
-        conversation = []
-        
-        # Check if agent wants to participate based on persona and schedule
-        if not self.should_join_conversation(topic):
-            # Agent chooses not to join, returns empty conversation
-            return conversation
-        
-        # Initialize conversation with first message
-        first_message = self.generate_conversation_message(topic, conversation, is_first=True)
-        conversation.append({"agent": self.name, "message": first_message})
-        
-        # Continue conversation for max_rounds or until topic is exhausted
-        for _ in range(1, max_rounds):
-            # Get response from this agent
-            response = self.generate_conversation_message(topic, conversation)
-            conversation.append({"agent": self.name, "message": response})
-            
-            # In a real implementation, other agents would also contribute
-            # For now, we simulate this with a placeholder
-            break  # Simplified for this implementation
-        
-        # Generate memory from this conversation
-        conversation_summary = f"Participated in conversation about '{topic}' with {', '.join(participants)}"
-        self.generate_memory_from_event(conversation_summary, "conversation")
-        
-        return conversation
-    
-    def should_join_conversation(self, topic: str) -> bool:
-        """Determine if agent should join a conversation based on persona and current schedule"""
-        # Implement logic based on persona and current activities
-        # For now, a simple implementation
-        return True
-    
-    def generate_conversation_message(self, topic: str, conversation_history: List[Dict[str, str]], 
-                                     is_first: bool = False) -> str:
-        """Generate a message for a conversation"""
-        # This would typically use LLM to generate a response based on persona
-        # For now, we'll return a placeholder
-        if is_first:
-            return f"Hello, I'm interested in discussing {topic}. {self.persona.split('.')[0]}."
+        if mandatory_activity and random.random() < schedule_probability:
+            return mandatory_activity
         else:
-            return f"My perspective on {topic} is that it's quite interesting. {random.choice(['I think', 'In my opinion', 'From my understanding'])}..."
-    
+            return personal_preference
+
+    def move_to_location(self, location: str) -> bool:
+        """Request to move to a specific location."""
+        # In a real implementation, this would communicate with the world manager
+        self.current_location = location
+        self.memory_manager.add_memory(
+            self.name, 
+            f"Moved to {location}", 
+            "movement"
+        )
+        return True
+
+    def initiate_dialogue(self, other_agents: List['BaseAgent'], 
+                        max_rounds: int, topic: str = "") -> List[Dict[str, str]]:
+        """Initiate a multi-round dialogue with other agents."""
+        dialogue_history = []
+        round_count = 0
+        
+        # Determine if this agent will participate based on personality and schedule
+        if not self.will_participate_in_dialogue():
+            # Agent chooses not to participate, generates independent activity
+            activity = f"Decided not to join dialogue about '{topic}', instead {self.schedule_preferences.get(self.current_time_period, 'continued with own activities')}"
+            self.memory_manager.add_memory(self.name, activity, "activity")
+            return dialogue_history
+        
+        while round_count < max_rounds:
+            for agent in other_agents:
+                if agent.name != self.name:
+                    # Generate a response based on personality and dialogue style
+                    response = self.generate_dialogue_response(topic, dialogue_history, agent.name)
+                    dialogue_history.append({
+                        "speaker": self.name,
+                        "listener": agent.name,
+                        "message": response,
+                        "round": round_count
+                    })
+                    
+                    # Agent's response
+                    agent_response = agent.generate_dialogue_response(topic, dialogue_history, self.name)
+                    dialogue_history.append({
+                        "speaker": agent.name,
+                        "listener": self.name,
+                        "message": agent_response,
+                        "round": round_count
+                    })
+            
+            round_count += 1
+            
+            # Check if dialogue should end early
+            if self.should_end_dialogue(dialogue_history):
+                break
+        
+        # Add dialogue summary to memory
+        if dialogue_history:
+            summary = f"Participated in dialogue about '{topic}' for {len(dialogue_history)} exchanges"
+            self.memory_manager.add_memory(self.name, summary, "dialogue")
+        
+        return dialogue_history
+
+    def will_participate_in_dialogue(self) -> bool:
+        """Determine if the agent will participate in a dialogue based on personality."""
+        # More social personalities are more likely to participate
+        if "social" in self.personality.lower() or "talkative" in self.personality.lower():
+            return random.random() < 0.8
+        elif "quiet" in self.personality.lower() or "shy" in self.personality.lower():
+            return random.random() < 0.4
+        else:
+            return random.random() < 0.6
+
+    def generate_dialogue_response(self, topic: str, dialogue_history: List[Dict[str, str]], 
+                                 other_agent_name: str) -> str:
+        """Generate a dialogue response based on personality and context."""
+        # Base response on personality and dialogue style
+        base_response = f"{self.name} responds to {other_agent_name} about {topic}."
+        return base_response
+
+    def should_end_dialogue(self, dialogue_history: List[Dict[str, str]]) -> bool:
+        """Determine if the dialogue should end early."""
+        # For now, continue until max rounds unless something specific happens
+        return False
+
     def engage_in_battle(self, opponent: 'BaseAgent') -> Dict[str, Any]:
-        """Simulate a battle with another agent"""
-        # Simulate a simple battle outcome
-        battle_outcome = {
-            "participants": [self.name, opponent.name],
-            "winner": self.name if random.random() > 0.5 else opponent.name,
-            "summary": f"{self.name} battled with {opponent.name} and {'won' if random.random() > 0.5 else 'lost'}",
-            "duration": random.randint(5, 15)  # minutes
-        }
+        """Simulate a battle with another agent."""
+        # Use the battle system for more complex battle mechanics
+        battle_system = BattleSystem()
+        battle_result = battle_system.initiate_battle(self, opponent)
         
-        # Generate long-term memory from battle
-        self.generate_memory_from_event(battle_outcome["summary"], "battle")
-        opponent.generate_memory_from_event(battle_outcome["summary"], "battle")
-        
-        return battle_outcome
-    
-    def act_independently(self, activity: str) -> str:
-        """Perform an independent activity and generate a memory"""
-        # Simulate an independent activity
-        result = f"{self.name} performed {activity} at {self.current_location}"
-        
-        # Generate memory from this activity
-        self.generate_memory_from_event(result, "independent_activity")
-        
-        return result
-    
-    def get_nearby_agents(self) -> List[str]:
-        """Get list of agents at the same location"""
-        return self.world_manager.get_agents_at_location(self.current_location)
-    
-    def plan_daily_activities(self, day: int) -> Dict[str, str]:
-        """Plan activities for the entire day based on schedule and persona"""
-        daily_plan = {}
-        time_periods = ["morning_1", "morning_2", "afternoon_1", "afternoon_2", "evening"]
-        
-        for period in time_periods:
-            daily_plan[period] = self.get_daily_schedule(day, period)
-        
-        return daily_plan
+        return battle_result
+
+    def generate_long_term_memory(self, event: str):
+        """Generate a long-term memory based on an event."""
+        self.memory_manager.add_memory(self.name, event, "long_term")

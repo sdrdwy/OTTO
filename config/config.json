@@ -1,18 +1,18 @@
 {
-  "max_round": 10,
-  "simulation_days": 5,
+  "max_dialogue_rounds": 5,
+  "simulation_days": 10,
   "time_periods": [
-    "morning_1",
-    "morning_2", 
-    "afternoon_1",
-    "afternoon_2",
+    "morning",
+    "mid_morning", 
+    "afternoon",
+    "late_afternoon",
     "evening"
   ],
-  "exam_questions_count": 20,
   "memory_capacity": 100,
-  "knowledge_base_path": "knowledge_base/knowledge.jsonl",
-  "agents_config_path": "config/agents/",
-  "world_config_path": "config/world.json",
-  "schedule_config_path": "config/schedule.json",
-  "memory_file_path": "memory/memory.jsonl"
+  "exam_questions_count": 20,
+  "knowledge_base_path": "./knowledge_base/knowledge.jsonl",
+  "memory_file_path": "./memory/memory.jsonl",
+  "world_map_path": "./config/world.json",
+  "schedule_path": "./config/schedule.json",
+  "agents_directory": "./config/agents/"
 }

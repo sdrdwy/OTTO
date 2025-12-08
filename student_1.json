@@ -1,0 +1,8 @@
+{
+  "id": "student_1",
+  "personality": "Curious and eager to learn, asks many questions, and tries to understand concepts deeply",
+  "is_expert": false,
+  "dialogue_style": "inquiring, engaged, and collaborative",
+  "schedule_preferences": ["attending_classes", "studying", "asking_questions"],
+  "habits": ["asks questions", "takes detailed notes", "seeks clarification", "explores beyond curriculum"]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "student_3",
+  "personality": "Quiet and thoughtful, processes information carefully before responding, prefers individual study",
+  "is_expert": false,
+  "dialogue_style": "thoughtful, reserved, but insightful when contributing",
+  "schedule_preferences": ["individual_study", "quiet_spaces", "reflection_time"],
+  "habits": ["thinks before speaking", "prefers individual work", "reflects on learning", "seeks quiet study spaces"]
+}

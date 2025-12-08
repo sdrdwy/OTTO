@@ -1,144 +1,86 @@
-# AI Town Simulation
+# Multi-Agent Simulation System
 
-A multi-agent simulation system that models an educational environment with teachers, students, and interactive world dynamics.
+This project implements a multi-agent simulation system with the following features:
 
-## 🏗️ Project Structure
+## Overview
 
-```
-/workspace/
-├── agents/                    # Agent classes and logic
-│   ├── agent_base.py          # Base agent class
-│   ├── expert_agent.py        # Expert agent (teacher) class
-│   └── student_agent.py       # Student agent class
-├── world/                     # World management system
-│   ├── world_manager.py       # World state and location management
-│   └── exam_system.py         # Examination and assessment system
-├── memory/                    # Memory management system
-│   └── memory_manager.py      # Long-term and short-term memory
-├── knowledge_base/            # Knowledge base for expert agent
-│   └── knowledge.jsonl        # JSONL format knowledge entries
-├── config/                    # Configuration files
-│   ├── config.json            # Main configuration
-│   ├── world.json             # World/map configuration
-│   ├── schedule.json          # Daily schedule configuration
-│   └── agents/                # Individual agent configurations
-│       ├── teacher.json
-│       ├── student1.json
-│       ├── student2.json
-│       ├── student3.json
-│       └── student4.json
-├── simulator.py               # Main simulation controller
-└── requirements.txt           # Python dependencies
-```
+The system simulates a world with 5 agents (1 teacher and 4 students) that interact with each other, move around a map, engage in dialogues, and participate in learning activities. The simulation includes memory management, knowledge bases, and scheduled activities.
 
-## 🎯 Core Features
+## Architecture
 
-### 1. Agent System
-- **Teacher Agent**: Expert agent with access to knowledge base
-- **Student Agents**: Four unique students with different personalities
-- Each agent has individual JSON configuration for persona, schedule habits, etc.
+### Agents
+- **Teacher Agent**: An expert agent with access to a knowledge base, responsible for teaching students
+- **Student Agents**: Four students with different personalities and learning behaviors
 
-### 2. World Management
-- **Map System**: Classroom, library, playground, cafeteria, dormitory
-- **Location Management**: Agents move between locations based on activities
-- **Schedule System**: Daily schedule with five time periods
+### Configuration
+Each agent has its own JSON configuration file in `config/agents/` containing:
+- Name and role
+- Personality traits
+- Dialogue style
+- Schedule preferences
+- Daily habits
 
-### 3. Memory System
-- **Long-term Memory**: JSONL-based storage with access weighting
-- **Memory Retrieval**: Searchable by agent, type, content, and related agents
-- **Memory Evolution**: Memories can be updated and weighted based on access
+### World Management
+- Map with multiple locations (classroom, library, cafeteria, playground, office)
+- Scheduled activities based on time periods
+- Agent movement and location tracking
 
-### 4. Knowledge Base
-- **JSONL Format**: Segmented knowledge storage
-- **Category-based**: Organized by subject matter
-- **Curriculum Generation**: Automatic curriculum from knowledge base
+### Memory System
+- Short-term and long-term memory storage
+- Memory retrieval based on relevance and access frequency
+- Memory modification and weight adjustment
 
-### 5. Examination System
-- **Pre/Post Testing**: Assessment before and after simulation
-- **Performance Tracking**: Score improvement analysis
-- **Adaptive Questions**: Based on knowledge base content
+### Knowledge Base
+- Stored in JSONL format
+- Accessible by the expert agent (teacher)
+- Used for generating teaching content and answering questions
 
-## ⚙️ Configuration
+## Features
 
-### Main Configuration (`config/config.json`)
-- `max_round`: Maximum rounds for multi-agent conversations
-- `simulation_days`: Number of days to simulate
-- `time_periods`: Daily time divisions
-- `exam_questions_count`: Number of questions in exams
-- `memory_capacity`: Maximum memories to retain
+1. **Daily Scheduling**: Agents create daily schedules based on personal preferences and mandatory activities
+2. **Movement System**: Agents can move between different locations in the world
+3. **Dialogue System**: Multi-round conversations between agents
+4. **Teaching System**: Teacher provides lessons based on a generated curriculum
+5. **Memory System**: Agents maintain both short-term and long-term memories
+6. **Examination System**: Pre- and post-simulation exams to measure learning
+7. **Battle System**: Simple simulation of agent interactions (placeholder functionality)
 
-### Agent Configurations
-Each agent has a JSON file with:
-- `persona`: Character description and behavior patterns
-- `is_expert`: Whether agent has access to knowledge base
-- `dialogue_style`: Communication approach
-- `schedule_habits`: Preferred activities for each time period
-- `作息习惯`: Daily routine preferences
+## Configuration Files
 
-### World Configuration (`config/world.json`)
-- Map locations with descriptions and purposes
-- Initial agent positions
+- `config/config.json`: Main system configuration
+- `config/world.json`: World map and initial positions
+- `config/schedule.json`: Daily schedule and mandatory activities
+- `config/agents/*.json`: Individual agent configurations
+- `knowledge_base/knowledge.jsonl`: Knowledge base for the teacher
+- `memory/memory.jsonl`: Memory storage (created during runtime)
 
-### Schedule Configuration (`config/schedule.json`)
-- Daily schedule template
-- Special date schedules
-- Required activities for agents
+## Time Periods
 
-## 🚀 Running the Simulation
+The day is divided into 5 time periods:
+- Morning
+- Mid-morning
+- Afternoon
+- Late afternoon
+- Evening
+
+## Running the Simulation
 
 ```bash
 python simulator.py
 ```
 
 The simulation will:
-1. Conduct pre-simulation examinations
-2. Run daily activities across multiple time periods
-3. Execute agent interactions, learning, and memory formation
-4. Conduct post-simulation examinations
-5. Display performance comparison
+1. Generate an exam based on the knowledge base
+2. Conduct a pre-simulation exam
+3. Run the daily simulation for the configured number of days
+4. Conduct a post-simulation exam
+5. Report score improvements
 
-## 🎓 Educational Simulation Flow
+## Customization
 
-1. **Initialization**: Load agents, world, and knowledge base
-2. **Pre-Testing**: Assess baseline knowledge
-3. **Daily Simulation**:
-   - Morning classes (teacher instruction, student learning)
-   - Study sessions
-   - Free time activities
-   - Group activities
-   - Evening rest
-4. **Memory Formation**: Agents create memories from interactions
-5. **Post-Testing**: Assess knowledge improvement
-6. **Analysis**: Compare pre/post performance
-
-## 🧠 Agent Behaviors
-
-### Teacher (Expert Agent)
-- Generates curriculum from knowledge base
-- Conducts lessons and answers questions
-- Assesses student understanding
-- Maintains and updates knowledge base
-
-### Students
-- Follow individual learning patterns
-- Participate in classes and group activities
-- Ask questions and seek help
-- Develop learning progress over time
-- Collaborate with classmates
-
-## 📊 Memory System Features
-
-- **Weighted Access**: Frequently accessed memories have higher priority
-- **Relevance Search**: Find memories based on content, type, and context
-- **Capacity Management**: Maintain memory quality by limiting quantity
-- **Cross-Agent Memories**: Track interactions between multiple agents
-
-## 📚 Knowledge Base Structure
-
-The knowledge base uses JSONL format with flexible fields:
-```json
-{"id": 1, "category": "math", "content": "Mathematical concept description"}
-{"id": 2, "category": "science", "content": "Scientific principle explanation"}
-```
-
-This allows for diverse knowledge types and easy expansion.
+You can customize the simulation by modifying:
+- Agent personalities and preferences in `config/agents/`
+- World locations in `config/world.json`
+- Daily schedules in `config/schedule.json`
+- Knowledge content in `knowledge_base/knowledge.jsonl`
+- System parameters in `config/config.json`

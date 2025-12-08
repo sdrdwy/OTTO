@@ -1,0 +1,8 @@
+{
+  "id": "student_4",
+  "personality": "Social and collaborative, learns best through group activities and discussions",
+  "is_expert": false,
+  "dialogue_style": "collaborative, friendly, and engaging",
+  "schedule_preferences": ["group_study", "collaborative_work", "social_learning"],
+  "habits": ["forms study groups", "discusses topics with peers", "collaborative learning", "socializes during breaks"]
+}
