@@ -1,0 +1,74 @@
+{
+  "schedule_logic": {
+    "morning_class": {
+      "required": true,
+      "location": "classroom",
+      "activity": "attend_class",
+      "probability": 0.9
+    },
+    "morning_free": {
+      "required": false,
+      "location": "any",
+      "activity": "study_or_socialize",
+      "probability": 0.7
+    },
+    "afternoon_class": {
+      "required": true,
+      "location": "classroom",
+      "activity": "attend_class",
+      "probability": 0.9
+    },
+    "afternoon_free": {
+      "required": false,
+      "location": "any",
+      "activity": "study_or_socialize",
+      "probability": 0.7
+    },
+    "evening": {
+      "required": false,
+      "location": "park",
+      "activity": "relaxation",
+      "probability": 0.8
+    }
+  },
+  "special_dates": {
+    "holidays": [
+      "2025-01-01",
+      "2025-02-10",
+      "2025-02-11",
+      "2025-02-12",
+      "2025-02-13",
+      "2025-02-14",
+      "2025-02-15",
+      "2025-02-16",
+      "2025-05-01",
+      "2025-10-01",
+      "2025-10-02",
+      "2025-10-03",
+      "2025-10-04",
+      "2025-10-05",
+      "2025-10-06",
+      "2025-10-07"
+    ],
+    "special_events": {
+      "sports_day": {
+        "date": "2025-04-15",
+        "activities": ["sports_competition", "team_building"],
+        "required_locations": ["park", "classroom"]
+      },
+      "science_fair": {
+        "date": "2025-06-20",
+        "activities": ["project_presentation", "science_demonstration"],
+        "required_locations": ["lab", "classroom"]
+      }
+    }
+  },
+  "max_round": 5,
+  "time_periods": [
+    "morning_class",
+    "morning_free", 
+    "afternoon_class",
+    "afternoon_free",
+    "evening"
+  ]
+}

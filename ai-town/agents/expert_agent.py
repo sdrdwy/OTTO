@@ -9,28 +9,31 @@ import random
 
 
 class ExpertAgent(BaseAgent):
-    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None):
-        super().__init__(name, memory, world, persona_id, agent_type="expert")
+    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, config_file: str = None):
+        super().__init__(name, memory, world, config_file, agent_type="expert")
         
-        # If no persona is loaded, use default expert behavior
-        if not self.persona:
-            self.role = "Expert"
-            self.expertise = [
-                "Mathematics", "Science", "History", "Literature", 
-                "Philosophy", "Technology", "Economics", "Psychology"
-            ]
-            self.current_expertise = random.choice(self.expertise)
-        else:
-            # If persona has expertise, use it
-            if hasattr(self, 'persona') and self.persona and 'expertise' in self.persona:
-                self.expertise = self.persona['expertise']
-                self.current_expertise = random.choice(self.expertise)
-            else:
-                self.expertise = [
-                    "Mathematics", "Science", "History", "Literature", 
-                    "Philosophy", "Technology", "Economics", "Psychology"
-                ]
-                self.current_expertise = random.choice(self.expertise)
+        # Initialize expert-specific attributes
+        self.current_expertise = random.choice(self.expertise) if self.expertise else "General Knowledge"
+        
+        # Generate teaching curriculum based on knowledge base and total days
+        self.curriculum = self.generate_curriculum()
+    
+    def generate_curriculum(self):
+        """
+        Generate a teaching curriculum based on total days and knowledge base
+        """
+        # For now, return a simple curriculum based on expertise
+        curriculum = {}
+        
+        if self.expertise:
+            for i, subject in enumerate(self.expertise[:5]):  # Limit to first 5 expertise areas
+                curriculum[f"week_{i+1}"] = {
+                    "subject": subject,
+                    "topics": [f"Introduction to {subject}", f"Advanced concepts in {subject}", f"Applications of {subject}"],
+                    "learning_objectives": [f"Understand basic principles of {subject}", f"Apply {subject} concepts to problems", f"Evaluate {subject} methodologies"]
+                }
+        
+        return curriculum
         
     def interact(self, other_agents: List[BaseAgent], topic: str = None):
         """

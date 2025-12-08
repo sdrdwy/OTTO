@@ -15,7 +15,7 @@ from .persona_manager import persona_manager
 
 
 class BaseAgent(ABC):
-    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, persona_id: str = None, agent_type: str = "student"):
+    def __init__(self, name: str, memory: ConversationMemory, world: WorldSimulator, config_file: str = None, agent_type: str = "student"):
         self.memory = memory
         self.world = world
         # Initialize location to a valid location from the world map
@@ -25,24 +25,42 @@ class BaseAgent(ABC):
         from memory.knowledge_base import AgentKnowledgeManager
         self.knowledge_manager = AgentKnowledgeManager(agent_type)
         
-        # Load persona if provided, otherwise use default values
-        if persona_id and persona_manager.get_persona(persona_id):
-            self.persona = persona_manager.get_persona(persona_id)
-            self.name = self.persona.get("name", name)
-            self.role = self.persona.get("role", "Agent")
-            self.personality_traits = self.persona.get("personality_traits", [])
-            self.communication_style = self.persona.get("communication_style", "neutral")
-            self.behavioral_patterns = self.persona.get("behavioral_patterns", [])
-            self.default_responses = self.persona.get("default_responses", {})
+        # Load agent configuration from file
+        self.config_file = config_file
+        if config_file and os.path.exists(config_file):
+            with open(config_file, 'r', encoding='utf-8') as f:
+                self.config = json.load(f)
+            self.name = self.config.get("name", name)
+            self.role = self.config.get("role", "Agent")
+            self.personality_traits = self.config.get("personality_traits", [])
+            self.communication_style = self.config.get("communication_style", "neutral")
+            self.behavioral_patterns = self.config.get("behavioral_patterns", [])
+            self.is_expert = self.config.get("is_expert", False)
+            self.expertise = self.config.get("expertise", [])
+            self.schedule_preferences = self.config.get("schedule_preferences", {})
+            self.作息习惯 = self.config.get("作息习惯", {})
+            self.learning_goals = self.config.get("learning_goals", [])
+            self.preferred_locations = self.config.get("preferred_locations", [])
+            self.social_preferences = self.config.get("social_preferences", [])
+            self.activity_preferences = self.config.get("activity_preferences", [])
+            self.teaching_style = self.config.get("teaching_style", [])
         else:
-            # Default values if no persona is provided
-            self.persona = None
+            # Default values if no config is provided
+            self.config = {}
             self.name = name
             self.role = "Agent"
             self.personality_traits = []
             self.communication_style = "neutral"
             self.behavioral_patterns = []
-            self.default_responses = {}
+            self.is_expert = False
+            self.expertise = []
+            self.schedule_preferences = {}
+            self.作息习惯 = {}
+            self.learning_goals = []
+            self.preferred_locations = []
+            self.social_preferences = []
+            self.activity_preferences = []
+            self.teaching_style = []
         
         # Check if we have DASHSCOPE API key for Qwen, otherwise check for OpenAI, then use mock
         dashscope_api_key = os.getenv("DASHSCOPE_API_KEY")
@@ -57,6 +75,17 @@ class BaseAgent(ABC):
         else:
             # Use mock LLM for testing
             self.llm = MockChatOpenAI()
+        
+        # Initialize daily schedule and personal memory
+        self.daily_schedule = {}
+        self.personal_memory = ConversationMemory(max_memories_per_agent=20)
+        
+        # Initialize combat stats (for future use)
+        self.health = 100
+        self.strength = 10
+        self.defense = 5
+        self.experience = 0
+        self.level = 1
         
     def get_response(self, prompt: str, agent_context: str = "") -> str:
         """
@@ -302,3 +331,262 @@ As {self.name}, respond to the above conversation.
     @abstractmethod
     def interact(self, other_agents: List['BaseAgent'], topic: str = None):
         pass
+
+    def create_daily_schedule(self, date: str, total_schedule_logic: Dict = None):
+        """
+        Create a daily schedule based on total schedule logic, personal preferences, 
+        memories, and map information
+        """
+        if total_schedule_logic is None:
+            total_schedule_logic = {}
+        
+        # Get agent's preferences and memories
+        preferences = {
+            "personality_traits": self.personality_traits,
+            "schedule_preferences": self.schedule_preferences,
+            "preferred_locations": self.preferred_locations,
+            "learning_goals": self.learning_goals if hasattr(self, 'learning_goals') else [],
+            "social_preferences": getattr(self, 'social_preferences', []),
+            "activity_preferences": getattr(self, 'activity_preferences', [])
+        }
+        
+        # Get recent memories to influence the schedule
+        recent_memories = self.personal_memory.get_recent_memories(self.name, limit=10)
+        
+        # Create schedule based on total schedule logic and personal preferences
+        schedule = {}
+        
+        for period in total_schedule_logic.get("time_periods", ["morning_class", "morning_free", "afternoon_class", "afternoon_free", "evening"]):
+            schedule_logic = total_schedule_logic.get("schedule_logic", {}).get(period, {})
+            
+            # Determine if this is a required activity
+            if schedule_logic.get("required", False):
+                # Required activity - follow the schedule logic
+                location = schedule_logic.get("location", "classroom")
+                activity = schedule_logic.get("activity", "attend_class")
+                
+                # Add probability factor
+                probability = schedule_logic.get("probability", 1.0)
+                if random.random() <= probability:
+                    schedule[period] = {
+                        "location": location,
+                        "activity": activity,
+                        "required": True
+                    }
+                else:
+                    # If not following required activity, use personal preferences
+                    preferred_location = random.choice(self.preferred_locations) if self.preferred_locations else "classroom"
+                    schedule[period] = {
+                        "location": preferred_location,
+                        "activity": "personal_activity",
+                        "required": False
+                    }
+            else:
+                # Optional activity - use personal preferences
+                preferred_location = random.choice(self.preferred_locations) if self.preferred_locations else "classroom"
+                possible_activities = [
+                    "study", "socialize", "explore", "rest", "reflect", 
+                    "practice", "research", "create", "think"
+                ]
+                
+                # Adjust activities based on personality and goals
+                if "social" in str(self.personality_traits):
+                    possible_activities.extend(["socialize", "discuss", "collaborate"] * 2)
+                if "analytical" in str(self.personality_traits):
+                    possible_activities.extend(["study", "analyze", "review"] * 2)
+                if "creative" in str(self.personality_traits):
+                    possible_activities.extend(["create", "explore", "innovate"] * 2)
+                
+                activity = random.choice(possible_activities)
+                
+                schedule[period] = {
+                    "location": preferred_location,
+                    "activity": activity,
+                    "required": False
+                }
+        
+        self.daily_schedule[date] = schedule
+        return schedule
+
+    def start_conversation(self, other_agents: List['BaseAgent'], topic: str, max_rounds: int = 5, conversation_type: str = "multi"):
+        """
+        Start a multi-round conversation with other agents
+        """
+        conversation_history = []
+        
+        # Check if agents want to join the conversation based on their schedules and personalities
+        participating_agents = []
+        for agent in other_agents:
+            # Agent decides whether to join based on their personality, schedule, and memory
+            should_join = self._should_join_conversation(agent, topic)
+            if should_join:
+                participating_agents.append(agent)
+        
+        # Add self to the conversation
+        participating_agents.insert(0, self)
+        
+        if len(participating_agents) < 2:
+            # Not enough agents for a conversation
+            self.remember(f"Tried to start a conversation about '{topic}' but not enough agents joined", "conversation", location=self.location)
+            return conversation_history
+        
+        print(f"\nStarting {conversation_type} conversation about '{topic}' with {len(participating_agents)} agents at {self.location}: {[agent.name for agent in participating_agents]}")
+        
+        # Conduct the conversation for max_rounds
+        for round_num in range(max_rounds):
+            print(f"\n--- Round {round_num + 1} ---")
+            
+            for agent in participating_agents:
+                # Generate agent's response based on conversation history and topic
+                conversation_context = "\n".join([f"{entry['agent']}: {entry['message']}" for entry in conversation_history[-5:]])
+                
+                prompt = f"""
+                You are {agent.name} participating in a conversation about '{topic}'.
+                Previous conversation:
+                {conversation_context}
+                
+                Respond to the conversation, keeping in mind your personality traits: {', '.join(agent.personality_traits)}.
+                """
+                
+                response = agent.get_response(prompt, f"You are participating in a conversation about '{topic}'.")
+                print(f"{agent.name}: {response}")
+                
+                # Add to conversation history
+                conversation_history.append({
+                    "agent": agent.name,
+                    "message": response,
+                    "round": round_num + 1,
+                    "topic": topic
+                })
+                
+                # Remember the interaction
+                agent.remember(f"Participated in conversation about '{topic}' with {[a.name for a in participating_agents if a != agent]}", "conversation", location=agent.location)
+        
+        # Create a long-term memory of the conversation
+        conversation_summary = f"Had a {max_rounds}-round conversation about '{topic}' with {[a.name for a in participating_agents[1:]]}"
+        for agent in participating_agents:
+            agent.remember_long_term(conversation_summary, "conversation")
+        
+        return conversation_history
+
+    def _should_join_conversation(self, agent, topic: str):
+        """
+        Determine if an agent should join a conversation based on their personality, 
+        schedule, and memory
+        """
+        # Check if agent is available (not in a required activity)
+        current_time_period = "current_period"  # This would be determined by the simulation
+        # For now, assume they're available if they're at the same location
+        at_same_location = agent.location == self.location
+        
+        # Check social preferences
+        social_willingness = "collaborate" in getattr(agent, 'social_preferences', []) or \
+                            "discuss" in getattr(agent, 'social_preferences', []) or \
+                            "network" in getattr(agent, 'social_preferences', [])
+        
+        # Check personality traits
+        extroversion = "social" in agent.personality_traits or \
+                      "expressive" in agent.personality_traits or \
+                      "collaborative" in agent.personality_traits
+        
+        # If the topic is related to their learning goals or interests
+        topic_relevance = any(goal in topic.lower() for goal in getattr(agent, 'learning_goals', [])) or \
+                         any(pref in topic.lower() for pref in getattr(agent, 'activity_preferences', []))
+        
+        # Calculate probability of joining
+        base_probability = 0.5
+        if social_willingness:
+            base_probability += 0.2
+        if extroversion:
+            base_probability += 0.2
+        if topic_relevance:
+            base_probability += 0.3
+        if not at_same_location:
+            base_probability -= 0.5  # Much less likely if not at same location
+        
+        # Cap between 0 and 1
+        join_probability = max(0, min(1, base_probability))
+        
+        return random.random() < join_probability
+
+    def start_battle(self, opponent: 'BaseAgent'):
+        """
+        Simulate a battle between this agent and an opponent
+        """
+        print(f"\nBattle started between {self.name} and {opponent.name} at {self.location}!")
+        
+        # Store initial stats
+        initial_self_health = self.health
+        initial_opponent_health = opponent.health
+        
+        # Battle rounds
+        round_num = 1
+        battle_log = []
+        
+        while self.health > 0 and opponent.health > 0:
+            print(f"\n--- Battle Round {round_num} ---")
+            
+            # Self attacks opponent
+            damage_to_opponent = max(1, self.strength - opponent.defense + random.randint(-2, 3))
+            opponent.health -= damage_to_opponent
+            print(f"{self.name} attacks {opponent.name} for {damage_to_opponent} damage!")
+            
+            if opponent.health <= 0:
+                opponent.health = 0
+                battle_log.append(f"Round {round_num}: {self.name} attacks {opponent.name} for {damage_to_opponent} damage. {opponent.name} is defeated!")
+                break
+            
+            # Opponent attacks self
+            damage_to_self = max(1, opponent.strength - self.defense + random.randint(-2, 3))
+            self.health -= damage_to_self
+            print(f"{opponent.name} attacks {self.name} for {damage_to_self} damage!")
+            
+            if self.health <= 0:
+                self.health = 0
+                battle_log.append(f"Round {round_num}: {opponent.name} attacks {self.name} for {damage_to_self} damage. {self.name} is defeated!")
+                break
+            
+            battle_log.append(f"Round {round_num}: {self.name} vs {opponent.name} - {self.name} HP: {self.health}, {opponent.name} HP: {opponent.health}")
+            
+            round_num += 1
+            
+            # Limit rounds to prevent infinite battles
+            if round_num > 10:
+                battle_log.append("Battle ended in a draw due to round limit.")
+                break
+        
+        # Determine winner
+        if self.health > 0:
+            winner = self
+            loser = opponent
+            print(f"\n{self.name} wins the battle!")
+        elif opponent.health > 0:
+            winner = opponent
+            loser = self
+            print(f"\n{opponent.name} wins the battle!")
+        else:
+            print(f"\nBattle ended in a draw!")
+            winner = None
+            loser = None
+        
+        # Generate battle summary and create long-term memory
+        battle_summary = f"Battle between {self.name} and {opponent.name} at {self.location}. "
+        if winner:
+            battle_summary += f"{winner.name} won. "
+        else:
+            battle_summary += "It was a draw. "
+        battle_summary += f"Started with {self.name}: {initial_self_health} HP vs {opponent.name}: {initial_opponent_health} HP."
+        
+        # Add battle memories to both agents
+        self.remember_long_term(battle_summary, "battle")
+        opponent.remember_long_term(battle_summary, "battle")
+        
+        # Restore health after battle
+        self.health = 100
+        opponent.health = 100
+        
+        return {
+            "winner": winner.name if winner else "draw",
+            "battle_log": battle_log,
+            "summary": battle_summary
+        }

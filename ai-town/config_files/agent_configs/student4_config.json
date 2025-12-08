@@ -1,0 +1,39 @@
+{
+  "id": "student4",
+  "name": "Student4",
+  "role": "Student",
+  "is_expert": false,
+  "personality_traits": [
+    "introverted",
+    "thoughtful",
+    "focused",
+    "reflective"
+  ],
+  "communication_style": "reserved but insightful",
+  "behavioral_patterns": [
+    "listens carefully",
+    "thinks before speaking",
+    "prefers small groups",
+    "reflects on experiences"
+  ],
+  "schedule_preferences": {
+    "study_hours": ["morning_free", "afternoon_free"],
+    "class_hours": ["morning_class", "afternoon_class"],
+    "relaxation_time": ["evening"]
+  },
+  "作息习惯": {
+    "起床时间": "08:00",
+    "早餐时间": "08:00-08:30",
+    "学习时间": ["09:00-12:00", "14:00-17:00"],
+    "休息时间": ["12:00-14:00", "18:00-20:00"],
+    "睡觉时间": "22:00"
+  },
+  "learning_goals": [
+    "deepening understanding",
+    "improving focus",
+    "building confidence"
+  ],
+  "preferred_locations": ["library", "park", "quiet classroom"],
+  "social_preferences": ["observe", "reflect", "selective participation"],
+  "activity_preferences": ["read", "reflect", "write", "think"]
+}

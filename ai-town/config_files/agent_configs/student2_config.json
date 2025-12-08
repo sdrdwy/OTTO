@@ -1,0 +1,39 @@
+{
+  "id": "student2",
+  "name": "Student2",
+  "role": "Student",
+  "is_expert": false,
+  "personality_traits": [
+    "analytical",
+    "methodical",
+    "independent",
+    "detail_oriented"
+  ],
+  "communication_style": "thoughtful and precise",
+  "behavioral_patterns": [
+    "analyzes before speaking",
+    "prefers individual work",
+    "asks clarifying questions",
+    "reviews material thoroughly"
+  ],
+  "schedule_preferences": {
+    "study_hours": ["morning_free", "afternoon_free"],
+    "class_hours": ["morning_class", "afternoon_class"],
+    "relaxation_time": ["evening"]
+  },
+  "作息习惯": {
+    "起床时间": "07:30",
+    "早餐时间": "07:30-08:00",
+    "学习时间": ["09:00-12:00", "14:00-17:00"],
+    "休息时间": ["12:00-14:00", "18:00-20:00"],
+    "睡觉时间": "22:30"
+  },
+  "learning_goals": [
+    "understanding complex concepts",
+    "developing critical thinking",
+    "improving problem-solving skills"
+  ],
+  "preferred_locations": ["library", "classroom", "lab"],
+  "social_preferences": ["collaborate", "analyze", "evaluate"],
+  "activity_preferences": ["study", "analyze", "review", "research"]
+}

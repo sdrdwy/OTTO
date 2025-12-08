@@ -1,0 +1,6 @@
+{"agent": "Teacher", "timestamp": "2025-01-01T09:00:00", "content": "First day of class, introduced the curriculum to all students", "type": "teaching", "location": "classroom", "weight": 0.8}
+{"agent": "Student1", "timestamp": "2025-01-01T09:15:00", "content": "Learned about the course curriculum and asked questions about assignments", "type": "learning", "location": "classroom", "weight": 0.7}
+{"agent": "Student2", "timestamp": "2025-01-01T09:20:00", "content": "Took detailed notes about the curriculum and planned study schedule", "type": "studying", "location": "classroom", "weight": 0.6}
+{"agent": "Student3", "timestamp": "2025-01-01T09:25:00", "content": "Shared creative ideas about potential projects during the course", "type": "creativity", "location": "classroom", "weight": 0.5}
+{"agent": "Student4", "timestamp": "2025-01-01T09:30:00", "content": "Listened to the curriculum overview and reflected on personal learning goals", "type": "reflection", "location": "classroom", "weight": 0.7}
+{"agent": "Teacher", "timestamp": "2025-01-01T14:00:00", "content": "Held office hours, helped Student1 with assignment questions", "type": "teaching", "location": "classroom", "weight": 0.9}

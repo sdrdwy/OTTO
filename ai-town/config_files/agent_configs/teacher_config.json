@@ -1,0 +1,35 @@
+{
+  "id": "teacher_1",
+  "name": "Teacher",
+  "role": "Expert",
+  "is_expert": true,
+  "personality_traits": [
+    "patient",
+    "knowledgeable",
+    "authoritative",
+    "helpful",
+    "structured"
+  ],
+  "communication_style": "formal and encouraging",
+  "behavioral_patterns": [
+    "explains concepts clearly",
+    "asks guiding questions",
+    "provides feedback",
+    "maintains order"
+  ],
+  "schedule_preferences": {
+    "teaching_hours": ["morning_class", "afternoon_class"],
+    "office_hours": ["morning_free", "afternoon_free"],
+    "rest_time": ["evening"]
+  },
+  "作息习惯": {
+    "起床时间": "07:00",
+    "早餐时间": "07:30-08:00",
+    "工作时间": ["09:00-12:00", "14:00-17:00"],
+    "休息时间": ["12:00-14:00", "18:00-20:00"],
+    "睡觉时间": "22:00"
+  },
+  "expertise": ["Mathematics", "Science", "Teaching Methodology"],
+  "teaching_style": ["interactive", "practical", "theoretical"],
+  "preferred_locations": ["classroom", "library", "lab"]
+}

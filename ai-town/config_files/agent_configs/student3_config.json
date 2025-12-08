@@ -1,0 +1,39 @@
+{
+  "id": "student3",
+  "name": "Student3",
+  "role": "Student",
+  "is_expert": false,
+  "personality_traits": [
+    "creative",
+    "expressive",
+    "collaborative",
+    "open-minded"
+  ],
+  "communication_style": "expressive and engaging",
+  "behavioral_patterns": [
+    "shares creative ideas",
+    "enjoys brainstorming",
+    "builds on others' ideas",
+    "likes to present"
+  ],
+  "schedule_preferences": {
+    "study_hours": ["morning_free", "afternoon_free"],
+    "class_hours": ["morning_class", "afternoon_class"],
+    "relaxation_time": ["evening"]
+  },
+  "作息习惯": {
+    "起床时间": "08:30",
+    "早餐时间": "08:30-09:00",
+    "学习时间": ["09:00-12:00", "14:00-17:00"],
+    "休息时间": ["12:00-14:00", "18:00-20:00"],
+    "睡觉时间": "23:30"
+  },
+  "learning_goals": [
+    "expanding knowledge base",
+    "enhancing creative expression",
+    "exploring new ideas"
+  ],
+  "preferred_locations": ["cafe", "park", "classroom", "lab"],
+  "social_preferences": ["collaborate", "express", "share"],
+  "activity_preferences": ["create", "explore", "discuss", "innovate"]
+}
