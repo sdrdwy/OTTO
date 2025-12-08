@@ -2,7 +2,7 @@ import json
 import os
 from typing import Dict, List, Any, Optional
 from datetime import datetime
-from langchain_community.chat_models import Tongyi
+from langchain_community.chat_models import ChatTongyi
 from langchain_core.messages import SystemMessage
 from memory.conversation_mem import ConversationMemory
 from memory.long_term_mem import LongTermMemory
@@ -22,7 +22,7 @@ class BaseAgent:
         self.max_dialogue_rounds = self.config["max_dialogue_rounds"]
         
         # Initialize LLM
-        self.llm = Tongyi(
+        self.llm = ChatTongyi(
             model_name="qwen-max",
             dashscope_api_key=os.getenv("DASHSCOPE_API_KEY", "sk-c763fc92bf8c46c7ae31639b05d89c96")
         )
