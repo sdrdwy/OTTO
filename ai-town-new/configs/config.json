@@ -1,0 +1,15 @@
+{
+  "max_round": 5,
+  "days_to_simulate": 10,
+  "time_periods": [
+    "morning_early",
+    "morning_late", 
+    "afternoon_early",
+    "afternoon_late",
+    "evening"
+  ],
+  "special_dates": {
+    "weekends": [6, 7],
+    "holidays": []
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schedule_template": {
+    "morning_early": {
+      "mandatory": {
+        "monday": "attend_class",
+        "tuesday": "attend_class",
+        "wednesday": "attend_class", 
+        "thursday": "attend_class",
+        "friday": "attend_class",
+        "saturday": "optional_activity",
+        "sunday": "optional_activity"
+      },
+      "default_location": "classroom"
+    },
+    "morning_late": {
+      "mandatory": {
+        "monday": "study_session",
+        "tuesday": "lab_work",
+        "wednesday": "project_work", 
+        "thursday": "study_session",
+        "friday": "review_session",
+        "saturday": "optional_activity",
+        "sunday": "optional_activity"
+      },
+      "default_location": "library"
+    },
+    "afternoon_early": {
+      "mandatory": {
+        "monday": "group_discussion",
+        "tuesday": "study_session",
+        "wednesday": "lab_work", 
+        "thursday": "project_work",
+        "friday": "sports_activity",
+        "saturday": "optional_activity",
+        "sunday": "optional_activity"
+      },
+      "default_location": "classroom"
+    },
+    "afternoon_late": {
+      "mandatory": {
+        "monday": "independent_study",
+        "tuesday": "project_work",
+        "wednesday": "study_session", 
+        "thursday": "group_discussion",
+        "friday": "optional_activity",
+        "saturday": "optional_activity",
+        "sunday": "optional_activity"
+      },
+      "default_location": "library"
+    },
+    "evening": {
+      "mandatory": {
+        "monday": "review_day",
+        "tuesday": "review_day",
+        "wednesday": "review_day", 
+        "thursday": "review_day",
+        "friday": "social_time",
+        "saturday": "social_time",
+        "sunday": "rest"
+      },
+      "default_location": "park"
+    }
+  },
+  "special_dates": {
+    "holidays": [
+      {"date": "2024-01-01", "name": "New Year", "schedule": {"morning_early": "rest", "morning_late": "rest", "afternoon_early": "rest", "afternoon_late": "rest", "evening": "celebration"}},
+      {"date": "2024-05-01", "name": "Labor Day", "schedule": {"morning_early": "rest", "morning_late": "rest", "afternoon_early": "rest", "afternoon_late": "rest", "evening": "rest"}}
+    ]
+  }
+}

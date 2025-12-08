@@ -1,0 +1,52 @@
+{
+  "exam_id": "math_midterm_1",
+  "subject": "Mathematics",
+  "questions": [
+    {
+      "id": "q1",
+      "type": "multiple_choice",
+      "question": "What is the value of x in the equation 2x + 5 = 15?",
+      "options": ["x = 5", "x = 10", "x = 7.5", "x = 4"],
+      "correct_answer": "x = 5",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "q2", 
+      "type": "short_answer",
+      "question": "Explain the Pythagorean theorem.",
+      "correct_answer": "In a right triangle, the square of the hypotenuse is equal to the sum of the squares of the other two sides.",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "q3",
+      "type": "multiple_choice",
+      "question": "What is the derivative of x^2?",
+      "options": ["x", "2x", "x^2", "2"],
+      "correct_answer": "2x",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "q4",
+      "type": "short_answer", 
+      "question": "What is the relationship between sine, cosine, and tangent in a right triangle?",
+      "correct_answer": "Sine is opposite/hypotenuse, cosine is adjacent/hypotenuse, and tangent is opposite/adjacent.",
+      "difficulty": "beginner"
+    },
+    {
+      "id": "q5",
+      "type": "multiple_choice",
+      "question": "If f(x) = 3x + 2, what is f(4)?",
+      "options": ["12", "14", "10", "6"],
+      "correct_answer": "14",
+      "difficulty": "beginner"
+    }
+  ],
+  "total_points": 100,
+  "grading_scale": {
+    "A": 90,
+    "B": 80,
+    "C": 70,
+    "D": 60,
+    "F": 0
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "locations": {
+    "classroom": {
+      "name": "Classroom",
+      "description": "A place for learning and discussions, with desks, whiteboards, and teaching materials",
+      "function": "formal learning, lectures, group discussions"
+    },
+    "library": {
+      "name": "Library",
+      "description": "A quiet place filled with books, research materials, and study spaces",
+      "function": "individual study, research, quiet reading"
+    },
+    "park": {
+      "name": "Park",
+      "description": "A peaceful outdoor area with benches, trees, and space for relaxation",
+      "function": "relaxation, socializing, reflection"
+    },
+    "cafe": {
+      "name": "Cafe",
+      "description": "A cozy place for informal meetings with coffee, snacks, and casual seating",
+      "function": "casual conversations, informal discussions, light work"
+    },
+    "lab": {
+      "name": "Laboratory",
+      "description": "A place for experiments and scientific discussions with equipment and safety materials",
+      "function": "experiments, hands-on learning, scientific research"
+    },
+    "dormitory": {
+      "name": "Dormitory",
+      "description": "A place for rest and personal time with private rooms and common areas",
+      "function": "sleeping, personal time, private study"
+    }
+  }
+}
