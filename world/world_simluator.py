@@ -302,6 +302,27 @@ class WorldSimulator:
                                     "weight": 1.2
                                 }
                                 agent.long_term_memory.add_memory(dialogue_memory)
+                            
+                            # After dialogue, check if expert agent should teach based on the dialogue content
+                            expert_agent = None
+                            student_agents = []
+                            for agent_name in participating_agents:
+                                agent = self.agents[agent_name]
+                                if agent.is_expert:
+                                    expert_agent = agent
+                                else:
+                                    student_agents.append(agent)
+                            
+                            if expert_agent and student_agents:
+                                # Expert may decide to teach based on the dialogue content
+                                dialogue_content = " ".join([turn.get('message', '') for turn in dialogue_history if turn])
+                                should_teach_decision = self._should_expert_teach(expert_agent, student_agents, dialogue_content, topic)
+                                
+                                if should_teach_decision["should_teach"]:
+                                    print(f"    {expert_agent.name} 决定对学生进行教学: {should_teach_decision['reason']}")
+                                    for student_agent in student_agents:
+                                        teaching_content = expert_agent.teach(student_agent.name, topic)
+                                        print(f"      教学内容: {teaching_content[:100]}...")
                         else:
                             print(f"    对话结束，但没有产生对话记录")
                     else:
@@ -310,9 +331,39 @@ class WorldSimulator:
                         self._record_failed_dialogue(topic, agent_names, participating_agents, location)
                 else:
                     print(f"    代理们决定不进行交互")
+                    
+                    # Even if they don't interact directly, expert may still teach or students may ask questions
+                    expert_agent = None
+                    student_agents = []
+                    for agent_name in agent_names:
+                        agent = self.agents[agent_name]
+                        if agent.is_expert:
+                            expert_agent = agent
+                        else:
+                            student_agents.append(agent)
+                    
+                    # If there's an expert with students, expert might initiate teaching
+                    if expert_agent and student_agents:
+                        should_teach_decision = self._should_expert_teach_randomly(expert_agent, student_agents, location)
+                        if should_teach_decision["should_teach"]:
+                            import random
+                            topic = random.choice(["学习交流", "学术讨论", "知识讲解"])
+                            print(f"    {expert_agent.name} 主动开始教学: {should_teach_decision['reason']}")
+                            for student_agent in student_agents:
+                                teaching_content = expert_agent.teach(student_agent.name, topic)
+                                print(f"      教学内容: {teaching_content[:100]}...")
             elif len(agent_names) == 1:
                 # Single agent at location - may still have individual activities
-                print(f"  在 {location} 只有 1 个代理: {agent_names[0]}，无多轮对话")
+                agent_name = agent_names[0]
+                agent = self.agents[agent_name]
+                print(f"  在 {location} 只有 1 个代理: {agent_name}")
+                
+                # If it's the expert agent, they might review students' progress or prepare materials
+                if agent.is_expert:
+                    self._expert_single_activity(agent, location)
+                else:
+                    # If it's a student, they might study or ask questions based on their memories
+                    self._student_single_activity(agent, location)
     
     def _should_agents_interact(self, agent_names: List[str], location: str) -> bool:
         """Determine if agents should interact based on location and agent types"""
@@ -325,7 +376,7 @@ class WorldSimulator:
         is_social_location = any(social_loc in location for social_loc in social_locations)
         
         # Calculate base probability
-        base_prob = 0.6 if is_social_location else 0.3
+        base_prob = 0.8 if is_social_location else 0.5  # Increased probabilities
         
         # Consider agent types (students more likely to interact with each other)
         expert_count = sum(1 for name in agent_names if self.agents[name].is_expert)
@@ -333,11 +384,11 @@ class WorldSimulator:
         
         # If there are students together, increase probability
         if student_count > 1:
-            base_prob += 0.2
+            base_prob += 0.3  # Increased from 0.2 to 0.3
         
         # If there's an expert with students, interaction probability may change
         if expert_count > 0 and student_count > 0:
-            base_prob += 0.1  # Teaching/learning opportunity
+            base_prob += 0.2  # Increased from 0.1 to 0.2 - Teaching/learning opportunity
         
         return random.random() < base_prob
     
@@ -394,6 +445,158 @@ class WorldSimulator:
                 "weight": 0.8
             }
             agent.long_term_memory.add_memory(failed_dialogue_memory)
+
+    def _should_expert_teach(self, expert_agent, student_agents, dialogue_content, topic):
+        """Determine if expert should teach based on dialogue content"""
+        # Get recent memories of expert and students
+        expert_memories = expert_agent.long_term_memory.search_memories(limit=3)
+        student_memories = []
+        for student in student_agents:
+            student_memories.extend(student.long_term_memory.search_memories(limit=2))
+        
+        system_prompt = f"""
+        你是{expert_agent.name}，一名专业教师，人设：{expert_agent.persona}。
+        你的教学风格：{expert_agent.dialogue_style}。
+        
+        刚刚结束了一次关于"{topic}"的对话。
+        对话内容摘要：{dialogue_content[:200]}
+        
+        参与对话的学生：{[s.name for s in student_agents]}
+        
+        你的近期记忆：{expert_memories}
+        学生的近期记忆：{student_memories[:3]}
+        
+        基于对话内容和你的人设，判断你是否应该对学生进行教学。
+        返回一个JSON格式的决策：
+        {{
+            "should_teach": true/false,
+            "reason": "简短的解释原因"
+        }}
+        """
+        
+        try:
+            response = expert_agent.llm.invoke([SystemMessage(content=system_prompt)])
+            response_text = response.content
+            
+            # Extract JSON from response
+            start_idx = response_text.find('{')
+            end_idx = response_text.rfind('}') + 1
+            if start_idx != -1 and end_idx != 0:
+                json_str = response_text[start_idx:end_idx]
+                decision = json.loads(json_str)
+                return decision
+            else:
+                # If parsing fails, use a simple heuristic
+                return {
+                    "should_teach": len(dialogue_content) > 10,  # Teach if there was meaningful dialogue
+                    "reason": "对话后教学的默认决策"
+                }
+        except Exception as e:
+            print(f"Error determining if expert should teach: {e}")
+            return {
+                "should_teach": False,
+                "reason": f"处理决策时出错: {e}"
+            }
+
+    def _should_expert_teach_randomly(self, expert_agent, student_agents, location):
+        """Randomly determine if expert should initiate teaching"""
+        import random
+        # Higher chance to teach when with students
+        should_teach = random.random() < 0.7  # 70% chance when with students
+        
+        return {
+            "should_teach": should_teach,
+            "reason": f"在{location}与学生相遇，决定进行教学活动" if should_teach else "暂时不进行教学"
+        }
+
+    def _expert_single_activity(self, expert_agent, location):
+        """Handle expert agent's activity when alone"""
+        import random
+        # Expert may review students' progress, prepare materials, or reflect on teaching
+        activities = [
+            "复习学生的学习进度",
+            "准备教学材料", 
+            "反思教学方法",
+            "更新知识库"
+        ]
+        
+        if random.random() < 0.6:  # 60% chance of activity
+            activity = random.choice(activities)
+            print(f"    {expert_agent.name} 正在{location}进行: {activity}")
+            
+            # Create memory of the activity
+            activity_memory = {
+                "id": f"expert_activity_{activity.replace(' ', '_')}_{str(datetime.now())}",
+                "type": "expert_activity",
+                "timestamp": str(datetime.now()),
+                "content": f"在{location}进行了{activity}",
+                "details": {
+                    "activity": activity,
+                    "location": location
+                },
+                "weight": 1.0
+            }
+            expert_agent.long_term_memory.add_memory(activity_memory)
+
+    def _student_single_activity(self, student_agent, location):
+        """Handle student agent's activity when alone"""
+        import random
+        # Student may study, review notes, or think about questions to ask
+        activities = [
+            "自主学习",
+            "复习笔记", 
+            "思考问题",
+            "整理学习资料"
+        ]
+        
+        if random.random() < 0.6:  # 60% chance of activity
+            activity = random.choice(activities)
+            print(f"    {student_agent.name} 正在{location}进行: {activity}")
+            
+            # Create memory of the activity
+            activity_memory = {
+                "id": f"student_activity_{activity.replace(' ', '_')}_{str(datetime.now())}",
+                "type": "student_activity",
+                "timestamp": str(datetime.now()),
+                "content": f"在{location}进行了{activity}",
+                "details": {
+                    "activity": activity,
+                    "location": location
+                },
+                "weight": 1.0
+            }
+            student_agent.long_term_memory.add_memory(activity_memory)
+        
+        # Check if there's an expert in the world and student might want to ask a question
+        expert_agent = None
+        for agent_name, agent in self.agents.items():
+            if agent.is_expert:
+                expert_agent = agent
+                break
+        
+        # If there's an expert, student might want to ask for help on a topic
+        if expert_agent and random.random() < 0.3:  # 30% chance to ask for help
+            # Select a topic from student's recent memories or a general topic
+            recent_memories = student_agent.long_term_memory.search_memories(limit=3)
+            topic = "学习交流"  # Default topic
+            if recent_memories:
+                # Try to extract a topic from recent memories
+                for memory in recent_memories:
+                    content = memory.get('content', '')
+                    if '学习' in content:
+                        topic = "学习方法"
+                        break
+                    elif '知识' in content:
+                        topic = "知识理解"
+                        break
+                    elif '考试' in content:
+                        topic = "考试准备"
+                        break
+            
+            print(f"    {student_agent.name} 决定向{expert_agent.name}寻求关于'{topic}'的帮助")
+            help_result = student_agent.ask_teacher_for_help(expert_agent, topic)
+            print(f"      问题: {help_result['question'][:100]}...")
+            print(f"      回答: {help_result['teacher_response'][:100]}...")
 
     def process_agent_requests(self):
         """Process any requests from agents (like battles, etc.)"""
