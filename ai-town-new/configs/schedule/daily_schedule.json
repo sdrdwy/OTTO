@@ -1,0 +1,58 @@
+{
+  "schedule_logic": {
+    "morning_class_1": {
+      "required_activity": "attend_class",
+      "default_location": "classroom",
+      "probability": 0.9
+    },
+    "morning_class_2": {
+      "required_activity": "attend_class",
+      "default_location": "classroom", 
+      "probability": 0.9
+    },
+    "afternoon_class_1": {
+      "required_activity": "attend_class",
+      "default_location": "classroom",
+      "probability": 0.8
+    },
+    "afternoon_class_2": {
+      "required_activity": "study_or_practice",
+      "default_location": "library",
+      "probability": 0.7
+    },
+    "evening": {
+      "required_activity": "rest",
+      "default_location": "dormitory",
+      "probability": 0.95
+    }
+  },
+  "special_dates": {
+    "weekends": {
+      "morning_class_1": {
+        "required_activity": "free_time",
+        "default_location": "playground",
+        "probability": 0.3
+      },
+      "morning_class_2": {
+        "required_activity": "free_time", 
+        "default_location": "cafeteria",
+        "probability": 0.3
+      },
+      "afternoon_class_1": {
+        "required_activity": "free_time",
+        "default_location": "playground",
+        "probability": 0.5
+      },
+      "afternoon_class_2": {
+        "required_activity": "free_time",
+        "default_location": "cafeteria", 
+        "probability": 0.5
+      },
+      "evening": {
+        "required_activity": "socialize",
+        "default_location": "cafeteria",
+        "probability": 0.7
+      }
+    }
+  }
+}

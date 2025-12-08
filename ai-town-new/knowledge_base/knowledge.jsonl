@@ -1,0 +1,8 @@
+{"id": "cs_001", "topic": "Programming Fundamentals", "content": "Programming is the process of creating instructions for computers to execute. Key concepts include variables, data types, control structures, functions, and algorithms."}
+{"id": "cs_002", "topic": "Data Structures", "content": "Data structures are ways of organizing and storing data. Common structures include arrays, linked lists, stacks, queues, trees, and graphs."}
+{"id": "cs_003", "topic": "Algorithms", "content": "Algorithms are step-by-step procedures for solving problems. Important algorithms include sorting, searching, and graph traversal algorithms."}
+{"id": "cs_004", "topic": "Object-Oriented Programming", "content": "OOP is a programming paradigm based on objects and classes. Core concepts include encapsulation, inheritance, and polymorphism."}
+{"id": "cs_005", "topic": "Software Engineering", "content": "Software engineering involves designing, developing, testing, and maintaining software. Key practices include version control, testing, and documentation."}
+{"id": "cs_006", "topic": "Databases", "content": "Databases store and manage data efficiently. Key concepts include relational models, SQL, normalization, and transactions."}
+{"id": "cs_007", "topic": "Web Development", "content": "Web development involves creating websites and web applications. Key technologies include HTML, CSS, JavaScript, and server-side languages."}
+{"id": "cs_008", "topic": "Computer Networks", "content": "Computer networks connect devices to share resources and communicate. Key concepts include protocols, IP addressing, and network security."}

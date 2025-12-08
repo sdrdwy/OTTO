@@ -1,0 +1,29 @@
+{
+  "locations": {
+    "classroom": {
+      "name": "Classroom",
+      "description": "Main classroom where lectures and classes take place",
+      "function": "Learning and teaching activities"
+    },
+    "library": {
+      "name": "Library",
+      "description": "Quiet place for studying and research",
+      "function": "Individual study and research"
+    },
+    "cafeteria": {
+      "name": "Cafeteria",
+      "description": "Place where agents gather to eat and socialize",
+      "function": "Social interaction and dining"
+    },
+    "playground": {
+      "name": "Playground",
+      "description": "Outdoor area for physical activities and relaxation",
+      "function": "Exercise and leisure activities"
+    },
+    "dormitory": {
+      "name": "Dormitory",
+      "description": "Living quarters where agents rest",
+      "function": "Rest and personal time"
+    }
+  }
+}

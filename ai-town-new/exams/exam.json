@@ -1,0 +1,43 @@
+{
+  "exam_id": "cs_fundamentals_final",
+  "title": "Computer Science Fundamentals Final Exam",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "What are the three core principles of Object-Oriented Programming?",
+      "type": "open_ended",
+      "topic": "Object-Oriented Programming",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q2", 
+      "question": "Explain the difference between an array and a linked list data structure.",
+      "type": "open_ended",
+      "topic": "Data Structures",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q3",
+      "question": "What is the time complexity of a binary search algorithm?",
+      "type": "multiple_choice",
+      "options": ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+      "correct_answer": "O(log n)",
+      "topic": "Algorithms",
+      "difficulty": "easy"
+    },
+    {
+      "id": "q4",
+      "question": "Describe the purpose of version control in software engineering.",
+      "type": "open_ended",
+      "topic": "Software Engineering",
+      "difficulty": "medium"
+    },
+    {
+      "id": "q5",
+      "question": "What does HTML stand for in web development?",
+      "type": "short_answer",
+      "topic": "Web Development",
+      "difficulty": "easy"
+    }
+  ]
+}

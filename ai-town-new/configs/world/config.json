@@ -1,0 +1,15 @@
+{
+  "simulation_days": 10,
+  "time_periods": [
+    "morning_class_1",
+    "morning_class_2", 
+    "afternoon_class_1",
+    "afternoon_class_2",
+    "evening"
+  ],
+  "max_dialogue_rounds": 5,
+  "exam_file": "exams/exam.json",
+  "map_file": "configs/world/map.json",
+  "schedule_file": "configs/schedule/daily_schedule.json",
+  "knowledge_base_file": "knowledge_base/knowledge.jsonl"
+}
