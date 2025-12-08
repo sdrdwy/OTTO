@@ -2,6 +2,7 @@ import json
 from typing import Dict, List, Any
 from datetime import datetime
 from world.calendar import Calendar
+import os
 
 
 class WorldSimulator:
@@ -24,6 +25,10 @@ class WorldSimulator:
         # Initialize agent positions in the map
         for location in self.map['locations'].values():
             location['agents'] = []
+        
+        # Initialize dialogue logging
+        self.dialogue_log_path = "./log"
+        os.makedirs(self.dialogue_log_path, exist_ok=True)
 
     def register_agent(self, agent):
         """Register an agent with the world"""
@@ -248,6 +253,55 @@ class WorldSimulator:
                         
                         if dialogue_history:
                             print(f"    对话结束，共 {len(dialogue_history)} 轮")
+                            
+                            # Real-time output of dialogue content
+                            print("    对话内容:")
+                            for i, turn in enumerate(dialogue_history):
+                                speaker = turn.get("speaker", "Unknown")
+                                message = turn.get("message", "No message")
+                                timestamp = turn.get("timestamp", "")
+                                print(f"      {speaker}: {message}")
+                            
+                            # Create JSON log file for the dialogue
+                            dialogue_log = {
+                                "location": location,
+                                "topic": topic,
+                                "participants": participating_agents,
+                                "time_slot": time_slot,
+                                "date": self.calendar.get_current_date_str(),
+                                "dialogue_history": dialogue_history,
+                                "summary": f"关于'{topic}'的{len(dialogue_history)}轮对话"
+                            }
+                            
+                            # Generate filename with timestamp
+                            timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+                            log_filename = f"dialogue_log_{location.replace(' ', '_')}_{timestamp_str}.json"
+                            log_filepath = os.path.join(self.dialogue_log_path, log_filename)
+                            
+                            # Save dialogue to JSON file
+                            with open(log_filepath, 'w', encoding='utf-8') as f:
+                                json.dump(dialogue_log, f, ensure_ascii=False, indent=2)
+                            
+                            print(f"    对话日志已保存至: {log_filepath}")
+                            
+                            # Generate memory of the dialogue for each participating agent
+                            for agent_name in participating_agents:
+                                agent = self.agents[agent_name]
+                                dialogue_memory = {
+                                    "id": f"dialogue_{agent_name}_{topic}_{timestamp_str}",
+                                    "type": "dialogue",
+                                    "timestamp": str(datetime.now()),
+                                    "content": f"参与了关于'{topic}'的对话，共{len(dialogue_history)}轮",
+                                    "details": {
+                                        "topic": topic,
+                                        "participants": participating_agents,
+                                        "location": location,
+                                        "dialogue_log_file": log_filename,
+                                        "dialogue_summary": [f"{turn['speaker']}: {turn['message'][:50]}..." for turn in dialogue_history]
+                                    },
+                                    "weight": 1.2
+                                }
+                                agent.long_term_memory.add_memory(dialogue_memory)
                         else:
                             print(f"    对话结束，但没有产生对话记录")
                     else:

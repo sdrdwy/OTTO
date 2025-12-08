@@ -190,8 +190,84 @@ class BaseAgent:
                     initiating_turn
                 )
         
+        # Generate a memory of the dialogue event if it has content
+        if dialogue_history:
+            # Generate memory based on the dialogue content and existing memories
+            self._generate_dialogue_memory(topic, dialogue_history, all_participants)
+            
+            # Have other participants also generate memories
+            for participant_name in participants:
+                participant_agent = world_simulator.get_agent_by_name(participant_name)
+                if participant_agent:
+                    participant_agent._generate_dialogue_memory(topic, dialogue_history, all_participants)
+        
         return dialogue_history
     
+    def _generate_dialogue_memory(self, topic: str, dialogue_history: List[Dict], participants: List[str]):
+        """Generate a memory of the dialogue based on the content and existing memories"""
+        # Create a summary of the dialogue
+        dialogue_summary = f"参与了关于'{topic}'的对话，参与者: {', '.join(participants)}"
+        
+        # Extract key points from the dialogue
+        key_points = []
+        for turn in dialogue_history:
+            message = turn.get('message', '')
+            if len(message) > 0:
+                # Extract key information from the message
+                key_points.append(f"{turn['speaker']}: {message[:100]}...")  # Take first 100 chars
+        
+        # Get relevant memories to contextualize this dialogue
+        relevant_memories = self.long_term_memory.search_memories(query=topic, limit=3)
+        
+        # Create a more meaningful memory based on the dialogue content
+        if key_points:
+            # Use LLM to generate a more meaningful memory if we have content
+            system_prompt = f"""
+            你是{self.name}，人设：{self.persona}。
+            
+            你刚刚参与了一个关于"{topic}"的对话，参与者包括: {participants}。
+            对话内容摘要: {key_points}
+            
+            请根据这个对话内容和你的人设，生成一个简洁但有意义的记忆记录，
+            描述这次对话的主要内容和你的收获或感受。
+            记忆应该包含: 
+            - 对话主题
+            - 重要的讨论点
+            - 你的感受或收获
+            - 与你已有知识或经历的联系
+            
+            请返回一个简短但内容丰富的记忆描述。
+            """
+            
+            try:
+                response = self.invoke_llm([SystemMessage(content=system_prompt)])
+                memory_content = response.content
+            except Exception as e:
+                # Fallback to a simple summary if LLM call fails
+                memory_content = f"参与了关于'{topic}'的对话，与{', '.join(participants)}讨论了相关内容"
+        else:
+            # If no key points, create a basic memory
+            memory_content = f"参与了关于'{topic}'的对话，参与者: {', '.join(participants)}，但对话内容未记录"
+        
+        # Create the memory object
+        memory = {
+            "id": f"dialogue_{self.name}_{topic}_{str(uuid.uuid4())[:8]}_{str(datetime.now())}",
+            "type": "dialogue",
+            "timestamp": str(datetime.now()),
+            "content": memory_content,
+            "details": {
+                "topic": topic,
+                "participants": participants,
+                "dialogue_summary": key_points,
+                "location": self.current_location
+            },
+            "weight": 1.2
+        }
+        
+        # Add the memory to long-term memory
+        self.long_term_memory.add_memory(memory)
+        return memory
+
     def _should_join_dialogue(self, other_agent):
         """Determine if agent should join a dialogue based on persona, long-term memory and current situation"""
         # Get recent memories to understand context
@@ -392,8 +468,42 @@ class BaseAgent:
         return random.choice(outcomes)
     
     def generate_memory(self, event: Dict):
-        """Generate a memory from an event"""
-        memory_content = f"{self.name}在{event.get('location', '未知地点')}进行了{event.get('activity', '未知活动')}，结果是{event.get('result', '未记录')}"
+        """Generate a memory from an event, using LLM to create meaningful content based on existing memories"""
+        # Get recent memories to provide context
+        recent_memories = self.long_term_memory.search_memories(limit=5)
+        
+        # Create a more meaningful memory using LLM if possible
+        event_location = event.get('location', '未知地点')
+        event_activity = event.get('activity', '未知活动')
+        event_result = event.get('result', '未记录')
+        
+        # Use LLM to generate a more meaningful memory if we have context
+        system_prompt = f"""
+        你是{self.name}，人设：{self.persona}。
+        
+        你刚刚经历了一个事件:
+        - 地点: {event_location}
+        - 活动: {event_activity}
+        - 结果: {event_result}
+        
+        你的近期记忆: {recent_memories}
+        
+        请根据这个事件和你的人设，生成一个有意义的记忆描述。
+        这个记忆应该:
+        1. 与你的个性和经历相符
+        2. 反映事件的重要性和意义
+        3. 包含你对事件的感受或思考
+        4. 与你之前的记忆有所关联
+        
+        请返回一个简洁但内容丰富的记忆描述。
+        """
+        
+        try:
+            response = self.invoke_llm([SystemMessage(content=system_prompt)])
+            memory_content = response.content
+        except Exception as e:
+            # Fallback to simple concatenation if LLM call fails
+            memory_content = f"{self.name}在{event_location}进行了{event_activity}，结果是{event_result}"
         
         memory = {
             "id": str(uuid.uuid4()),
@@ -401,6 +511,12 @@ class BaseAgent:
             "timestamp": str(datetime.now()),
             "content": memory_content,
             "event": event,
+            "details": {
+                "location": event_location,
+                "activity": event_activity,
+                "result": event_result,
+                "context_memories": [mem.get('content', '')[:100] for mem in recent_memories[:3]]  # Include context from recent memories
+            },
             "weight": 1.0
         }
         
