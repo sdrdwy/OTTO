@@ -124,24 +124,24 @@ class BaseAgent:
         
         for round_num in range(max_rounds):
             # Get agents at current location
-            current_agents = world_simulator.get_agents_at_location(self.current_location)
+            # current_agents = world_simulator.get_agents_at_location(self.current_location)
             
             # Determine which participants are available and willing to join this round
             available_participants = []
             for participant_name in all_participants:
-                if participant_name in current_agents:
+                # if participant_name in current_agents:
                     # Check if agent is willing to join (using the enhanced context-based method)
-                    participant_agent = world_simulator.get_agent_by_name(participant_name)
-                    if participant_agent:
-                        decision = participant_agent.should_join_dialogue_based_on_context(
-                            topic=topic,
-                            participants=all_participants,
-                            world_simulator=world_simulator,
-                            location=self.current_location
-                        )
-                        
-                        if decision["should_join"]:
-                            available_participants.append(participant_name)
+                participant_agent = world_simulator.get_agent_by_name(participant_name)
+                if participant_agent:
+                    decision = participant_agent.should_join_dialogue_based_on_context(
+                        topic=topic,
+                        participants=all_participants,
+                        world_simulator=world_simulator,
+                        location=self.current_location
+                    )
+                    
+                    if decision["should_join"]:
+                        available_participants.append(participant_name)
             
             # Only continue if we have at least 2 participants
             if len(available_participants) < 2:

@@ -83,7 +83,7 @@ class WorldSimulator:
             print(f"  {loc_name}: {loc_info['description']} | 人员: {agents_here}")
         print()
 
-    def start_simulation(self, agents_list):
+    def start_simulation(self, agents_list,is_exam=True):
         """Start the world simulation"""
         print("开始模拟世界运行...")
         
@@ -97,20 +97,21 @@ class WorldSimulator:
             if hasattr(agent, 'is_expert') and agent.is_expert:
                 expert_agent = agent
                 break
-        
-        if expert_agent:
-            num_questions = self.system_config['simulation']['exam_question_count']
-            self.exam_questions = expert_agent.create_exam(num_questions)
-            print(f"已生成考试题目 ({len(self.exam_questions)}题)")
-            
-            # Pre-simulation exam
-            print("\n=== 模拟开始前考试 ===")
-            for agent_name, agent in self.agents.items():
-                if not agent.is_expert:  # Only students take the exam
-                    answers = agent.take_exam(self.exam_questions)
-                    scores = expert_agent.grade_exam(agent_name, answers, self.exam_questions)
-                    self.exam_scores[f"{agent_name}_pre"] = scores['total_score']
-                    print(f"{agent_name} 考试成绩: {scores['total_score']:.1f}")
+        if is_exam:
+
+            if expert_agent:
+                num_questions = self.system_config['simulation']['exam_question_count']
+                self.exam_questions = expert_agent.create_exam(num_questions)
+                print(f"已生成考试题目 ({len(self.exam_questions)}题)")
+                
+                # Pre-simulation exam
+                print("\n=== 模拟开始前考试 ===")
+                for agent_name, agent in self.agents.items():
+                    if not agent.is_expert:  # Only students take the exam
+                        answers = agent.take_exam(self.exam_questions)
+                        scores = expert_agent.grade_exam(agent_name, answers, self.exam_questions)
+                        self.exam_scores[f"{agent_name}_pre"] = scores['total_score']
+                        print(f"{agent_name} 考试成绩: {scores['total_score']:.1f}")
         
         # Run simulation for specified number of days
         for day in range(self.total_days):
@@ -169,29 +170,31 @@ class WorldSimulator:
                 # Process any requests from agents
                 self.process_agent_requests()
         
-        # Post-simulation exam
-        print(f"\n{'='*50}")
-        print("模拟结束后考试")
-        print(f"{'='*50}")
-        
-        if expert_agent:
-            print("\n=== 模拟结束后考试 ===")
-            for agent_name, agent in self.agents.items():
-                if not agent.is_expert:  # Only students take the exam
-                    answers = agent.take_exam(self.exam_questions)
-                    scores = expert_agent.grade_exam(agent_name, answers, self.exam_questions)
-                    self.exam_scores[f"{agent_name}_post"] = scores['total_score']
-                    print(f"{agent_name} 考试成绩: {scores['total_score']:.1f}")
-        
-        # Print final results
-        print(f"\n{'='*50}")
-        print("最终成绩对比")
-        print(f"{'='*50}")
-        for agent_name in [name for name in self.agents.keys() if not self.agents[name].is_expert]:
-            pre_score = self.exam_scores.get(f"{agent_name}_pre", 0)
-            post_score = self.exam_scores.get(f"{agent_name}_post", 0)
-            improvement = post_score - pre_score
-            print(f"{agent_name}: {pre_score:.1f} -> {post_score:.1f} (提升: {improvement:+.1f})")
+        if is_exam:
+
+            # Post-simulation exam
+            print(f"\n{'='*50}")
+            print("模拟结束后考试")
+            print(f"{'='*50}")
+            
+            if expert_agent:
+                print("\n=== 模拟结束后考试 ===")
+                for agent_name, agent in self.agents.items():
+                    if not agent.is_expert:  # Only students take the exam
+                        answers = agent.take_exam(self.exam_questions)
+                        scores = expert_agent.grade_exam(agent_name, answers, self.exam_questions)
+                        self.exam_scores[f"{agent_name}_post"] = scores['total_score']
+                        print(f"{agent_name} 考试成绩: {scores['total_score']:.1f}")
+            
+            # Print final results
+            print(f"\n{'='*50}")
+            print("最终成绩对比")
+            print(f"{'='*50}")
+            for agent_name in [name for name in self.agents.keys() if not self.agents[name].is_expert]:
+                pre_score = self.exam_scores.get(f"{agent_name}_pre", 0)
+                post_score = self.exam_scores.get(f"{agent_name}_post", 0)
+                improvement = post_score - pre_score
+                print(f"{agent_name}: {pre_score:.1f} -> {post_score:.1f} (提升: {improvement:+.1f})")
 
     def handle_interactions(self, time_slot: str):
         """Handle interactions between agents at the same location"""
