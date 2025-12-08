@@ -204,29 +204,142 @@ class WorldSimulator:
                 # Multiple agents at the same location - potentially start dialogues or battles
                 print(f"  在 {location} 有 {len(agent_names)} 个代理: {agent_names}")
                 
-                # Randomly decide if they interact (for now)
+                # Determine if they should interact based on more sophisticated logic
                 import random
-                if random.random() > 0.3:  # 70% chance of interaction
+                # Use a more sophisticated approach instead of pure randomness
+                should_interact = self._should_agents_interact(agent_names, location)
+                
+                if should_interact:
                     # Start a multi-agent dialogue
                     max_rounds = self.system_config['simulation']['max_dialogue_rounds']
                     
-                    # Select a random topic for the dialogue
-                    topics = ["学习交流", "日常聊天", "学术讨论", "兴趣分享"]
-                    topic = random.choice(topics)
+                    # Select a topic for the dialogue based on agents' interests or recent activities
+                    topic = self._select_dialogue_topic(agent_names, location)
                     
                     print(f"    开始关于 '{topic}' 的多轮对话...")
                     
-                    # Have the first agent initiate the dialogue
-                    initiating_agent = self.agents[agent_names[0]]
-                    dialogue_history = initiating_agent.initiate_dialogue(
-                        participants=agent_names[1:],  # Others participate
-                        topic=topic,
-                        max_rounds=max_rounds,
-                        world_simulator=self
-                    )
+                    # Have agents decide individually whether to join the dialogue based on their long-term memory and context
+                    participating_agents = []
+                    for agent_name in agent_names:
+                        agent = self.agents[agent_name]
+                        decision = agent.should_join_dialogue_based_on_context(
+                            topic=topic,
+                            participants=agent_names,
+                            world_simulator=self,
+                            location=location
+                        )
+                        
+                        if decision["should_join"]:
+                            participating_agents.append(agent_name)
+                            print(f"      {agent_name} 决定加入对话 ({decision['reason']}, 置信度: {decision['confidence']:.2f})")
+                        else:
+                            print(f"      {agent_name} 决定不加入对话 ({decision['reason']})")
                     
-                    if dialogue_history:
-                        print(f"    对话结束，共 {len(dialogue_history)} 轮")
+                    # Only start dialogue if at least 2 agents are participating
+                    if len(participating_agents) >= 2:
+                        # Have the first participating agent initiate the dialogue
+                        initiating_agent = self.agents[participating_agents[0]]
+                        dialogue_history = initiating_agent.initiate_dialogue(
+                            participants=participating_agents[1:],  # Others participate
+                            topic=topic,
+                            max_rounds=max_rounds,
+                            world_simulator=self
+                        )
+                        
+                        if dialogue_history:
+                            print(f"    对话结束，共 {len(dialogue_history)} 轮")
+                        else:
+                            print(f"    对话结束，但没有产生对话记录")
+                    else:
+                        print(f"    多轮对话未成功 - 只有 {len(participating_agents)} 人参与对话，至少需要2人")
+                        # Record that a dialogue attempt failed
+                        self._record_failed_dialogue(topic, agent_names, participating_agents, location)
+                else:
+                    print(f"    代理们决定不进行交互")
+            elif len(agent_names) == 1:
+                # Single agent at location - may still have individual activities
+                print(f"  在 {location} 只有 1 个代理: {agent_names[0]}，无多轮对话")
+    
+    def _should_agents_interact(self, agent_names: List[str], location: str) -> bool:
+        """Determine if agents should interact based on location and agent types"""
+        # For now, use a probability based on location type and agent personalities
+        # This could be enhanced with more sophisticated logic
+        import random
+        
+        # Check if location is a social location (higher chance of interaction)
+        social_locations = ["咖啡厅", "公园", "休息室", "图书馆", "教室"]  # Common social locations
+        is_social_location = any(social_loc in location for social_loc in social_locations)
+        
+        # Calculate base probability
+        base_prob = 0.6 if is_social_location else 0.3
+        
+        # Consider agent types (students more likely to interact with each other)
+        expert_count = sum(1 for name in agent_names if self.agents[name].is_expert)
+        student_count = len(agent_names) - expert_count
+        
+        # If there are students together, increase probability
+        if student_count > 1:
+            base_prob += 0.2
+        
+        # If there's an expert with students, interaction probability may change
+        if expert_count > 0 and student_count > 0:
+            base_prob += 0.1  # Teaching/learning opportunity
+        
+        return random.random() < base_prob
+    
+    def _select_dialogue_topic(self, agent_names: List[str], location: str) -> str:
+        """Select a dialogue topic based on agents' interests and location"""
+        import random
+        
+        # Get topics that might be relevant to the agents
+        possible_topics = ["学习交流", "日常聊天", "学术讨论", "兴趣分享"]
+        
+        # Check recent memories of agents to find relevant topics
+        all_memories = []
+        for agent_name in agent_names:
+            agent = self.agents[agent_name]
+            recent_memories = agent.long_term_memory.search_memories(limit=3)
+            all_memories.extend(recent_memories)
+        
+        # Look for topics in recent memories
+        topic_keywords = []
+        for memory in all_memories:
+            content = memory.get('content', '')
+            if '学习' in content:
+                topic_keywords.append('学习交流')
+            elif '课程' in content or '知识' in content:
+                topic_keywords.append('学术讨论')
+            elif '兴趣' in content:
+                topic_keywords.append('兴趣分享')
+        
+        # If we found relevant topics in memories, use one of them
+        if topic_keywords:
+            return random.choice(topic_keywords + possible_topics)
+        else:
+            return random.choice(possible_topics)
+    
+    def _record_failed_dialogue(self, topic: str, all_agents: List[str], participating_agents: List[str], location: str):
+        """Record when a dialogue fails to start due to insufficient participants"""
+        print(f"    记录对话失败: 话题='{topic}', 所有在场代理={all_agents}, 参与代理={participating_agents}, 地点={location}")
+        
+        # Add this information to each agent's memory
+        for agent_name in all_agents:
+            agent = self.agents[agent_name]
+            failed_dialogue_memory = {
+                "id": f"failed_dialogue_{agent_name}_{topic}_{location}_{str(datetime.now())}",
+                "type": "failed_dialogue",
+                "timestamp": str(datetime.now()),
+                "content": f"在{location}关于'{topic}'的对话尝试失败，只有{len(participating_agents)}/{len(all_agents)}人参与",
+                "details": {
+                    "topic": topic,
+                    "location": location,
+                    "all_agents": all_agents,
+                    "participating_agents": participating_agents,
+                    "reason": "参与人数不足"
+                },
+                "weight": 0.8
+            }
+            agent.long_term_memory.add_memory(failed_dialogue_memory)
 
     def process_agent_requests(self):
         """Process any requests from agents (like battles, etc.)"""
