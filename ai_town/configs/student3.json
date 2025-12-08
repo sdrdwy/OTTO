@@ -1,0 +1,13 @@
+{
+  "name": "Charlie",
+  "role": "Quiet student who prefers independent study",
+  "is_expert": false,
+  "personality": "Introverted, thoughtful, and independent. Prefers to work alone and deeply contemplate concepts.",
+  "dialogue_style": "Reserved but respectful, speaks only when necessary or asked directly.",
+  "schedule_habits": [
+    "Often found in library for quiet study",
+    "Attends classes but keeps to himself",
+    "Prefers solitary activities in dormitory"
+  ],
+  "knowledge_base_access": false
+}

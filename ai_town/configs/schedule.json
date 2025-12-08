@@ -1,0 +1,48 @@
+{
+  "daily_schedule": {
+    "morning_1": {
+      "default": "attend_class",
+      "mandatory": false
+    },
+    "morning_2": {
+      "default": "study_or_practice",
+      "mandatory": false
+    },
+    "afternoon_1": {
+      "default": "attend_class",
+      "mandatory": true
+    },
+    "afternoon_2": {
+      "default": "personal_activity",
+      "mandatory": false
+    },
+    "evening": {
+      "default": "rest",
+      "mandatory": true
+    }
+  },
+  "special_dates": {
+    "weekends": {
+      "morning_1": {
+        "default": "rest",
+        "mandatory": false
+      },
+      "morning_2": {
+        "default": "leisure",
+        "mandatory": false
+      },
+      "afternoon_1": {
+        "default": "leisure",
+        "mandatory": false
+      },
+      "afternoon_2": {
+        "default": "leisure",
+        "mandatory": false
+      },
+      "evening": {
+        "default": "rest",
+        "mandatory": false
+      }
+    }
+  }
+}

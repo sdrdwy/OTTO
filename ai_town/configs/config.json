@@ -1,0 +1,18 @@
+{
+  "max_round": 10,
+  "total_days": 5,
+  "model_name": "qwen-max",
+  "api_key": "${DASHSCOPE_API_KEY}",
+  "llm_config": {
+    "temperature": 0.7
+  },
+  "simulation": {
+    "time_periods": [
+      "morning_1",
+      "morning_2", 
+      "afternoon_1",
+      "afternoon_2",
+      "evening"
+    ]
+  }
+}

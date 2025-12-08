@@ -1,0 +1,29 @@
+{
+  "locations": [
+    {
+      "name": "classroom",
+      "description": "A room where classes are held",
+      "function": "teaching and learning activities"
+    },
+    {
+      "name": "library",
+      "description": "A quiet place for studying and reading books",
+      "function": "reading and studying"
+    },
+    {
+      "name": "playground",
+      "description": "An outdoor area for recreation and physical activities",
+      "function": "exercise and relaxation"
+    },
+    {
+      "name": "dormitory",
+      "description": "A place where students live and rest",
+      "function": "sleeping and personal time"
+    },
+    {
+      "name": "cafeteria",
+      "description": "A place where people eat meals",
+      "function": "eating and socializing"
+    }
+  ]
+}
