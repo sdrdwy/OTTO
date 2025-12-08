@@ -126,11 +126,23 @@ class ExpertAgent(BaseAgent):
             error_msg = f"回答问题时出现错误: {e}"
             print(error_msg)
             return error_msg
-    
+
     def create_exam(self, num_questions: int = 5):
         """Create an exam based on the curriculum and knowledge base"""
         if not self.knowledge_base:
-            return {"questions": []}
+            # Return default questions if no knowledge base
+            return [
+                {
+                    "question": "请简述人工智能的基本概念",
+                    "type": "short_answer",
+                    "topic": "人工智能"
+                },
+                {
+                    "question": "什么是机器学习？",
+                    "type": "short_answer", 
+                    "topic": "机器学习"
+                }
+            ][:num_questions]
         
         # Sample questions from knowledge base
         exam_questions = []
@@ -139,29 +151,15 @@ class ExpertAgent(BaseAgent):
             topic = knowledge_item.get("topic", "通用")
             content = knowledge_item.get("content", "")
             
-            system_prompt = f"""
-            基于以下知识点创建一道考试题：
-            主题：{topic}
-            内容：{content}
-            
-            请创建一道相关的考试题，可以是选择题、简答题或论述题。
-            返回格式：{{"question": "题目内容", "type": "question_type", "topic": "{topic}"}}
-            """
-            
-            try:
-                response = self.llm.invoke([SystemMessage(content=system_prompt)])
-                question_data = json.loads(response.content.strip())
-                exam_questions.append(question_data)
-            except:
-                # Fallback question if parsing fails
-                exam_questions.append({
-                    "question": f"请简述关于{topic}的主要知识点",
-                    "type": "short_answer",
-                    "topic": topic
-                })
+            # Create a simple question based on topic
+            exam_questions.append({
+                "question": f"请简述关于{topic}的主要知识点",
+                "type": "short_answer",
+                "topic": topic
+            })
         
-        return {"questions": exam_questions}
-    
+        return exam_questions
+
     def grade_exam(self, student_name: str, answers: List[Dict], exam_questions: List[Dict]):
         """Grade a student's exam answers"""
         total_score = 0
@@ -170,38 +168,34 @@ class ExpertAgent(BaseAgent):
         grading_results = []
         
         for i, (answer, question) in enumerate(zip(answers, exam_questions)):
-            system_prompt = f"""
-            请对以下答案进行评分：
-            问题：{question['question']}
-            学生答案：{answer.get('answer', '')}
-            理想答案要点：{question.get('content', '基于问题内容的相关知识点')}
+            # Simple grading based on answer length and keywords for now
+            answer_text = answer.get('answer', '')
+            question_topic = question.get('topic', '通用')
             
-            评分标准：准确性、完整性、逻辑性
-            返回格式：{{"score": 数值, "feedback": "评语", "topic": "{question['topic']}"}}，分数范围0-10
-            """
+            # Basic scoring algorithm
+            score = 5  # Base score
             
-            try:
-                response = self.llm.invoke([SystemMessage(content=system_prompt)])
-                grading_data = json.loads(response.content.strip())
+            # Add points based on answer length
+            if len(answer_text) > 50:
+                score += 2
+            elif len(answer_text) > 20:
+                score += 1
                 
-                score = grading_data.get("score", 0)
-                total_score += score
+            # Add points if answer contains topic keywords
+            if question_topic in answer_text:
+                score += 2
                 
-                grading_results.append({
-                    "question_idx": i,
-                    "score": score,
-                    "feedback": grading_data.get("feedback", ""),
-                    "topic": grading_data.get("topic", question.get("topic", "通用"))
-                })
-            except:
-                # Default grading if parsing fails
-                grading_results.append({
-                    "question_idx": i,
-                    "score": 5,  # Default to 5/10
-                    "feedback": "自动评分",
-                    "topic": question.get("topic", "通用")
-                })
-                total_score += 5
+            # Ensure score is within bounds
+            score = min(score, 10)
+            
+            grading_results.append({
+                "question_idx": i,
+                "score": score,
+                "feedback": f"基于{question_topic}的回答评分",
+                "topic": question_topic
+            })
+            
+            total_score += score
         
         overall_score = (total_score / max_score) * 100 if max_score > 0 else 0
         

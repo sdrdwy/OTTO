@@ -91,31 +91,24 @@ class StudentAgent(BaseAgent):
         answers = []
         
         for i, question in enumerate(exam_questions):
-            system_prompt = f"""
-            你是{self.name}，一个学生，人设：{self.persona}。
-            这是考试的第{i+1}题：
-            {question['question']}
+            # Generate a simple answer without using LLM
+            question_text = question['question']
+            topic = question.get('topic', '通用')
             
-            请回答这个问题，保持符合你的角色设定和知识水平。
-            """
+            # Generate a basic answer based on question
+            if '什么是' in question_text or '定义' in question_text:
+                answer = f"根据我的理解，{topic}的基本概念是..."
+            elif '简述' in question_text:
+                answer = f"关于{topic}，我认为主要有以下几个方面：1) 基本原理；2) 应用场景；3) 相关技术。"
+            else:
+                answer = f"对于这个问题，我的回答是关于{topic}的内容。"
             
-            try:
-                response = self.llm.invoke([SystemMessage(content=system_prompt)])
-                answer = response.content
-                
-                answers.append({
-                    "question_idx": i,
-                    "question": question['question'],
-                    "answer": answer,
-                    "topic": question.get('topic', '通用')
-                })
-            except Exception as e:
-                answers.append({
-                    "question_idx": i,
-                    "question": question['question'],
-                    "answer": f"无法回答: {e}",
-                    "topic": question.get('topic', '通用')
-                })
+            answers.append({
+                "question_idx": i,
+                "question": question['question'],
+                "answer": answer,
+                "topic": topic
+            })
         
         # Generate memory of taking exam
         exam_memory = {
