@@ -1,8 +1,8 @@
 {
   "students": [
     {
-      "id": "curious_student",
-      "name": "CuriousStudent",
+      "id": "student1",
+      "name": "Alice",
       "location": "classroom",
       "learning_goals": ["understanding complex concepts", "developing critical thinking", "asking thought-provoking questions"],
       "preferred_locations": ["library", "classroom", "lab"],
@@ -10,8 +10,8 @@
       "activity_preferences": ["study", "practice", "discuss", "explore"]
     },
     {
-      "id": "analytical_student",
-      "name": "AnalyticalStudent",
+      "id": "student2",
+      "name": "Bob",
       "location": "library",
       "learning_goals": ["understanding complex concepts", "developing critical thinking", "improving problem-solving skills"],
       "preferred_locations": ["library", "classroom", "lab"],
@@ -19,22 +19,31 @@
       "activity_preferences": ["study", "analyze", "review", "research"]
     },
     {
-      "id": "creative_student",
-      "name": "CreativeStudent",
+      "id": "student3",
+      "name": "Charlie",
       "location": "cafe",
       "learning_goals": ["expanding knowledge base", "enhancing creative expression", "exploring new ideas"],
       "preferred_locations": ["cafe", "park", "classroom", "lab"],
       "social_preferences": ["collaborate", "express", "share"],
       "activity_preferences": ["create", "explore", "discuss", "innovate"]
+    },
+    {
+      "id": "student4",
+      "name": "Diana",
+      "location": "park",
+      "learning_goals": ["improving communication skills", "developing leadership qualities", "building confidence"],
+      "preferred_locations": ["classroom", "park", "cafe"],
+      "social_preferences": ["lead", "organize", "mentor"],
+      "activity_preferences": ["discuss", "present", "teach", "network"]
     }
   ],
   "experts": [
     {
-      "id": "expert_1",
-      "name": "Expert1",
+      "id": "teacher_1",
+      "name": "Teacher",
       "location": "classroom",
-      "expertise": ["teaching", "mentoring", "subject knowledge"],
-      "preferred_locations": ["classroom", "lab"],
+      "expertise": ["Mathematics", "Science", "Teaching Methodology"],
+      "preferred_locations": ["classroom", "lab", "library"],
       "teaching_style": ["interactive", "practical", "theoretical"]
     }
   ]

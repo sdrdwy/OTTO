@@ -34,6 +34,14 @@ class ExpertAgent(BaseAgent):
                 }
         
         return curriculum
+    
+    def generate_teaching_material(self, topic: str, difficulty: str = "medium") -> str:
+        """
+        Generate teaching material for a specific topic
+        """
+        prompt = f"Generate teaching material for the topic: {topic}. Difficulty level: {difficulty}. Include examples and explanations."
+        response = self.get_response(prompt, f"You are an expert creating educational content for {topic}.")
+        return response
         
     def interact(self, other_agents: List[BaseAgent], topic: str = None):
         """

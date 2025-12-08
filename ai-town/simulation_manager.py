@@ -11,10 +11,10 @@ from agents.expert_agent import ExpertAgent
 from memory.conversation_memory import ConversationMemory
 from memory.knowledge_base import AgentKnowledgeManager
 from world.world_simulator import WorldSimulator
-from utils.daily_schedule import DailySchedule
 from utils.event_generator import EventGenerator, FestivalManager
 from utils.logger import SimulationLogger
 from utils.calendar import Calendar
+from exam_system import ExamSystem
 
 
 class SimulationManager:
@@ -29,14 +29,12 @@ class SimulationManager:
         self.event_generator = EventGenerator(self.config_file)
         self.festival_manager = FestivalManager(self.event_generator)
         self.logger = SimulationLogger()
+        self.exam_system = ExamSystem()
         
         # Initialize agents
         self.agents: List = []
         self.student_agents: List[StudentAgent] = []
         self.expert_agents: List[ExpertAgent] = []
-        
-        # Initialize daily schedules
-        self.daily_schedules: Dict[str, DailySchedule] = {}
     
     def load_config(self):
         """Load simulation configuration"""
@@ -115,8 +113,14 @@ class SimulationManager:
     
     def create_daily_schedules(self, date: str):
         """Create daily schedules for all students with their preferences and memory context"""
+        # Load total schedule logic from config file
+        total_schedule_config_path = "config_files/schedule_configs/total_schedule.json"
+        total_schedule_logic = {}
+        if os.path.exists(total_schedule_config_path):
+            with open(total_schedule_config_path, 'r', encoding='utf-8') as f:
+                total_schedule_logic = json.load(f)
+        
         for student in self.student_agents:
-            schedule = self.daily_schedules[student.name]
             # Get student preferences to pass to schedule creation
             agent_preferences = {
                 "learning_goals": getattr(student, 'learning_goals', ["study", "improve skills"]),
@@ -132,7 +136,7 @@ class SimulationManager:
                 memory_context = [{"content": mem} for mem in memory_context]
             
             # Create schedule with student's preferences and memory context
-            schedule.create_daily_schedule(date, agent_preferences=agent_preferences, memory_context=memory_context)
+            student.create_daily_schedule(date, total_schedule_logic=total_schedule_logic)
     
     def run_simulation(self):
         """Run the entire simulation"""
@@ -141,6 +145,13 @@ class SimulationManager:
         
         # Initialize agents
         self.initialize_agents()
+        
+        # Administer initial exam before simulation begins
+        print("\n" + "="*50)
+        print("ADMINISTERING INITIAL EXAM")
+        print("="*50)
+        self.initial_exam_results = self.exam_system.administer_exam(self.agents)
+        self.exam_system.save_exam_results(self.initial_exam_results, "initial_exam_results.json")
         
         # Main simulation loop
         for day in range(self.config['simulation_days']):
@@ -187,6 +198,24 @@ class SimulationManager:
                 if self.expert_agents and self.student_agents:
                     self.world.trigger_class_event(self.expert_agents[0], self.student_agents[:2])
         
+        # Administer final exam after simulation ends
+        print("\n" + "="*50)
+        print("ADMINISTERING FINAL EXAM")
+        print("="*50)
+        self.final_exam_results = self.exam_system.administer_exam(self.agents)
+        self.exam_system.save_exam_results(self.final_exam_results, "final_exam_results.json")
+        
+        # Compare results
+        comparison = self.exam_system.compare_results(self.initial_exam_results, self.final_exam_results)
+        print("\n" + "="*50)
+        print("EXAM RESULTS COMPARISON")
+        print("="*50)
+        for agent_name, data in comparison.items():
+            print(f"{agent_name}:")
+            print(f"  Initial Score: {data['initial_score']:.2%}")
+            print(f"  Final Score: {data['final_score']:.2%}")
+            print(f"  Improvement: {data['improvement']:.2%} ({data['improvement_percentage']:.2f}%)")
+        
         # End simulation
         self.logger.log_event("simulation_end", "Simulation completed")
         self.logger.save_log()
@@ -202,10 +231,15 @@ class SimulationManager:
     def execute_period_schedule(self, period: str, date: str):
         """Execute the schedule for a specific time period"""
         for student in self.student_agents:
-            schedule = self.daily_schedules[student.name]
-            period_schedule = schedule.get_schedule_for_period(date, period)
+            # Get the student's schedule for this date and period
+            period_schedule = {}
+            if date in student.daily_schedule and period in student.daily_schedule[date]:
+                period_schedule = [student.daily_schedule[date][period]]
+            else:
+                # Fallback to default behavior if no schedule exists
+                period_schedule = [{}]
             
-            if period_schedule:
+            if period_schedule and period_schedule[0]:
                 # Move student to scheduled location
                 target_location = period_schedule[0].get("location", "classroom")
                 activity = period_schedule[0].get("activity", "unspecified activity")

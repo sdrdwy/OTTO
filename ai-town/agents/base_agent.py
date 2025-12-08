@@ -6,6 +6,7 @@ from typing import List, Dict, Any
 import os
 import json
 from datetime import datetime
+import random
 from langchain_core.messages import HumanMessage, SystemMessage
 from memory.conversation_memory import ConversationMemory
 from world.world_simulator import WorldSimulator
