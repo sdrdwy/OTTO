@@ -3,7 +3,7 @@ from typing import Dict, List, Any
 from datetime import datetime
 from world.calendar import Calendar
 import os
-
+from langchain_core.messages import SystemMessage
 
 class WorldSimulator:
     def __init__(self, map_config_path: str = "./config/map.json", system_config_path: str = "./config/system.json"):
