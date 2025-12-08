@@ -131,75 +131,192 @@ class ExpertAgent(BaseAgent):
             return error_msg
 
     def create_exam(self, num_questions: int = 5):
-        """Create an exam based on the curriculum and knowledge base"""
+        """Create an exam based on the curriculum and knowledge base using LLM"""
         if not self.knowledge_base:
-            # Return default questions if no knowledge base
-            return [
-                {
-                    "question": "请简述人工智能的基本概念",
-                    "type": "short_answer",
-                    "topic": "人工智能"
-                },
-                {
-                    "question": "什么是机器学习？",
-                    "type": "short_answer", 
-                    "topic": "机器学习"
-                }
-            ][:num_questions]
-        
-        # Sample questions from knowledge base
-        exam_questions = []
-        for i in range(min(num_questions, len(self.knowledge_base))):
-            knowledge_item = self.knowledge_base[i % len(self.knowledge_base)]
-            topic = knowledge_item.get("topic", "通用")
-            content = knowledge_item.get("content", "")
+            # Use LLM to generate default questions if no knowledge base
+            system_prompt = f"""
+            你是{self.name}，一名专业教师，人设：{self.persona}。
+            你的教学风格：{self.dialogue_style}。
             
-            # Create a simple question based on topic
-            exam_questions.append({
-                "question": f"请简述关于{topic}的主要知识点",
+            请为学生创建{num_questions}道考试题目，涵盖不同学科领域。
+            返回格式为JSON数组，每个元素包含：
+            {{
+                "question": "问题内容",
                 "type": "short_answer",
-                "topic": topic
-            })
+                "topic": "主题"
+            }}
+            """
+            try:
+                response = self.llm.invoke([SystemMessage(content=system_prompt)])
+                import re
+                import json
+                
+                # Extract JSON from response
+                content = response.content
+                start_idx = content.find('[')
+                end_idx = content.rfind(']') + 1
+                if start_idx != -1 and end_idx != 0:
+                    json_str = content[start_idx:end_idx]
+                    exam_questions = json.loads(json_str)
+                    # Ensure we have the right number of questions
+                    if len(exam_questions) > num_questions:
+                        exam_questions = exam_questions[:num_questions]
+                    elif len(exam_questions) < num_questions:
+                        # Add default questions if needed
+                        for i in range(len(exam_questions), num_questions):
+                            exam_questions.append({
+                                "question": f"第{i+1}题：请简述相关知识点",
+                                "type": "short_answer",
+                                "topic": "通用"
+                            })
+                    return exam_questions
+                else:
+                    # Fallback to default questions
+                    return [
+                        {
+                            "question": "请简述人工智能的基本概念",
+                            "type": "short_answer",
+                            "topic": "人工智能"
+                        },
+                        {
+                            "question": "什么是机器学习？",
+                            "type": "short_answer", 
+                            "topic": "机器学习"
+                        }
+                    ][:num_questions]
+            except Exception as e:
+                print(f"使用LLM生成考试题目失败: {e}")
+                # Fallback to original method
+                return [
+                    {
+                        "question": "请简述人工智能的基本概念",
+                        "type": "short_answer",
+                        "topic": "人工智能"
+                    },
+                    {
+                        "question": "什么是机器学习？",
+                        "type": "short_answer", 
+                        "topic": "机器学习"
+                    }
+                ][:num_questions]
+        
+        # Use LLM to generate questions based on knowledge base
+        topics = list(set([item.get("topic", "通用") for item in self.knowledge_base]))
+        selected_topics = topics[:num_questions] if len(topics) >= num_questions else topics + topics[:num_questions-len(topics)]
+        
+        exam_questions = []
+        for i, topic in enumerate(selected_topics):
+            relevant_knowledge = [item for item in self.knowledge_base if item.get("topic") == topic]
+            if relevant_knowledge:
+                knowledge_content = str(relevant_knowledge[0].get("content", ""))
+            else:
+                knowledge_content = "相关知识内容"
+            
+            system_prompt = f"""
+            你是{self.name}，一名专业教师，人设：{self.persona}。
+            你的教学风格：{self.dialogue_style}。
+            
+            基于以下关于"{topic}"的知识内容：
+            {knowledge_content}
+            
+            请为学生创建一道关于"{topic}"的考试题目。
+            返回格式为JSON对象：
+            {{
+                "question": "问题内容",
+                "type": "short_answer",
+                "topic": "{topic}"
+            }}
+            """
+            try:
+                response = self.llm.invoke([SystemMessage(content=system_prompt)])
+                import json
+                content = response.content
+                start_idx = content.find('{')
+                end_idx = content.rfind('}') + 1
+                if start_idx != -1 and end_idx != 0:
+                    json_str = content[start_idx:end_idx]
+                    question = json.loads(json_str)
+                    exam_questions.append(question)
+                else:
+                    # Fallback to simple question
+                    exam_questions.append({
+                        "question": f"请简述关于{topic}的主要知识点",
+                        "type": "short_answer",
+                        "topic": topic
+                    })
+            except Exception as e:
+                print(f"为话题'{topic}'生成考试题目失败: {e}")
+                exam_questions.append({
+                    "question": f"请简述关于{topic}的主要知识点",
+                    "type": "short_answer",
+                    "topic": topic
+                })
         
         return exam_questions
 
     def grade_exam(self, student_name: str, answers: List[Dict], exam_questions: List[Dict]):
-        """Grade a student's exam answers"""
-        total_score = 0
+        """Grade a student's exam answers using LLM"""
         max_score = len(answers) * 10  # 10 points per question
-        
         grading_results = []
         
         for i, (answer, question) in enumerate(zip(answers, exam_questions)):
-            # Simple grading based on answer length and keywords for now
             answer_text = answer.get('answer', '')
+            question_text = question.get('question', '')
             question_topic = question.get('topic', '通用')
             
-            # Basic scoring algorithm
-            score = 5  # Base score
+            # Use LLM to grade the answer
+            system_prompt = f"""
+            你是{self.name}，一名专业教师，人设：{self.persona}。
+            你的教学风格：{self.dialogue_style}。
             
-            # Add points based on answer length
-            if len(answer_text) > 50:
-                score += 2
-            elif len(answer_text) > 20:
-                score += 1
-                
-            # Add points if answer contains topic keywords
-            if question_topic in answer_text:
-                score += 2
-                
-            # Ensure score is within bounds
-            score = min(score, 10)
+            请对学生的答案进行评分。
+            
+            题目：{question_text}
+            学生答案：{answer_text}
+            主题：{question_topic}
+            
+            评分标准：
+            - 内容准确性 (0-4分)
+            - 回答完整性 (0-3分)
+            - 表达清晰度 (0-3分)
+            
+            请提供评分和反馈，返回格式为JSON：
+            {{
+                "score": 0-10之间的分数,
+                "feedback": "具体的评分反馈和建议",
+                "topic": "{question_topic}"
+            }}
+            """
+            try:
+                response = self.llm.invoke([SystemMessage(content=system_prompt)])
+                import json
+                content = response.content
+                start_idx = content.find('{')
+                end_idx = content.rfind('}') + 1
+                if start_idx != -1 and end_idx != 0:
+                    json_str = content[start_idx:end_idx]
+                    result = json.loads(json_str)
+                    score = result.get("score", 5)  # Default to 5 if parsing fails
+                    feedback = result.get("feedback", "评分完成")
+                else:
+                    # Fallback scoring
+                    score = 5
+                    feedback = f"基于{question_topic}的回答评分"
+            except Exception as e:
+                print(f"使用LLM评分失败，使用默认评分: {e}")
+                # Fallback to basic scoring
+                score = 5
+                feedback = f"基于{question_topic}的回答评分"
             
             grading_results.append({
                 "question_idx": i,
                 "score": score,
-                "feedback": f"基于{question_topic}的回答评分",
+                "feedback": feedback,
                 "topic": question_topic
             })
-            
-            total_score += score
         
+        # Calculate total score
+        total_score = sum(result["score"] for result in grading_results)
         overall_score = (total_score / max_score) * 100 if max_score > 0 else 0
         
         # Store grading memory
