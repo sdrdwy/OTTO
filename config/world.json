@@ -1,0 +1,36 @@
+{
+  "map": {
+    "classroom": {
+      "name": "Classroom",
+      "description": "A standard classroom with desks, chairs, and a whiteboard. Used for teaching and learning activities.",
+      "purpose": "Teaching and learning"
+    },
+    "library": {
+      "name": "Library",
+      "description": "A quiet place filled with books, study tables, and research materials. Ideal for individual study.",
+      "purpose": "Studying and research"
+    },
+    "playground": {
+      "name": "Playground",
+      "description": "An outdoor area with sports equipment and open space. Used for physical activities and socializing.",
+      "purpose": "Physical activities and recreation"
+    },
+    "cafeteria": {
+      "name": "Cafeteria",
+      "description": "A place where people gather to eat meals and socialize. Has tables and food service area.",
+      "purpose": "Eating and socializing"
+    },
+    "dormitory": {
+      "name": "Dormitory",
+      "description": "A residential area where people rest and sleep. Provides personal space and relaxation.",
+      "purpose": "Resting and sleeping"
+    }
+  },
+  "initial_positions": {
+    "teacher": "classroom",
+    "student1": "dormitory",
+    "student2": "dormitory",
+    "student3": "dormitory",
+    "student4": "dormitory"
+  }
+}

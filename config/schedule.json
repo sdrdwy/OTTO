@@ -1,0 +1,38 @@
+{
+  "daily_schedule": {
+    "morning_1": {
+      "default": "attend_class",
+      "required": ["teacher", "student1", "student2", "student3", "student4"]
+    },
+    "morning_2": {
+      "default": "study",
+      "required": ["teacher", "student1", "student2", "student3", "student4"]
+    },
+    "afternoon_1": {
+      "default": "free_time",
+      "required": []
+    },
+    "afternoon_2": {
+      "default": "group_activity",
+      "required": ["teacher", "student1", "student2", "student3", "student4"]
+    },
+    "evening": {
+      "default": "rest",
+      "required": []
+    }
+  },
+  "special_dates": {
+    "day_1": {
+      "morning_1": {
+        "default": "introduction",
+        "required": ["teacher", "student1", "student2", "student3", "student4"]
+      }
+    },
+    "day_3": {
+      "afternoon_1": {
+        "default": "exam",
+        "required": ["teacher", "student1", "student2", "student3", "student4"]
+      }
+    }
+  }
+}
