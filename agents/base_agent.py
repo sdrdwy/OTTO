@@ -121,28 +121,23 @@ class BaseAgent:
         
         # Include self in the participants list for a complete dialogue
         all_participants = [self.name] + participants
-        
+        available_participants = all_participants
+        print(available_participants)
         for round_num in range(max_rounds):
-            # Get agents at current location
-            # current_agents = world_simulator.get_agents_at_location(self.current_location)
-            
+            temp_participants=[]
             # Determine which participants are available and willing to join this round
-            available_participants = []
-            for participant_name in all_participants:
-                # if participant_name in current_agents:
-                    # Check if agent is willing to join (using the enhanced context-based method)
+            for participant_name in available_participants:
+                # Check if agent is willing to continue (using the enhanced context-based method)
                 participant_agent = world_simulator.get_agent_by_name(participant_name)
                 if participant_agent:
-                    decision = participant_agent.should_join_dialogue_based_on_context(
-                        topic=topic,
-                        participants=all_participants,
-                        world_simulator=world_simulator,
-                        location=self.current_location
+                    decision = participant_agent._should_continue_dialogue(
+                        other_agent=available_participants,
+                        con_memory = dialogue_history
                     )
                     
                     if decision["should_join"]:
-                        available_participants.append(participant_name)
-            
+                        temp_participants.append(participant_name)
+            available_participants = temp_participants.copy()
             # Only continue if we have at least 2 participants
             if len(available_participants) < 2:
                 print(f"    对话在第 {round_num+1} 轮结束 - 只有 {len(available_participants)} 人参与")
@@ -268,6 +263,49 @@ class BaseAgent:
         self.long_term_memory.add_memory(memory)
         return memory
 
+    def _should_continue_dialogue(self,other_agent,con_memory):
+        current_topic = "general"  # This would be passed from the calling function
+        if hasattr(self, '_current_dialogue_topic'):
+            current_topic = self._current_dialogue_topic
+        # print(current_topic)
+        system_prompt = f"""
+        你是{self.name}，人设：{self.persona}。
+        你的对话风格：{self.dialogue_style}。
+        你的日常习惯：{self.daily_habits}。
+        
+        当前话题是：{current_topic}
+        当前在场的参与者：{[agent for agent in [other_agent]] if other_agent else []}
+        
+        你的对话当前对话记忆：{con_memory}
+        
+        请根据你的人设、记忆和当前情况，判断你是否应该继续这个对话。
+        返回一个JSON格式的决策：
+        {{
+            "should_join": true/false,
+            "reason": "简短的解释原因",
+            "confidence": 0.0-1.0之间的置信度
+        }}
+        """
+
+        try:
+            response = self.llm.invoke([SystemMessage(content=system_prompt)])
+            response_text = response.content
+            
+            # Extract JSON from response
+            start_idx = response_text.find('{')
+            end_idx = response_text.rfind('}') + 1
+            if start_idx != -1 and end_idx != 0:
+                json_str = response_text[start_idx:end_idx]
+                decision = json.loads(json_str)
+                # print(decision)
+                return decision # .get('should_join', False)
+            else:
+                # If parsing fails, use a simple heuristic
+                return len(con_memory) > 0  # Join if agent has recent memories
+        except Exception as e:
+            print(f"Error determining if {self.name} should join dialogue: {e}")
+            return False  # Default to not joining if there's an error
+    
     def _should_join_dialogue(self, other_agent):
         """Determine if agent should join a dialogue based on persona, long-term memory and current situation"""
         # Get recent memories to understand context
@@ -422,6 +460,7 @@ class BaseAgent:
         
         try:
             response = self.llm.invoke([SystemMessage(content=system_prompt)])
+            print(f"{self.name}: {response.content}")
             return {
                 "speaker": self.name,
                 "message": response.content,

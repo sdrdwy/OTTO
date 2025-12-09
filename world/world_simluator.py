@@ -257,13 +257,6 @@ class WorldSimulator:
                         if dialogue_history:
                             print(f"    对话结束，共 {len(dialogue_history)} 轮")
                             
-                            # Real-time output of dialogue content
-                            print("    对话内容:")
-                            for i, turn in enumerate(dialogue_history):
-                                speaker = turn.get("speaker", "Unknown")
-                                message = turn.get("message", "No message")
-                                timestamp = turn.get("timestamp", "")
-                                print(f"      {speaker}: {message}")
                             
                             # Create JSON log file for the dialogue
                             dialogue_log = {
@@ -355,6 +348,13 @@ class WorldSimulator:
                             for student_agent in student_agents:
                                 teaching_content = expert_agent.teach(student_agent.name, topic)
                                 print(f"      教学内容: {teaching_content[:100]}...")
+                                student_name = student_agent.name
+                                dial_history = [{
+                                    "message": teaching_content,
+                                    "speaker": expert_agent.name,
+                                }]
+                                participant = [expert_agent.name,student_agent.name]
+                                student_agent._generate_dialogue_memory(topic,dial_history,participant)
             elif len(agent_names) == 1:
                 # Single agent at location - may still have individual activities
                 agent_name = agent_names[0]
@@ -505,7 +505,7 @@ class WorldSimulator:
         """Randomly determine if expert should initiate teaching"""
         import random
         # Higher chance to teach when with students
-        should_teach = random.random() < 0.7  # 70% chance when with students
+        should_teach = random.random() <= 1  # 70% chance when with students
         
         return {
             "should_teach": should_teach,

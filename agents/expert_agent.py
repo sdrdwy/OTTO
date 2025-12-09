@@ -133,72 +133,7 @@ class ExpertAgent(BaseAgent):
     def create_exam(self, num_questions: int = 5):
         """Create an exam based on the curriculum and knowledge base using LLM"""
         if not self.knowledge_base:
-            # Use LLM to generate default questions if no knowledge base
-            system_prompt = f"""
-            你是{self.name}，一名专业教师，人设：{self.persona}。
-            你的教学风格：{self.dialogue_style}。
-            
-            请为学生创建{num_questions}道考试题目，涵盖不同学科领域。
-            返回格式为JSON数组，每个元素包含：
-            {{
-                "question": "问题内容",
-                "type": "short_answer",
-                "topic": "主题"
-            }}
-            """
-            try:
-                response = self.llm.invoke([SystemMessage(content=system_prompt)])
-                import re
-                import json
-                
-                # Extract JSON from response
-                content = response.content
-                start_idx = content.find('[')
-                end_idx = content.rfind(']') + 1
-                if start_idx != -1 and end_idx != 0:
-                    json_str = content[start_idx:end_idx]
-                    exam_questions = json.loads(json_str)
-                    # Ensure we have the right number of questions
-                    if len(exam_questions) > num_questions:
-                        exam_questions = exam_questions[:num_questions]
-                    elif len(exam_questions) < num_questions:
-                        # Add default questions if needed
-                        for i in range(len(exam_questions), num_questions):
-                            exam_questions.append({
-                                "question": f"第{i+1}题：请简述相关知识点",
-                                "type": "short_answer",
-                                "topic": "通用"
-                            })
-                    return exam_questions
-                else:
-                    # Fallback to default questions
-                    return [
-                        {
-                            "question": "请简述人工智能的基本概念",
-                            "type": "short_answer",
-                            "topic": "人工智能"
-                        },
-                        {
-                            "question": "什么是机器学习？",
-                            "type": "short_answer", 
-                            "topic": "机器学习"
-                        }
-                    ][:num_questions]
-            except Exception as e:
-                print(f"使用LLM生成考试题目失败: {e}")
-                # Fallback to original method
-                return [
-                    {
-                        "question": "请简述人工智能的基本概念",
-                        "type": "short_answer",
-                        "topic": "人工智能"
-                    },
-                    {
-                        "question": "什么是机器学习？",
-                        "type": "short_answer", 
-                        "topic": "机器学习"
-                    }
-                ][:num_questions]
+            return -1
         
         # Use LLM to generate questions based on knowledge base
         topics = list(set([item.get("topic", "通用") for item in self.knowledge_base]))
@@ -220,11 +155,13 @@ class ExpertAgent(BaseAgent):
             {knowledge_content}
             
             请为学生创建一道关于"{topic}"的考试题目。
+            并根据指示内容生成一个参考答案ref_ans
             返回格式为JSON对象：
             {{
                 "question": "问题内容",
                 "type": "short_answer",
-                "topic": "{topic}"
+                "topic": "{topic}",
+                "reference_answer":"ref_ans",
             }}
             """
             try:
@@ -263,7 +200,7 @@ class ExpertAgent(BaseAgent):
             answer_text = answer.get('answer', '')
             question_text = question.get('question', '')
             question_topic = question.get('topic', '通用')
-            
+            reference_answer = question.get("reference_answer","")
             # Use LLM to grade the answer
             system_prompt = f"""
             你是{self.name}，一名专业教师，人设：{self.persona}。
@@ -274,7 +211,7 @@ class ExpertAgent(BaseAgent):
             题目：{question_text}
             学生答案：{answer_text}
             主题：{question_topic}
-            
+            参考答案:{reference_answer}
             评分标准：
             - 内容准确性 (0-4分)
             - 回答完整性 (0-3分)
