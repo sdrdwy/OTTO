@@ -2,10 +2,8 @@ import json
 import os
 from typing import Dict, List, Any
 from datetime import datetime
-try:
-    from langchain_community.chat_models import ChatTongyi
-except ImportError:
-    from langchain_tongyi import ChatTongyi
+from langchain_community.chat_models import ChatTongyi
+
 from langchain_core.messages import SystemMessage
 from agents.base_agent import BaseAgent
 
